@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BCM 1531, final</title>
+<meta name="description" content="Animations pour réviser l'examen final de BCM 1531.">
+<script>try{var m=localStorage.getItem('bcm1531-final-theme');if(m)document.documentElement.dataset.theme=m}catch(e){}</script>
+<style>
+:root{--page:#1a1a19;--card:#1f1f1e;--hover:#2a2a28;--text:#ecebe6;--s:#a6a49d;--muted:#7c7a74;--b:rgba(255,255,255,.12);--bs:rgba(255,255,255,.24);--acc-bg:#0C447C;--acc-tx:#B5D4F4;--acc-bd:#378ADD;--danger:#F09595;
+--coral-f:#712B13;--coral-s:#F0997B;--coral-t:#F5C4B3;--coral-u:#F0997B;
+--purple-f:#3C3489;--purple-s:#AFA9EC;--purple-t:#CECBF6;--purple-u:#AFA9EC;
+--gray-f:#444441;--gray-s:#B4B2A9;--gray-t:#D3D1C7;--gray-u:#B4B2A9;
+--amber-f:#633806;--amber-s:#EF9F27;--amber-t:#FAC775;--amber-u:#EF9F27;
+--red-f:#791F1F;--red-s:#F09595;--red-t:#F7C1C1;--red-u:#F09595}
+:root[data-theme="light"]{--page:#f5f4ef;--card:#ffffff;--hover:#f1efe8;--text:#1f1e1c;--s:#5f5e5a;--muted:#888780;--b:rgba(0,0,0,.12);--bs:rgba(0,0,0,.24);--acc-bg:#E6F1FB;--acc-tx:#0C447C;--acc-bd:#378ADD;--danger:#A32D2D;
+--coral-f:#FAECE7;--coral-s:#993C1D;--coral-t:#712B13;--coral-u:#993C1D;
+--purple-f:#EEEDFE;--purple-s:#534AB7;--purple-t:#3C3489;--purple-u:#534AB7;
+--gray-f:#F1EFE8;--gray-s:#5F5E5A;--gray-t:#444441;--gray-u:#5F5E5A;
+--amber-f:#FAEEDA;--amber-s:#854F0B;--amber-t:#633806;--amber-u:#854F0B;
+--red-f:#FCEBEB;--red-s:#A32D2D;--red-t:#791F1F;--red-u:#A32D2D}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--page);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:760px;margin:0 auto;padding:40px 16px 64px}
+header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:32px}
+.kicker{font-size:13px;color:var(--muted);margin:0 0 4px}
+h1{font-size:24px;font-weight:500;margin:0}
+h2{font-size:18px;font-weight:500;margin:0}
+.src{font-size:13px;color:var(--muted);margin:4px 0 16px}
+button{font:inherit;font-size:14px;color:var(--text);background:transparent;border:.5px solid var(--bs);border-radius:8px;padding:8px 14px;cursor:pointer;transition:background .15s}
+button:hover{background:var(--hover)}
+button:active{transform:scale(.98)}
+.icon{display:inline-flex;align-items:center;justify-content:center;width:44px;height:36px;padding:0}
+.icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card{background:var(--card);border:.5px solid var(--b);border-radius:12px;padding:20px}
+.md.on{background:var(--acc-bg);color:var(--acc-tx);border-color:var(--acc-bd)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--bs);cursor:pointer}
+.dot.on{background:var(--text)}
+svg text{font-family:inherit}
+.t{font-size:14px;fill:var(--text)}
+.ts{font-size:12px;fill:var(--s)}
+.th{font-size:14px;font-weight:500;fill:var(--text)}
+.arr{stroke:var(--muted);stroke-width:1.2;fill:none}
+.c-coral>rect{fill:var(--coral-f);stroke:var(--coral-s)}.c-coral>.t,.c-coral>.th{fill:var(--coral-t)}.c-coral>.ts{fill:var(--coral-u)}
+.c-purple>rect,rect.c-purple{fill:var(--purple-f);stroke:var(--purple-s)}.c-purple>.t,.c-purple>.th{fill:var(--purple-t)}.c-purple>.ts{fill:var(--purple-u)}
+.c-gray>rect{fill:var(--gray-f);stroke:var(--gray-s)}.c-gray>.t,.c-gray>.th{fill:var(--gray-t)}.c-gray>.ts{fill:var(--gray-u)}
+.c-amber>rect{fill:var(--amber-f);stroke:var(--amber-s)}.c-amber>.t,.c-amber>.th{fill:var(--amber-t)}.c-amber>.ts{fill:var(--amber-u)}
+.c-red>rect{fill:var(--red-f);stroke:var(--red-s)}.c-red>.t,.c-red>.th{fill:var(--red-t)}.c-red>.ts{fill:var(--red-u)}
+.hk{transition:opacity .4s}
+.dim{opacity:.25}
+.lvl{transform-box:fill-box;transform-origin:0 50%;transition:transform 1.4s ease}
+#ttl{font-size:16px;font-weight:500}
+#txt{font-size:15px;color:var(--s);line-height:1.6;margin-top:4px}
+#note{font-size:13px;color:var(--muted);line-height:1.5;margin-top:6px}
+footer{margin-top:40px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>
+<p class="kicker">BCM 1531, introduction à la biochimie</p>
+<h1>Examen final</h1>
+</div>
+<button id="theme">Mode clair</button>
+</header>
+
+<section id="fructose">
+<h2>Métabolisme du fructose</h2>
+<p class="src">Cours 5.2, diapositive 3</p>
+<div class="card">
+<div id="modes" style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px">
+<button class="md on" data-mode="normal">Normal</button>
+<button class="md" data-mode="exc">Grande quantité</button>
+<button class="md" data-mode="fk">Mutation fructokinase</button>
+<button class="md" data-mode="aldo">Mutation aldolase B</button>
+</div>
+<svg id="sv" width="100%" viewBox="0 0 680 600" role="img">
+<title>Voie hépatique du fructose</title>
+<desc>Le fructose passe de l'intestin au foie par GLUT5 et GLUT2, est phosphorylé par la fructokinase, clivé par l'aldolase B, puis rejoint la glycolyse ou la lipogenèse.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<circle cx="388" cy="44" r="5" fill="#D85A30"/><text class="ts" x="400" y="44" dominant-baseline="central">Carbones du fructose</text>
+<circle cx="388" cy="66" r="5" fill="#BA7517"/><text class="ts" x="400" y="66" dominant-baseline="central">Devenus lipides (TG)</text>
+<rect class="c-purple" x="382" y="82" width="12" height="10" rx="5" stroke-width="0.5"/><text class="ts" x="400" y="87" dominant-baseline="central">Enzyme ou transporteur</text>
+<rect x="20" y="118" width="535" height="458" rx="16" fill="none" stroke="var(--s)" stroke-width="0.5" stroke-dasharray="5 4"/>
+<text class="th" x="36" y="142">Foie</text>
+<rect x="570" y="118" width="95" height="458" rx="12" fill="none" stroke="var(--s)" stroke-width="0.5" stroke-dasharray="5 4"/>
+<text class="th" x="617" y="142" text-anchor="middle">Sang</text>
+<g class="c-coral hk" data-k="lumen"><rect x="30" y="42" width="110" height="44" rx="6" stroke-width="0.5"/><text class="th" x="85" y="56" text-anchor="middle" dominant-baseline="central">Fructose</text><text class="ts" x="85" y="74" text-anchor="middle" dominant-baseline="central">intestin</text></g>
+<g class="c-gray hk" data-k="ent"><rect x="190" y="30" width="140" height="56" rx="6" stroke-width="0.5"/><text class="th" x="260" y="48" text-anchor="middle" dominant-baseline="central">Entérocyte</text></g>
+<g class="hk" data-k="glut5"><line x1="140" y1="64" x2="162" y2="64" class="arr" marker-end="url(#arrow)"/></g>
+<g class="c-purple hk" data-k="glut5"><rect x="166" y="54" width="48" height="20" rx="10" stroke-width="0.5"/><text class="ts" x="190" y="64" text-anchor="middle" dominant-baseline="central">GLUT5</text></g>
+<g class="c-purple hk" data-k="glut2"><rect x="236" y="76" width="48" height="20" rx="10" stroke-width="0.5"/><text class="ts" x="260" y="86" text-anchor="middle" dominant-baseline="central">GLUT2</text></g>
+<g class="hk" data-k="porte"><line x1="260" y1="98" x2="260" y2="136" class="arr" marker-end="url(#arrow)"/><text class="ts" x="272" y="108">veine porte</text></g>
+<g class="c-coral hk" data-k="fru"><rect x="180" y="140" width="160" height="36" rx="6" stroke-width="0.5"/><text class="th" x="260" y="158" text-anchor="middle" dominant-baseline="central">Fructose</text></g>
+<g class="hk" data-k="fk"><line x1="260" y1="178" x2="260" y2="212" class="arr" marker-end="url(#arrow)"/><text class="ts" x="276" y="196" dominant-baseline="central">ATP → ADP</text></g>
+<g class="c-purple hk" data-k="fk"><rect x="150" y="186" width="100" height="20" rx="10" stroke-width="0.5"/><text class="ts" x="200" y="196" text-anchor="middle" dominant-baseline="central">Fructokinase</text></g>
+<g class="c-coral hk" data-k="f1p"><rect x="180" y="216" width="160" height="36" rx="6" stroke-width="0.5"/><text class="th" x="260" y="234" text-anchor="middle" dominant-baseline="central">Fructose-1-P</text></g>
+<g class="hk" data-k="ald"><line x1="260" y1="254" x2="260" y2="288" class="arr" marker-end="url(#arrow)"/><line x1="342" y1="234" x2="376" y2="234" class="arr" marker-end="url(#arrow)"/></g>
+<g class="c-purple hk" data-k="ald"><rect x="150" y="262" width="100" height="20" rx="10" stroke-width="0.5"/><text class="ts" x="200" y="272" text-anchor="middle" dominant-baseline="central">Aldolase B</text></g>
+<g class="c-coral hk" data-k="dhap"><rect x="380" y="216" width="165" height="36" rx="6" stroke-width="0.5"/><text class="th" x="462" y="234" text-anchor="middle" dominant-baseline="central">Dihydroxyacétone-P</text></g>
+<g class="c-coral hk" data-k="gly"><rect x="180" y="292" width="160" height="36" rx="6" stroke-width="0.5"/><text class="th" x="260" y="310" text-anchor="middle" dominant-baseline="central">Glycéraldéhyde</text></g>
+<g class="hk" data-k="tk"><line x1="260" y1="330" x2="260" y2="364" class="arr" marker-end="url(#arrow)"/></g>
+<g class="c-purple hk" data-k="tk"><rect x="150" y="338" width="100" height="20" rx="10" stroke-width="0.5"/><text class="ts" x="200" y="348" text-anchor="middle" dominant-baseline="central">Triokinase</text></g>
+<g class="c-coral hk" data-k="g3p"><rect x="180" y="368" width="160" height="36" rx="6" stroke-width="0.5"/><text class="t" x="260" y="386" text-anchor="middle" dominant-baseline="central">Glycéraldéhyde 3-P</text></g>
+<g class="hk" data-k="glp"><line x1="462" y1="254" x2="462" y2="364" class="arr" marker-end="url(#arrow)"/></g>
+<g class="c-coral hk" data-k="glp"><rect x="380" y="368" width="165" height="36" rx="6" stroke-width="0.5"/><text class="th" x="462" y="386" text-anchor="middle" dominant-baseline="central">Glycérol-3P</text></g>
+<g class="hk" data-k="pyr"><line x1="260" y1="406" x2="260" y2="440" class="arr" marker-end="url(#arrow)"/></g>
+<g class="c-coral hk" data-k="pyr"><rect x="180" y="444" width="160" height="36" rx="6" stroke-width="0.5"/><text class="th" x="260" y="462" text-anchor="middle" dominant-baseline="central">Pyruvate</text></g>
+<g class="hk" data-k="glyco"><line x1="180" y1="462" x2="146" y2="462" class="arr" marker-end="url(#arrow)"/></g>
+<g class="c-gray hk" data-k="glyco"><rect x="32" y="438" width="110" height="48" rx="6" stroke-width="0.5"/><text class="th" x="87" y="455" text-anchor="middle" dominant-baseline="central">Glycolyse</text><text class="ts" x="87" y="472" text-anchor="middle" dominant-baseline="central">néoglucogenèse</text></g>
+<text class="ts hk" data-k="glyco" data-m="exc" x="87" y="504" text-anchor="middle" style="fill:var(--danger)">saturée</text>
+<g class="hk" data-k="acetyl"><line x1="250" y1="482" x2="237" y2="516" class="arr" marker-end="url(#arrow)"/></g>
+<g class="c-amber hk" data-k="acetyl"><rect x="180" y="520" width="110" height="36" rx="6" stroke-width="0.5"/><text class="th" x="235" y="538" text-anchor="middle" dominant-baseline="central">AcétylCoA</text></g>
+<g class="hk" data-k="acyl"><line x1="292" y1="538" x2="316" y2="538" class="arr" marker-end="url(#arrow)"/></g>
+<g class="c-amber hk" data-k="acyl"><rect x="320" y="520" width="110" height="36" rx="6" stroke-width="0.5"/><text class="th" x="375" y="538" text-anchor="middle" dominant-baseline="central">AcylCoA</text></g>
+<g class="hk" data-k="tg"><line x1="432" y1="538" x2="456" y2="538" class="arr" marker-end="url(#arrow)"/><line x1="502" y1="406" x2="502" y2="516" class="arr" marker-end="url(#arrow)"/></g>
+<g class="c-amber hk" data-k="tg"><rect x="460" y="520" width="85" height="36" rx="6" stroke-width="0.5"/><text class="th" x="502" y="538" text-anchor="middle" dominant-baseline="central">TG</text></g>
+<g class="hk" data-k="gTG"><line x1="547" y1="538" x2="566" y2="538" class="arr" marker-end="url(#arrow)"/></g>
+<g id="gp" class="c-purple hk" data-k="gp"><rect x="32" y="210" width="110" height="48" rx="6" stroke-width="0.5"/><text class="th" x="87" y="227" text-anchor="middle" dominant-baseline="central">Glycogène</text><text class="ts" x="87" y="244" text-anchor="middle" dominant-baseline="central">phosphorylase</text></g>
+<g class="hk" data-k="gp" data-m="aldo"><line x1="178" y1="234" x2="146" y2="234" stroke="#E24B4A" stroke-width="1.5" stroke-dasharray="4 3"/><line x1="144" y1="224" x2="144" y2="244" stroke="#E24B4A" stroke-width="2.5"/></g>
+<g class="hk" data-k="leak" data-m="fk"><line x1="342" y1="158" x2="566" y2="158" stroke="#E24B4A" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/></g>
+<g data-m="fk" stroke="#E24B4A" stroke-width="2.5" stroke-linecap="round"><line x1="253" y1="189" x2="267" y2="203"/><line x1="267" y1="189" x2="253" y2="203"/></g>
+<g data-m="aldo" stroke="#E24B4A" stroke-width="2.5" stroke-linecap="round"><line x1="253" y1="265" x2="267" y2="279"/><line x1="267" y1="265" x2="253" y2="279"/><line x1="353" y1="227" x2="367" y2="241"/><line x1="367" y1="227" x2="353" y2="241"/></g>
+<g class="hk" data-k="gFru"><text class="ts" x="617" y="172" text-anchor="middle">Fructose</text><rect x="580" y="180" width="75" height="8" rx="4" fill="var(--b)"/><rect id="lv-fru" class="lvl" x="580" y="180" width="75" height="8" rx="4" fill="#D85A30"/><text id="st-fru" class="ts" x="617" y="204" text-anchor="middle">≈ 0</text></g>
+<g class="hk" data-k="gGlu"><text class="ts" x="617" y="230" text-anchor="middle">Glucose</text><rect x="580" y="238" width="75" height="8" rx="4" fill="var(--b)"/><rect id="lv-glu" class="lvl" x="580" y="238" width="75" height="8" rx="4" fill="#378ADD"/><text id="st-glu" class="ts" x="617" y="262" text-anchor="middle">normale</text></g>
+<g class="hk" data-k="gIns"><text class="ts" x="617" y="288" text-anchor="middle">Insuline</text><rect x="580" y="296" width="75" height="8" rx="4" fill="var(--b)"/><rect id="lv-ins" class="lvl" x="580" y="296" width="75" height="8" rx="4" fill="#7F77DD"/><text id="st-ins" class="ts" x="617" y="320" text-anchor="middle">basse</text></g>
+<g class="hk" data-k="gTG"><text class="ts" x="617" y="346" text-anchor="middle">TG</text><rect x="580" y="354" width="75" height="8" rx="4" fill="var(--b)"/><rect id="lv-tg" class="lvl" x="580" y="354" width="75" height="8" rx="4" fill="#BA7517"/><text id="st-tg" class="ts" x="617" y="378" text-anchor="middle">normaux</text></g>
+<g id="ur" class="c-gray hk" data-k="urine"><rect x="580" y="420" width="75" height="48" rx="6" stroke-width="0.5"/><text class="th" x="617" y="437" text-anchor="middle" dominant-baseline="central">Urine</text><text id="st-ur" class="ts" x="617" y="455" text-anchor="middle" dominant-baseline="central">rien</text></g>
+<g id="acc" class="hk" data-k="f1p"></g>
+<g id="tok"></g>
+</svg>
+<div style="display:flex;align-items:center;gap:8px;margin-top:12px">
+<button id="prev" class="icon" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button>
+<button id="play" class="icon" aria-label="Pause"></button>
+<button id="next" class="icon" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button>
+<div id="dots" style="display:flex;gap:6px;margin-left:8px"></div>
+<span id="cnt" style="margin-left:auto;font-size:13px;color:var(--s)"></span>
+</div>
+<div style="margin-top:14px;min-height:130px">
+<div id="ttl"></div>
+<div id="txt"></div>
+<div id="note"></div>
+</div>
+</div>
+</section>
+
+<footer>Contenu tiré du plan de cours et des diapositives du cours. Outil de révision personnel.</footer>
+</main>
+<script>
+const NS='http://www.w3.org/2000/svg',CO='#D85A30',AM='#BA7517',SPD=95;
+const S={a1:[[140,64],[164,64]],a2:[[216,64],[260,64],[260,74]],a3:[[260,98],[260,138]],fk:[[260,178],[260,214]],alD:[[260,254],[260,290]],alR:[[342,234],[378,234]],tk:[[260,330],[260,366]],dh:[[462,254],[462,366]],py:[[260,406],[260,442]],gl:[[180,462],[146,462]],ac:[[250,482],[236,518]],ay:[[292,538],[318,538]],tg:[[432,538],[458,538]],gt:[[502,406],[502,518]],sb:[[547,538],[568,538]],lk:[[342,158],[568,158]]};
+const L={};for(const k in S){let l=0;const p=S[k];for(let i=1;i<p.length;i++)l+=Math.hypot(p[i][0]-p[i-1][0],p[i][1]-p[i-1][1]);L[k]=l}
+function at(k,d){const p=S[k];for(let i=1;i<p.length;i++){const dx=p[i][0]-p[i-1][0],dy=p[i][1]-p[i-1][1],l=Math.hypot(dx,dy);if(d<=l){const f=d/l;return[p[i-1][0]+dx*f,p[i-1][1]+dy*f]}d-=l}return p[p.length-1]}
+const M={
+normal:{sp:1.1,g:{fru:[.04,'≈ 0'],glu:[.5,'normale'],ins:[.15,'basse'],tg:[.25,'normaux']},ur:'rien',steps:[
+{t:'Absorption intestinale',d:"Le fructose entre dans l'entérocyte par GLUT5, du côté de la lumière intestinale, puis en sort par GLUT2 (peut-être aussi GLUT5) vers la veine porte, qui mène au foie.",h:['lumen','ent','glut5','glut2','porte']},
+{t:'Captation par le foie',d:"Le foie capte presque tout le fructose : il y a peu ou pas de fructose circulant. Son assimilation est indépendante de l'insuline, et il n'entraîne pas de sécrétion d'insuline par le pancréas, d'où son usage chez les diabétiques.",h:['porte','fru','gFru','gIns']},
+{t:'Fructokinase',d:"La fructokinase phosphoryle le fructose en fructose-1-phosphate, en consommant un ATP.",h:['fru','fk','f1p']},
+{t:'Aldolase B',d:"L'aldolase B clive le fructose-1-phosphate en deux trioses : la dihydroxyacétone-P et le glycéraldéhyde.",h:['f1p','ald','dhap','gly']},
+{t:'Triokinase',d:"La triokinase phosphoryle le glycéraldéhyde en glycéraldéhyde 3-P. De son côté, la dihydroxyacétone-P peut donner le glycérol-3P.",h:['gly','tk','g3p','dhap','glp']},
+{t:'Vers le pyruvate',d:"Le glycéraldéhyde 3-P mène au pyruvate, qui rejoint les voies de la glycolyse et de la néoglucogenèse.",h:['g3p','pyr','glyco']}]},
+exc:{sp:.28,g:{fru:[.1,'faible'],glu:[.5,'normale'],ins:[.15,'basse'],tg:[.9,'↑']},ur:'rien',steps:[
+{t:'Grande quantité de fructose',d:"Quand de grandes quantités de fructose sont ingérées, la fructokinase et l'aldolase B produisent des métabolites intermédiaires en grande quantité.",h:['fru','fk','f1p','ald','dhap','gly','tk','g3p']},
+{t:'La glycolyse sature',d:"Ces trioses arrivent plus vite que la voie glycolytique ne peut les prendre en charge : elle sature.",n:"Complément hors diapo : le fructose entre dans la glycolyse au niveau des trioses, après l'étape contrôlée par la PFK-1, donc sans ce frein.",h:['g3p','pyr','glyco']},
+{t:'Lipogenèse de novo',d:"Le surplus passe par l'acétylCoA puis l'acylCoA, qui s'assemble au glycérol-3P pour former des triglycérides (TG).",h:['pyr','acetyl','acyl','tg','glp']},
+{t:'Triglycérides dans le sang',d:"Les TG sont exportés dans le sang. Une consommation excessive de fructose augmente les triglycérides sanguins et leur stockage dans le foie, et diminue la sensibilité à l'insuline.",h:['tg','gTG']}]},
+fk:{sp:1,g:{fru:[.9,'↑↑'],glu:[.5,'normale'],ins:[.15,'basse'],tg:[.25,'normaux']},ur:'fructose',steps:[
+{t:'Mutation de la fructokinase',d:"Sans fructokinase, le fructose n'est pas phosphorylé en fructose-1-P : la voie hépatique ne démarre pas.",h:['lumen','ent','glut5','glut2','porte','fru','fk']},
+{t:'Fructosurie essentielle',d:"Le fructose reste dans le sang puis passe dans l'urine. Le trouble est bénin et asymptomatique.",h:['fru','leak','gFru','urine']}]},
+aldo:{sp:1,g:{fru:[.05,'≈ 0'],glu:[.12,'↓↓'],ins:[.15,'basse'],tg:[.25,'normaux']},ur:'rien',steps:[
+{t:"Mutation de l'aldolase B",d:"La fructokinase fonctionne, mais le fructose-1-P n'est plus clivé : il s'accumule dans le foie.",h:['fru','fk','f1p','ald']},
+{t:'Glycogénolyse bloquée',d:"Le fructose-1-P accumulé inhibe la glycogène phosphorylase, ce qui empêche la glycogénolyse.",h:['f1p','gp']},
+{t:'Hypoglycémie sévère',d:"Le foie ne peut plus libérer le glucose de ses réserves de glycogène : hypoglycémie sévère. C'est l'intolérance héréditaire au fructose.",h:['gp','gGlu']}]}};
+let mode='normal',step=0,play=!matchMedia('(prefers-reduced-motion: reduce)').matches,toks=[],acc=0,spT=.9,stT=0,last=performance.now();
+const $=id=>document.getElementById(id);
+function add(s,col,w){const c=document.createElementNS(NS,'circle');c.setAttribute('r','4');c.setAttribute('fill',col);c.style.opacity=0;$('tok').appendChild(c);toks.push({c,s,d:0,w:w||0})}
+function pile(){if(acc>=24)return;const i=acc++,c=document.createElementNS(NS,'circle');c.setAttribute('cx',276+(i%8)*8);c.setAttribute('cy',264+Math.floor(i/8)*8);c.setAttribute('r','3');c.setAttribute('fill',CO);$('acc').appendChild(c)}
+function route(t){switch(t.s){case'a1':return'a2';case'a2':return'a3';case'a3':return mode==='fk'?'lk':'fk';case'fk':if(mode==='aldo'){pile();return null}add('alR',CO,.22);return'alD';case'alD':return'tk';case'tk':return'py';case'py':if(mode==='exc'&&Math.random()<.75){t.c.setAttribute('fill',AM);return'ac'}return'gl';case'ac':return'ay';case'ay':return'tg';case'tg':return'sb';case'alR':return'dh';case'dh':if(mode==='exc'){t.c.setAttribute('fill',AM);return'gt'}return null;case'gt':return'sb';default:return null}}
+function tick(now){const dt=Math.min(.05,(now-last)/1000);last=now;if(play){spT+=dt;if(spT>=M[mode].sp){spT=0;add('a1',CO)}stT+=dt;if(stT>=6.5){go(step+1)}for(const t of toks){if(t.w>0){t.w-=dt;t.c.style.opacity=0;continue}t.d+=SPD*dt;if(t.d>=L[t.s]){const n=route(t);if(!n){t.dead=1;t.c.remove();continue}t.s=n;t.d=0;t.w=.22;t.c.style.opacity=0;continue}const p=at(t.s,t.d);t.c.setAttribute('cx',p[0]);t.c.setAttribute('cy',p[1]);t.c.style.opacity=1}toks=toks.filter(t=>!t.dead)}requestAnimationFrame(tick)}
+function go(i){const st=M[mode].steps;step=(i+st.length)%st.length;stT=0;const s=st[step];$('ttl').textContent=s.t;$('txt').textContent=s.d;$('note').textContent=s.n||'';$('cnt').textContent='Étape '+(step+1)+' / '+st.length;$('dots').innerHTML='';st.forEach((_,j)=>{const d=document.createElement('span');d.className='dot'+(j===step?' on':'');d.onclick=()=>go(j);$('dots').appendChild(d)});document.querySelectorAll('#sv .hk').forEach(e=>e.classList.toggle('dim',!s.h.includes(e.dataset.k)))}
+function gauge(k,v,tx){$('lv-'+k).style.transform='scaleX('+v+')';$('st-'+k).textContent=tx}
+function setMode(m){mode=m;toks.forEach(t=>t.c.remove());toks=[];acc=0;$('acc').innerHTML='';spT=.9;document.querySelectorAll('.md').forEach(b=>b.classList.toggle('on',b.dataset.mode===m));document.querySelectorAll('#sv [data-m]').forEach(e=>e.style.display=e.dataset.m===m?'':'none');$('gp').setAttribute('class',(m==='aldo'?'c-red':'c-purple')+' hk');$('ur').setAttribute('class',(m==='fk'?'c-coral':'c-gray')+' hk');$('st-ur').textContent=M[m].ur;const g=M[m].g;for(const k in g)gauge(k,g[k][0],g[k][1]);$('lv-glu').setAttribute('fill',m==='aldo'?'#E24B4A':'#378ADD');go(0)}
+document.querySelectorAll('.md').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
+$('prev').onclick=()=>go(step-1);$('next').onclick=()=>go(step+1);
+const IC={pause:'<svg viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>',play:'<svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>'};
+function setPlay(p){play=p;$('play').innerHTML=p?IC.pause:IC.play;$('play').setAttribute('aria-label',p?'Pause':'Lecture')}
+$('play').onclick=()=>setPlay(!play);
+function theme(){const l=document.documentElement.dataset.theme==='light';$('theme').textContent=l?'Mode sombre':'Mode clair'}
+$('theme').onclick=()=>{const n=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=n;try{localStorage.setItem('bcm1531-final-theme',n)}catch(e){}theme()};
+theme();setMode('normal');setPlay(play);requestAnimationFrame(tick);
+</script>
+</body>
+</html>
