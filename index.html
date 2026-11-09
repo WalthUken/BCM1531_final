@@ -67,6 +67,24 @@ svg text{font-family:inherit}
 .dim{opacity:.25}
 .lvl{transform-box:fill-box;transform-origin:0 50%;transition:transform 1.4s ease}
 .flip{transition:transform .9s ease}
+nav{flex-direction:column;gap:10px}
+.navg{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px}
+.navg span{font-size:13px;color:var(--muted);min-width:230px}
+.catg{font-size:13px;color:var(--muted);margin:0 0 24px;padding-bottom:8px;border-bottom:.5px solid var(--b)}
+section+.catg{margin-top:72px}
+#polysaccharides{--glc-f:#085041;--glc-s:#5DCAA5;--nag-f:#3C3489;--nag-s:#AFA9EC;--nam-f:#712B13;--nam-s:#F0997B;--glca-f:#633806;--glca-s:#EF9F27;--galnac-f:#72243E;--galnac-s:#ED93B1;--a16:#F0997B;--pep:#97C459;--sulf:#F0997B;--eau:#85B7EB}
+:root[data-theme="light"] #polysaccharides{--glc-f:#9FE1CB;--glc-s:#0F6E56;--nag-f:#CECBF6;--nag-s:#534AB7;--nam-f:#F5C4B3;--nam-s:#993C1D;--glca-f:#FAC775;--glca-s:#854F0B;--galnac-f:#F4C0D1;--galnac-s:#993556;--a16:#D85A30;--pep:#639922;--sulf:#D85A30;--eau:#378ADD}
+.ps-nd>rect{stroke-width:.5;transition:stroke-width .15s}
+.ps-clk{cursor:pointer}.ps-clk:hover>rect{stroke-width:1.2}.ps-nd.sel>rect{stroke-width:2.2}
+.ps-edge{fill:none;stroke:var(--bs);stroke-width:1;transition:stroke .15s}.ps-edge.hl{stroke:var(--s);stroke-width:2.2}
+.ps-pop{transition:opacity .35s ease-out}
+.ps-panel{border-top:.5px solid var(--b);margin-top:8px;padding-top:16px}
+.ps-ttl{font-size:16px;font-weight:500}
+.ps-chem{font-size:13px;color:var(--muted);margin:2px 0 6px}
+.ps-leg{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:var(--s);margin:6px 0 16px}.ps-leg span{display:inline-flex;align-items:center;gap:6px}
+.ps-cells{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:0 0 12px}
+.ps-cell{background:var(--hover);border-radius:8px;padding:10px 12px;font-size:14px;line-height:1.4}.ps-cell span{display:block;font-size:12px;color:var(--s);margin-bottom:2px}
+.ps-pts{margin:0;padding-left:1.2rem;font-size:15px;line-height:1.7;color:var(--s)}
 footer{margin-top:48px;font-size:13px;color:var(--muted)}
 </style>
 </head>
@@ -79,7 +97,60 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 </div>
 <button id="theme">Mode clair</button>
 </header>
-<nav><a href="#fructose">Fructose</a><a href="#galactose">Galactose</a><a href="#mannose">Mannose</a></nav>
+<nav>
+<div class="navg"><span>Glucides : structure (synchrone 4)</span><a href="#polysaccharides">Polysaccharides</a></div>
+<div class="navg"><span>Glucides : métabolisme (cours 5.2)</span><a href="#fructose">Fructose</a><a href="#galactose">Galactose</a><a href="#mannose">Mannose</a></div>
+</nav>
+
+<p class="catg" id="cat-structure">Glucides : structure (cours synchrone 4)</p>
+
+<section id="polysaccharides">
+<h2>Hiérarchie des polysaccharides</h2>
+<p class="src">Cours synchrone 4, diapositives 26 à 29 et 34 à 36</p>
+<div class="card">
+<svg width="100%" viewBox="0 0 680 452" role="img">
+<title>Arbre de classification des polysaccharides</title>
+<desc>Les polysaccharides se divisent en réserve d'énergie (amidon, formé d'amylose et d'amylopectine, et glycogène), en polysaccharides de structure (cellulose et chitine) et en glycosaminoglycanes (chondroïtine sulfate et peptidoglycane).</desc>
+<g id="ps-edges">
+<path class="ps-edge" id="ps-e-root-res" d="M150 230 H163 V106 H176"/>
+<path class="ps-edge" id="ps-e-root-str" d="M150 230 H163 V261 H176"/>
+<path class="ps-edge" id="ps-e-root-gag" d="M150 230 H163 V385 H176"/>
+<path class="ps-edge" id="ps-e-res-ami" d="M326 106 H339 V75 H352"/>
+<path class="ps-edge" id="ps-e-res-gly" d="M326 106 H339 V168 H480"/>
+<path class="ps-edge" id="ps-e-ami-amylose" d="M452 75 H466 V44 H480"/>
+<path class="ps-edge" id="ps-e-ami-amylopectine" d="M452 75 H466 V106 H480"/>
+<path class="ps-edge" id="ps-e-str-cel" d="M326 261 H403 V230 H480"/>
+<path class="ps-edge" id="ps-e-str-chi" d="M326 261 H403 V292 H480"/>
+<path class="ps-edge" id="ps-e-gag-cho" d="M326 385 H403 V354 H480"/>
+<path class="ps-edge" id="ps-e-gag-pep" d="M326 385 H403 V416 H480"/>
+</g>
+<g class="c-gray ps-nd" id="ps-n-root"><rect x="16" y="202" width="134" height="56" rx="8"/><text class="th" x="83" y="222" text-anchor="middle" dominant-baseline="central">Polysaccharides</text><text class="ts" x="83" y="240" text-anchor="middle" dominant-baseline="central">sucres complexes</text></g>
+<g class="c-teal ps-nd" id="ps-n-res"><rect x="176" y="78" width="150" height="56" rx="8"/><text class="th" x="251" y="98" text-anchor="middle" dominant-baseline="central">Réserve d'énergie</text><text class="ts" x="251" y="116" text-anchor="middle" dominant-baseline="central">glucose, liaisons α</text></g>
+<g class="c-purple ps-nd" id="ps-n-str"><rect x="176" y="233" width="150" height="56" rx="8"/><text class="th" x="251" y="253" text-anchor="middle" dominant-baseline="central">Structure</text><text class="ts" x="251" y="271" text-anchor="middle" dominant-baseline="central">liaisons β(1→4)</text></g>
+<g class="c-coral ps-nd" id="ps-n-gag"><rect x="176" y="357" width="150" height="56" rx="8"/><text class="th" x="251" y="377" text-anchor="middle" dominant-baseline="central">GAG</text><text class="ts" x="251" y="395" text-anchor="middle" dominant-baseline="central">glycosaminoglycanes</text></g>
+<g class="c-teal ps-nd" id="ps-n-ami"><rect x="352" y="47" width="100" height="56" rx="8"/><text class="th" x="402" y="67" text-anchor="middle" dominant-baseline="central">Amidon</text><text class="ts" x="402" y="85" text-anchor="middle" dominant-baseline="central">mélange</text></g>
+<g class="c-teal ps-nd ps-clk" id="ps-n-amylose" data-k="amylose"><rect x="480" y="20" width="180" height="48" rx="8"/><text class="th" x="570" y="35" text-anchor="middle" dominant-baseline="central">Amylose</text><text class="ts" x="570" y="53" text-anchor="middle" dominant-baseline="central">linéaire, α(1→4)</text></g>
+<g class="c-teal ps-nd ps-clk" id="ps-n-amylopectine" data-k="amylopectine"><rect x="480" y="82" width="180" height="48" rx="8"/><text class="th" x="570" y="97" text-anchor="middle" dominant-baseline="central">Amylopectine</text><text class="ts" x="570" y="115" text-anchor="middle" dominant-baseline="central">ramifiée, α(1→6)</text></g>
+<g class="c-teal ps-nd ps-clk" id="ps-n-glycogene" data-k="glycogene"><rect x="480" y="144" width="180" height="48" rx="8"/><text class="th" x="570" y="159" text-anchor="middle" dominant-baseline="central">Glycogène</text><text class="ts" x="570" y="177" text-anchor="middle" dominant-baseline="central">très ramifié, α(1→6)</text></g>
+<g class="c-purple ps-nd ps-clk" id="ps-n-cellulose" data-k="cellulose"><rect x="480" y="206" width="180" height="48" rx="8"/><text class="th" x="570" y="221" text-anchor="middle" dominant-baseline="central">Cellulose</text><text class="ts" x="570" y="239" text-anchor="middle" dominant-baseline="central">glucose, paroi végétale</text></g>
+<g class="c-purple ps-nd ps-clk" id="ps-n-chitine" data-k="chitine"><rect x="480" y="268" width="180" height="48" rx="8"/><text class="th" x="570" y="283" text-anchor="middle" dominant-baseline="central">Chitine</text><text class="ts" x="570" y="301" text-anchor="middle" dominant-baseline="central">N-acétylglucosamine</text></g>
+<g class="c-coral ps-nd ps-clk" id="ps-n-chondro" data-k="chondro"><rect x="480" y="330" width="180" height="48" rx="8"/><text class="th" x="570" y="345" text-anchor="middle" dominant-baseline="central">Chondroïtine sulfate</text><text class="ts" x="570" y="363" text-anchor="middle" dominant-baseline="central">cartilage</text></g>
+<g class="c-coral ps-nd ps-clk" id="ps-n-pepti" data-k="pepti"><rect x="480" y="392" width="180" height="48" rx="8"/><text class="th" x="570" y="407" text-anchor="middle" dominant-baseline="central">Peptidoglycane</text><text class="ts" x="570" y="425" text-anchor="middle" dominant-baseline="central">paroi bactérienne</text></g>
+</svg>
+<div class="note" style="text-align:right;margin:4px 0 0">Clique sur un polysaccharide pour voir sa structure</div>
+<div class="ps-panel">
+<div class="ps-ttl" id="ps-ttl"></div>
+<div class="ps-chem" id="ps-chem"></div>
+<svg id="ps-poly" width="100%" viewBox="0 0 680 262" role="img" aria-label="Structure schématique du polysaccharide choisi"><g id="ps-g"></g></svg>
+<div class="ps-leg" id="ps-leg"></div>
+<div class="ps-cells" id="ps-cells"></div>
+<ul class="ps-pts" id="ps-pts"></ul>
+<div class="note" id="ps-src" style="margin-top:12px"></div>
+</div>
+</div>
+</section>
+
+<p class="catg" id="cat-metabolisme">Glucides : métabolisme (cours 5.2)</p>
 
 <section id="fructose">
 <h2>Métabolisme du fructose</h2>
@@ -380,6 +451,96 @@ const TB=document.getElementById('theme');
 function themeLabel(){TB.textContent=document.documentElement.dataset.theme==='light'?'Mode sombre':'Mode clair'}
 TB.onclick=()=>{const n=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=n;try{localStorage.setItem('bcm1531-final-theme',n)}catch(e){}themeLabel()};
 themeLabel();
+</script>
+<script>
+(function(){
+const SVGNS='http://www.w3.org/2000/svg',G=document.getElementById('ps-g');
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function mk(tag,a,o){const e=document.createElementNS(SVGNS,tag);for(const k in a)e.setAttribute(k,a[k]);e.classList.add('ps-pop');e.dataset.o=o||0;G.appendChild(e);return e;}
+function hex(x,y,r,k,o,ex){const p=[];for(let i=0;i<6;i++){const t=Math.PI/3*i;p.push((x+r*Math.cos(t)).toFixed(1)+','+(y+r*Math.sin(t)).toFixed(1));}return mk('polygon',Object.assign({points:p.join(' '),fill:'var(--'+k+'-f)',stroke:'var(--'+k+'-s)','stroke-width':1.2},ex||{}),o);}
+function bond(a,b,c,o,ex){const dx=b.x-a.x,dy=b.y-a.y,L=Math.hypot(dx,dy)||1;return mk('line',Object.assign({x1:a.x+dx/L*a.r,y1:a.y+dy/L*a.r,x2:b.x-dx/L*b.r,y2:b.y-dy/L*b.r,stroke:c||'var(--s)','stroke-width':2,'stroke-linecap':'round'},ex||{}),o);}
+function zig(a,b,up,o){const x1=a.x+a.r,x2=b.x-b.r,xm=(x1+x2)/2,ym=a.y+(up?-7:7);return mk('polyline',{points:x1+','+a.y+' '+xm+','+ym+' '+x2+','+b.y,fill:'none',stroke:'var(--s)','stroke-width':2,'stroke-linejoin':'round','stroke-linecap':'round'},o);}
+function txt(x,y,s,c,anc,o){const e=mk('text',{x:x,y:y,'font-size':12,fill:c||'var(--s)','text-anchor':anc||'middle'},o);e.textContent=s;return e;}
+
+function amylose(){const R=[];for(let i=0;i<14;i++){const t=i*Math.PI/3,d=Math.cos(t);R.push({x:48+i*45,y:130+42*Math.sin(t),r:12+3*d,d:d,o:i});}
+mk('line',{x1:25,y1:130,x2:655,y2:130,stroke:'var(--muted)','stroke-width':1,'stroke-dasharray':'3 5'},0);
+for(let i=0;i<13;i++){const a=R[i],b=R[i+1];bond(a,b,null,i+1,{'stroke-opacity':(0.4+0.6*((a.d+b.d)/2+1)/2).toFixed(2)});}
+R.slice().sort((p,q)=>p.d-q.d).forEach(p=>{const op=(0.45+0.55*(p.d+1)/2).toFixed(2);hex(p.x,p.y,p.r,'glc',p.o,{'fill-opacity':op,'stroke-opacity':op});});}
+function chain(x0,y0,n,o0){const R=[];for(let j=0;j<n;j++)R.push({x:x0+j*40,y:y0,r:13,o:o0+j});return R;}
+function amylopectine(){const M=chain(40,215,16,0),A=chain(160,145,5,16),B=chain(440,145,5,21),C=chain(240,75,4,26),D=chain(560,75,3,30);
+[M,A,B,C,D].forEach(R=>{for(let j=0;j<R.length-1;j++)bond(R[j],R[j+1],null,R[j+1].o);});
+[[M[3],A[0]],[M[10],B[0]],[A[2],C[0]],[B[3],D[0]]].forEach(([p,q])=>bond(p,q,'var(--a16)',q.o,{'stroke-width':2.5}));
+[M,A,B,C,D].forEach(R=>R.forEach(p=>hex(p.x,p.y,p.r,'glc',p.o)));
+txt(170,185,'α(1→6)','var(--a16)','start',16);}
+function glycogene(){const R=[],B=[],core={x:340,y:130,r:5.5,o:0};R.push(core);let o=1;const st=18;
+function grow(p,ang,len,d,s){let prev=p;for(let k=1;k<=len;k++){const q={x:prev.x+st*Math.cos(ang),y:prev.y+st*Math.sin(ang),r:5.5,o:o++};R.push(q);B.push([prev,q,k===1&&d>0]);prev=q;if(k===2&&d<2)grow(q,ang+s*1.0,len-1,d+1,-s);}}
+for(let k=0;k<6;k++)grow(core,k*Math.PI/3+0.26,4,0,1);
+B.forEach(([a,b,br])=>bond(a,b,br?'var(--a16)':null,Math.round(b.o/2),{'stroke-width':br?2.2:1.6}));
+R.forEach(p=>hex(p.x,p.y,p.r,'glc',Math.round(p.o/2)));}
+function sheet(k,mark){const ys=[62,130,198];ys.forEach((y,c)=>{const R=[];for(let i=0;i<14;i++)R.push({x:46+i*45,y:y,r:14,o:c*3+i});
+for(let i=0;i<13;i++)zig(R[i],R[i+1],i%2===0,R[i+1].o);
+R.forEach((p,i)=>{const up=i%2===0,sg=up?-1:1,y0=p.y+sg*p.r*0.86,ye=p.y+sg*22;
+mk('line',{x1:p.x,y1:y0,x2:p.x,y2:ye,stroke:'var(--'+k+'-s)','stroke-width':1.2},p.o);
+if(mark==='nac')mk('rect',{x:p.x-6,y:up?ye-6:ye,width:12,height:6,rx:1.5,fill:'var(--nag-s)'},p.o);
+else mk('circle',{cx:p.x,cy:ye,r:3,fill:'var(--glc-s)'},p.o);
+hex(p.x,p.y,p.r,k,p.o);});
+if(c<2)for(let i=0;i<13;i+=2){const xm=(R[i].x+R[i+1].x)/2;mk('line',{x1:xm,y1:y+12,x2:xm,y2:ys[c+1]-12,stroke:'var(--muted)','stroke-width':1.3,'stroke-dasharray':'2 3'},20);}});}
+function cellulose(){sheet('glc','oh');}
+function chitine(){sheet('nag','nac');}
+function chondro(){const y=128,R=[];for(let i=0;i<13;i++)R.push({x:50+i*48,y:y,r:14,o:i,k:i%2?'galnac':'glca'});
+let s=7;const rnd=()=>{s=(s*9301+49297)%233280;return s/233280;};
+for(let i=0;i<34;i++){const top=i%2===0,x=30+rnd()*620,yy=top?48+rnd()*28:184+rnd()*30;mk('circle',{cx:x.toFixed(1),cy:yy.toFixed(1),r:3,fill:'var(--eau)','fill-opacity':0.55},14+Math.floor(i/4));}
+for(let i=0;i<12;i++)zig(R[i],R[i+1],i%2===0,R[i+1].o);
+[1,3,7,9,11].forEach(i=>{const p=R[i];mk('line',{x1:p.x,y1:p.y+12,x2:p.x,y2:p.y+24,stroke:'var(--sulf)','stroke-width':1.5},p.o);mk('circle',{cx:p.x,cy:p.y+29,r:5,fill:'var(--sulf)'},p.o);});
+R.forEach(p=>hex(p.x,p.y,p.r,p.k,p.o));
+txt((R[0].x+R[1].x)/2,100,'β(1→3)',null,'middle',1);txt((R[1].x+R[2].x)/2,100,'β(1→4)',null,'middle',2);
+txt(R[1].x+10,R[1].y+46,'OSO₃⁻','var(--sulf)','start',2);}
+function pepti(){const ys=[45,130,215];const C=ys.map((y,c)=>{const R=[];for(let i=0;i<12;i++)R.push({x:55+i*52,y:y,r:14,o:c*4+i,k:i%2?'nam':'nag'});return R;});
+C.forEach(R=>{for(let i=0;i<11;i++)zig(R[i],R[i+1],i%2===0,R[i+1].o);});
+[0,1].forEach(c=>C[c].forEach((p,i)=>{if(i%2===0)return;const o=p.o+12,pts=[0,1,2,3].map(a=>p.y+24+a*11);
+mk('line',{x1:p.x,y1:p.y+12,x2:p.x,y2:pts[3],stroke:'var(--pep)','stroke-width':1.5},o);
+if(((i+1)/2+c)%2===1){const q=C[c+1][i];mk('line',{x1:p.x,y1:pts[3],x2:q.x,y2:q.y-12,stroke:'var(--pep)','stroke-width':1.5},o);}
+pts.forEach(yy=>mk('circle',{cx:p.x,cy:yy,r:4,fill:'var(--pep)'},o));}));
+C.flat().forEach(p=>hex(p.x,p.y,p.r,p.k,p.o));}
+
+const SW={glc:['hex','glc','Glucose'],nag:['hex','nag','N-acétylglucosamine'],nam:['hex','nam','Acide N-acétylmuramique'],glca:['hex','glca','Acide glucuronique'],galnac:['hex','galnac','N-acétylgalactosamine'],
+a14:['line','var(--s)','α(1→4)'],a16:['line','var(--a16)','α(1→6), point de branchement'],b14:['zig','','β(1→4) : résidus alternés de 180°'],b:['zig','','β(1→3) et β(1→4) en alternance'],
+hb:['dash','','Liaison H entre chaînes'],oh:['dot','var(--glc-s)','CH₂OH, alterne haut et bas'],nac:['bar','var(--nag-s)','Groupe N-acétyle'],sulf:['dot','var(--sulf)','Sulfate OSO₃⁻'],eau:['dot','var(--eau)','H₂O retenue'],pep:['dot','var(--pep)','Peptide (4 à 5 AA)']};
+function swatch(t,c){let s='<svg width="24" height="14" viewBox="0 0 24 14" aria-hidden="true">';
+if(t==='hex')s+='<polygon points="18,7 15,12.2 9,12.2 6,7 9,1.8 15,1.8" fill="var(--'+c+'-f)" stroke="var(--'+c+'-s)" stroke-width="1.2"/>';
+if(t==='line')s+='<line x1="2" y1="7" x2="22" y2="7" stroke="'+c+'" stroke-width="2.5" stroke-linecap="round"/>';
+if(t==='zig')s+='<polyline points="2,7 12,2 22,7" fill="none" stroke="var(--s)" stroke-width="2" stroke-linejoin="round"/>';
+if(t==='dash')s+='<line x1="12" y1="1" x2="12" y2="13" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="2 3"/>';
+if(t==='dot')s+='<circle cx="12" cy="7" r="4" fill="'+c+'"/>';
+if(t==='bar')s+='<rect x="6" y="4" width="12" height="6" rx="1.5" fill="'+c+'"/>';
+return s+'</svg>';}
+
+const D={
+amylose:{nom:'Amylose',chem:'Polysaccharides › Réserve d’énergie › Amidon › Amylose',f:amylose,leg:['glc','a14'],diapo:'26',n:['root','res','ami','amylose'],e:['root-res','res-ami','ami-amylose'],c:[['Monomère','α-D-glucose'],['Liaison','α(1→4)'],['Forme','Linéaire, hélice compacte'],['Taille','Plus de 1000 résidus']],p:['Polysaccharide énergétique le plus courant dans le règne végétal.','Le carbone anomérique α d’un glucose est lié au C4 du glucose suivant.','Avec l’amylopectine, forme l’amidon.']},
+amylopectine:{nom:'Amylopectine',chem:'Polysaccharides › Réserve d’énergie › Amidon › Amylopectine',f:amylopectine,leg:['glc','a14','a16'],diapo:'27',n:['root','res','ami','amylopectine'],e:['root-res','res-ami','ami-amylopectine'],c:[['Monomère','α-D-glucose'],['Liaisons','α(1→4) et α(1→6)'],['Forme','Ramifiée'],['Taille','Environ 6000 résidus']],p:['Chaîne α(1→4) avec des branchements additionnels α(1→6).','Amidon = amylose (linéaire, ~1000 résidus) + amylopectine (ramifiée, ~6000 résidus).','L’amidon est une réserve de glucose.']},
+glycogene:{nom:'Glycogène',chem:'Polysaccharides › Réserve d’énergie › Glycogène',f:glycogene,leg:['glc','a14','a16'],diapo:'27',n:['root','res','glycogene'],e:['root-res','res-gly'],c:[['Monomère','α-D-glucose'],['Liaisons','α(1→4) et α(1→6)'],['Forme','Très ramifiée'],['Taille','Environ 600 000 résidus']],p:['Ressemble à l’amylopectine, en plus ramifié.','Mêmes liaisons : α(1→4) dans les chaînes, α(1→6) à chaque branchement.','Le plus gros des trois : ~600 000 résidus contre ~6000 pour l’amylopectine.']},
+cellulose:{nom:'Cellulose',chem:'Polysaccharides › Structure › Cellulose',f:cellulose,leg:['glc','b14','oh','hb'],diapo:'28',n:['root','str','cellulose'],e:['root-str','str-cel'],c:[['Monomère','Glucose'],['Liaison','β(1→4)'],['Forme','Chaînes droites liées par ponts H'],['Rôle','Rigidité des parois végétales']],p:['Avec la liaison β(1→4), chaque glucose est retourné par rapport au précédent : la chaîne reste droite.','Les chaînes se lient entre elles par des liaisons hydrogène.','S’associe à la lignine, la pectine et l’hémicellulose dans les parois.','L’humain n’a pas de cellulase pour cliver les ponts β(1→4). Les ruminants, oui, grâce à des microorganismes.']},
+chitine:{nom:'Chitine',chem:'Polysaccharides › Structure › Chitine',f:chitine,leg:['nag','b14','nac','hb'],diapo:'29',n:['root','str','chitine'],e:['root-str','str-chi'],c:[['Monomère','N-acétylglucosamine'],['Liaison','β(1→4)'],['Forme','Chaînes droites'],['Rôle','Exosquelette']],p:['Polymère de N-acétylglucosamine avec des liaisons β(1→4).','Forme l’exosquelette des insectes et des crustacés.','Même liaison que la cellulose : seul le monomère change (un sucre aminé acétylé).']},
+chondro:{nom:'Chondroïtine sulfate',chem:'Polysaccharides › GAG › Chondroïtine sulfate',f:chondro,leg:['glca','galnac','b','sulf','eau'],diapo:'34 et 35',n:['root','gag','chondro'],e:['root-gag','gag-cho'],c:[['Disaccharide','Acide glucuronique + N-acétylgalactosamine'],['Liaisons','β(1→3) dans, β(1→4) entre les disaccharides'],['Taille','n = plusieurs centaines'],['Rôle','Cartilage, absorption des chocs']],p:['Glycosaminoglycane (GAG) : polysaccharide complexe très volumineux, dans la matrice extracellulaire.','Les groupes sulfate OSO₃⁻ sont ajoutés après la synthèse, en nombre variable.','Très hydrophile : se comporte en solution comme une éponge, d’où la souplesse et l’absorption des chocs.']},
+pepti:{nom:'Peptidoglycane',chem:'Polysaccharides › GAG › Peptidoglycane',f:pepti,leg:['nag','nam','b14','pep'],diapo:'36',n:['root','gag','pepti'],e:['root-gag','gag-pep'],c:[['Disaccharide','N-acétylglucosamine + acide N-acétylmuramique'],['Ponts','Petits peptides (4 à 5 AA)'],['Forme','Réseau de chaînes reliées'],['Rôle','Paroi bactérienne']],p:['Chaînes de répétitions disaccharidiques (GAG) reliées par de petits peptides.','Forme une épaisse couche autour de la membrane plasmique : la paroi des bactéries.','La pénicilline cible l’enzyme qui crée les liaisons covalentes entre peptides et GAG, ce qui détruit la paroi.']}};
+
+const $=id=>document.getElementById(id);
+function show(k){const d=D[k];
+document.querySelectorAll('.ps-nd').forEach(n=>n.classList.remove('sel'));document.querySelectorAll('.ps-edge').forEach(e=>e.classList.remove('hl'));
+d.n.forEach(id=>$('ps-n-'+id).classList.add('sel'));
+const EG=$('ps-edges');d.e.forEach(id=>{const e=$('ps-e-'+id);e.classList.add('hl');EG.appendChild(e);});
+G.innerHTML='';d.f();
+const els=[...G.querySelectorAll('.ps-pop')];els.forEach(e=>e.style.opacity=RM?1:0);
+if(!RM)requestAnimationFrame(()=>requestAnimationFrame(()=>els.forEach(e=>{e.style.transitionDelay=(+e.dataset.o*35)+'ms';e.style.opacity=1;})));
+$('ps-ttl').textContent=d.nom;
+$('ps-chem').textContent=d.chem;
+$('ps-leg').innerHTML=d.leg.map(x=>{const w=SW[x];return '<span>'+swatch(w[0],w[1])+w[2]+'</span>';}).join('');
+$('ps-cells').innerHTML=d.c.map(([a,b])=>'<div class="ps-cell"><span>'+a+'</span>'+b+'</div>').join('');
+$('ps-pts').innerHTML=d.p.map(x=>'<li>'+x+'</li>').join('');
+$('ps-src').textContent='Cours synchrone 4, diapositive '+d.diapo;}
+document.querySelectorAll('.ps-clk').forEach(n=>n.addEventListener('click',()=>show(n.dataset.k)));
+show('amylose');
+})();
 </script>
 </body>
 </html>
