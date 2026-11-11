@@ -377,7 +377,7 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 </div>
 <svg width="100%" viewBox="0 0 680 600" role="img">
 <title>Voie hépatique du galactose</title>
-<desc>Le galactose entre par SGLT1 et GLUT2, circule dans le sang ou gagne le foie, où la galactokinase et l'uridyltransférase le convertissent en glucose-1-P, puis en glucose-6-P.</desc>
+<desc>Le galactose entre par SGLT1 et GLUT2, circule dans le sang ou gagne le foie, où la galactokinase et la galactose-1-P uridyltransférase le convertissent en glucose-1-P, puis en glucose-6-P.</desc>
 <defs><marker id="arrow-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 <circle cx="388" cy="44" r="5" fill="#D85A30"/><text class="ts" x="400" y="44" dominant-baseline="central">Sucre (galactose, glucose)</text>
 <circle cx="388" cy="66" r="5" fill="#1D9E75"/><text class="ts" x="400" y="66" dominant-baseline="central">UDP</text>
@@ -401,7 +401,7 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <g class="c-coral hk" data-k="g1p"><rect x="170" y="216" width="140" height="36" rx="6" stroke-width="0.5"/><text class="th" x="240" y="234" text-anchor="middle" dominant-baseline="central">Galactose-1-P</text></g>
 <g class="c-teal hk" data-k="udpg"><rect x="330" y="216" width="130" height="36" rx="6" stroke-width="0.5"/><text class="th" x="395" y="234" text-anchor="middle" dominant-baseline="central">UDP-glucose</text></g>
 <g class="hk" data-k="ut"><line x1="270" y1="254" x2="288" y2="269" class="arr" marker-end="url(#arrow-g)"/><line x1="365" y1="254" x2="352" y2="269" class="arr" marker-end="url(#arrow-g)"/><line x1="290" y1="294" x2="272" y2="309" class="arr" marker-end="url(#arrow-g)"/><line x1="350" y1="294" x2="363" y2="309" class="arr" marker-end="url(#arrow-g)"/></g>
-<g class="c-purple hk" data-k="ut" data-id="ut" data-c="c-purple"><rect x="250" y="272" width="140" height="20" rx="10" stroke-width="0.5"/><text class="ts" x="320" y="282" text-anchor="middle" dominant-baseline="central">Uridyltransférase</text></g>
+<g class="c-purple hk" data-k="ut" data-id="ut" data-c="c-purple"><rect x="225" y="272" width="190" height="20" rx="10" stroke-width="0.5"/><text class="ts" x="320" y="282" text-anchor="middle" dominant-baseline="central">Galactose-1-P uridyltransférase</text></g>
 <g class="c-coral hk" data-k="c1p"><rect x="170" y="312" width="140" height="36" rx="6" stroke-width="0.5"/><text class="th" x="240" y="330" text-anchor="middle" dominant-baseline="central">Glucose-1-P</text></g>
 <g class="c-teal hk" data-k="udpgal"><rect x="330" y="312" width="130" height="36" rx="6" stroke-width="0.5"/><text class="th" x="395" y="330" text-anchor="middle" dominant-baseline="central">UDP-galactose</text></g>
 <g class="hk" data-k="glyg"><line x1="170" y1="330" x2="136" y2="330" class="arr" marker-end="url(#arrow-g)"/></g>
@@ -560,11 +560,11 @@ normal:{sp:1,g:{gal:[.3,'≈ 1 mmol/L'],glu:[.45,'normale']},st:{lens:'transpare
 {t:'Absorption intestinale',d:"Le galactose entre dans l'entérocyte par SGLT1, puis en sort par GLUT2.",h:['lumen','ent','sglt1','glut2']},
 {t:'Galactose circulant',d:"Il est largement libéré dans la circulation, où il tourne normalement autour de 1 mmol/L. Il sert surtout à former des glycoprotéines et des mucopolysaccharides.",h:['circ','gGal','util']},
 {t:'Galactokinase',d:"Dans l'hépatocyte, la galactokinase phosphoryle le galactose en galactose-1-P, aux dépens d'un ATP. Le galactose-1-P ne peut pas entrer dans la voie glycolytique : il doit d'abord être converti en glucose-1-P.",h:['porte','gal','gk','g1p']},
-{t:'Uridyltransférase',d:"La galactose-1-P uridyltransférase transfère l'UDP de l'UDP-glucose au galactose-1-P. Il se forme l'UDP-galactose, un intermédiaire très important, et le glucose-1-P est libéré.",h:['g1p','udpg','ut','c1p','udpgal']},
+{t:'Galactose-1-P uridyltransférase',d:"Cette enzyme porte le nom de son substrat, le galactose-1-P : elle lui transfère l'UDP pris sur l'UDP-glucose. Il se forme l'UDP-galactose, un intermédiaire très important, et le glucose-1-P est libéré.",h:['g1p','udpg','ut','c1p','udpgal']},
 {t:'Devenir du glucose-1-P',d:"Quand les demandes énergétiques sont faibles, le glucose-1-P favorise la formation de glycogène, notamment dans le foie. Il peut aussi être transformé en lactose.",h:['c1p','glyg','lact']},
 {t:'Vers la glycolyse',d:"La phosphoglucomutase convertit le glucose-1-P en glucose-6-P, ce qui permet au galactose de rejoindre la glycolyse.",h:['c1p','pgm','g6p','glyco']}]},
 gal:{sp:.8,g:{gal:[.92,'↑↑'],glu:[.45,'normale']},st:{lens:'galactitol : cataracte',nn:'retard mental'},cls:{ut:'c-red',nn:'c-red',lensbox:'c-red'},steps:[
-{t:'Uridyltransférase bloquée',d:"Dans la galactosémie, une mutation bloque la galactose-1-P uridyltransférase : le galactose-1-P n'est plus converti en glucose-1-P.",h:['gal','gk','g1p','ut']},
+{t:'Uridyltransférase bloquée',d:"Dans la galactosémie, une mutation bloque l'enzyme galactose-1-P uridyltransférase : le galactose-1-P n'est plus converti en glucose-1-P.",h:['gal','gk','g1p','ut']},
 {t:'Galactose circulant élevé',d:"Le galactose s'accumule dans le sang, puis il est capté par les tissus.",h:['circ','gGal','cr']},
 {t:'Galactitol',d:"Dans les tissus, le galactose est métabolisé en galactitol, ce qui entraîne des cataractes, et un retard mental chez les nouveaux-nés.",h:['cr','lens','nn']}]},
 dia:{sp:.7,g:{gal:[.3,'≈ 1 mmol/L'],glu:[.92,'↑↑']},fill:{glu:'#E24B4A'},st:{lens:'sorbitol : cataracte',nn:'normal'},cls:{lensbox:'c-red'},steps:[
