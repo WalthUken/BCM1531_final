@@ -1226,10 +1226,10 @@ const B2={...N,casc:1,phos:1,pfk2:'i',pase2:'a',pool:.08,pa:'drain'};
 const ST=[
 {...N,f6p:1,t:"Glycémie haute : le fructose-6-P s'accumule",d:"Après un repas, le glucose abonde : le fructose-6-P s'accumule dans la cellule.",n:""},
 {...H2,t:"PFK-2 activée",d:"Le fructose-6-P active PFK-2, le côté kinase de l'enzyme bidirectionnelle : le fructose-2,6-BP s'accumule.",n:"PFK-2 est une enzyme bidirectionnelle dont l'activité est contrôlée par le fructose-6-P."},
-{...H2,plus:'a',minus:'a',pfk1:'a',fbp:'i',flow:'down',gly:.92,neo:.1,t:"PFK-1 activée : glycolyse",d:"Le fructose-2,6-BP, activateur allostérique puissant de PFK-1, l'active : PFK-1 produit le fructose-1,6-BP et la glycolyse est activée.",n:"Le fructose-2,6-BP inhibe aussi la fructose-1,6-bisphosphatase : la néoglucogenèse est freinée."},
+{...H2,plus:'a',minus:'a',pfk1:'a',fbp:'i',flow:'down',gly:.92,neo:.1,t:"PFK-1 activée : glycolyse",d:"Le fructose-2,6-BP, activateur allostérique puissant de PFK-1, l'active : PFK-1 produit le fructose-1,6-BP et la glycolyse est activée.",n:"Le fructose-2,6-BP inhibe aussi la F-1,6-pase (fructose-1,6-bisphosphatase) : la néoglucogenèse est freinée."},
 {...N,casc:1,t:"Jeûne : le glucagon",d:"Le glucagon fait monter l'AMPc, qui active la protéine kinase dépendante de l'AMPc.",n:"Le texte de la diapositive écrit « AMPK », la figure montre la protéine kinase dépendante de l'AMPc."},
-{...B2,t:"PFK-2 phosphorylée",d:"La kinase phosphoryle l'enzyme bidirectionnelle : PFK-2 est inactivée et la fructose-2,6-bisphosphatase est activée. Le fructose-2,6-BP diminue.",n:""},
-{...B2,plus:'i',minus:'i',pfk1:'i',fbp:'a',flow:'up',gly:.1,neo:.92,t:"Néoglucogenèse favorisée",d:"Moins de fructose-2,6-BP : PFK-1 perd son activateur et la fructose-1,6-bisphosphatase n'est plus inhibée. La glycolyse diminue au profit de la néoglucogenèse.",n:""}];
+{...B2,t:"F-2,6-pase activée",d:"La kinase phosphoryle l'enzyme bidirectionnelle : PFK-2 est inactivée et la F-2,6-pase (fructose-2,6-bisphosphatase), son côté phosphatase, est activée. Le fructose-2,6-BP diminue.",n:"Diapositive 14, carré 2 : phosphorylation de PFK-2 (inactivation) et activation de la fructose-2,6-bisphosphatase."},
+{...B2,plus:'i',minus:'i',pfk1:'i',fbp:'a',flow:'up',gly:.1,neo:.92,t:"Néoglucogenèse favorisée",d:"Moins de fructose-2,6-BP : PFK-1 perd son activateur et la F-1,6-pase n'est plus inhibée. La glycolyse diminue au profit de la néoglucogenèse.",n:""}];
 function apply(s){
 g('f6p',s.f6p?'c-teal':'c-gray',1);$('f6pT').textContent=s.f6p?'Fructose-6-P ↑':'Fructose-6-P';
 ['glu','ampc','kin'].forEach(id=>g(id,s.casc?'c-coral':'c-gray',s.casc?1:.5));
