@@ -103,6 +103,10 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 .gy-pat{display:flex;gap:4px;margin-top:8px}
 .gy-pat div{flex:1;text-align:center;font-size:12px;line-height:1.4;padding:4px 0;border-radius:6px;background:var(--hover);border:.5px solid var(--b);cursor:pointer}
 .gy-pat div.irr{border:1.5px solid var(--red-s);color:var(--red-t)}
+#pfk svg g,#pfk svg path,#pfk svg line{transition:opacity .5s}
+.pf-fl{stroke-dasharray:6 6}
+@media (prefers-reduced-motion:no-preference){.pf-fl{animation:pf-fl .8s linear infinite}}
+@keyframes pf-fl{to{stroke-dashoffset:-12}}
 /* Grand écran : animation et commandes à gauche, texte à droite, la case tient dans la fenêtre */
 @media (min-width:980px){
 main{max-width:1180px}
@@ -136,7 +140,7 @@ main{max-width:1180px}
 <span class="grp">Structure</span><a href="#polysaccharides">Polysaccharides</a>
 <span class="grp">Cours 5.1</span><a href="#transport">Absorption</a><a href="#glut">GLUT et insuline</a><a href="#voies">Voies des glucides</a><a href="#cycles">Cycles</a>
 <span class="grp">Cours 5.2</span><a href="#fructose">Fructose</a><a href="#galactose">Galactose</a><a href="#uridyl">Uridyltransférase</a><a href="#mannose">Mannose</a>
-<span class="grp">Synchrone 5</span><a href="#glycolyse">Glycolyse</a>
+<span class="grp">Synchrone 5</span><a href="#glycolyse">Glycolyse</a><a href="#pfk">PFK-1 et PFK-2</a>
 </div>
 <button class="icon" id="haut" aria-label="Haut de page"><svg viewBox="0 0 24 24"><path d="M6 15l6-6l6 6"/></svg></button>
 </nav>
@@ -620,6 +624,62 @@ main{max-width:1180px}
 <div class="note" id="gy-tip" style="color:var(--s)"></div>
 <div id="gy-patw" style="display:none"><div class="gy-pat" id="gy-pat"></div><div class="note">K kinase · I isomérase · A aldolase · D déshydrogénase · M mutase · E énolase</div></div>
 </div>
+</div>
+</div>
+</section>
+
+<section id="pfk">
+<h2>Régulation : PFK-1, PFK-2 et fructose-2,6-BP</h2>
+<p class="src">Cours synchrone 5, diapositives 14 à 16</p>
+<div class="card split">
+<div class="fig">
+<div class="modes"><button class="md" id="pf-H">Glycémie haute (repas)</button><button class="md" id="pf-B">Glycémie basse (jeûne)</button></div>
+<svg width="100%" viewBox="30 26 630 396" role="img">
+<title>PFK-1, PFK-2 et fructose-2,6-bisphosphate</title>
+<desc>Le fructose-6-P ou le glucagon règlent l'enzyme bidirectionnelle PFK-2 / fructose-2,6-bisphosphatase, qui fixe le niveau de fructose-2,6-BP. Le fructose-2,6-BP active PFK-1 et inhibe la fructose-1,6-bisphosphatase : il oriente la cellule vers la glycolyse ou vers la néoglucogenèse.</desc>
+<defs><marker id="arrow-pf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<g id="pf-glu" class="c-gray"><rect x="40" y="36" width="150" height="36" rx="6" stroke-width="0.5"/><text class="th" x="115" y="54" text-anchor="middle" dominant-baseline="central">Glucagon</text></g>
+<line id="pf-a1" x1="115" y1="74" x2="115" y2="93" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow-pf)"/>
+<g id="pf-ampc" class="c-gray"><rect x="40" y="96" width="150" height="36" rx="6" stroke-width="0.5"/><text class="th" x="115" y="114" text-anchor="middle" dominant-baseline="central">AMPc</text></g>
+<line id="pf-a2" x1="115" y1="134" x2="115" y2="155" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow-pf)"/>
+<g id="pf-kin" class="c-gray"><rect x="40" y="158" width="150" height="50" rx="6" stroke-width="0.5"/><text class="th" x="115" y="175" text-anchor="middle" dominant-baseline="central">Protéine kinase</text><text class="ts" x="115" y="193" text-anchor="middle" dominant-baseline="central">dépendante de l'AMPc</text></g>
+<path id="pf-a3" d="M192 183 L220 183 L220 132 L246 132" fill="none" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow-pf)"/>
+<text class="ts" x="268" y="84" dominant-baseline="central">Enzyme bidirectionnelle</text>
+<g id="pf-pfk2" class="c-gray"><rect x="250" y="96" width="150" height="36" rx="4" stroke-width="0.5"/><text class="th" x="325" y="114" text-anchor="middle" dominant-baseline="central">PFK-2</text></g>
+<g id="pf-pase2" class="c-gray"><rect x="250" y="132" width="150" height="36" rx="4" stroke-width="0.5"/><text class="th" x="325" y="150" text-anchor="middle" dominant-baseline="central">F-2,6-pase</text></g>
+<g id="pf-phos" class="c-coral" style="opacity:0"><rect x="238" y="84" width="24" height="24" rx="12" stroke-width="0.5"/><text class="th" x="250" y="96" text-anchor="middle" dominant-baseline="central">P</text></g>
+<line id="pf-fill" x1="305" y1="170" x2="305" y2="201" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow-pf)"/>
+<line id="pf-drain" x1="345" y1="203" x2="345" y2="172" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow-pf)"/>
+<g class="c-gray"><rect x="250" y="204" width="150" height="58" rx="6" stroke-width="0.5"/><text id="pf-poolT" class="th" x="325" y="222" text-anchor="middle" dominant-baseline="central">F-2,6-BP</text></g>
+<rect x="264" y="238" width="122" height="12" rx="6" style="fill:none;stroke:var(--bs)" stroke-width="0.5"/>
+<rect id="pf-lvl" class="lvl" x="264" y="238" width="122" height="12" rx="6" fill="#1D9E75" style="transform:scaleX(.5)"/>
+<path id="pf-f6pl" d="M458 58 L425 58 L425 114 L403 114" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow-pf)"/>
+<g id="pf-f6ps" class="c-gray"><rect x="416" y="77" width="18" height="18" rx="9" stroke-width="0.5"/><text class="th" x="425" y="86" text-anchor="middle" dominant-baseline="central">+</text></g>
+<path id="pf-plus" d="M402 218 L440 218 L440 187 L473 187" fill="none" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow-pf)"/>
+<g id="pf-plusS" class="c-gray"><rect x="431" y="194" width="18" height="18" rx="9" stroke-width="0.5"/><text class="th" x="440" y="203" text-anchor="middle" dominant-baseline="central">+</text></g>
+<path id="pf-minus" d="M402 246 L470 246 L470 271 L548 271" fill="none" stroke="#888780" stroke-width="1.5"/>
+<line id="pf-minusBar" x1="549" y1="262" x2="549" y2="280" stroke="#888780" stroke-width="2"/>
+<g id="pf-minusS" class="c-gray"><rect x="461" y="249" width="18" height="18" rx="9" stroke-width="0.5"/><text class="th" x="470" y="258" text-anchor="middle" dominant-baseline="central">−</text></g>
+<g id="pf-f6p" class="c-gray"><rect x="460" y="36" width="180" height="44" rx="6" stroke-width="0.5"/><text id="pf-f6pT" class="th" x="550" y="58" text-anchor="middle" dominant-baseline="central">Fructose-6-P</text></g>
+<line id="pf-d1" x1="510" y1="80" x2="510" y2="171" stroke="#888780" stroke-width="1.5"/>
+<g id="pf-pfk1" class="c-gray"><rect x="476" y="172" width="68" height="30" rx="6" stroke-width="0.5"/><text class="th" x="510" y="187" text-anchor="middle" dominant-baseline="central">PFK-1</text></g>
+<line id="pf-d2" x1="510" y1="202" x2="510" y2="369" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow-pf)"/>
+<line id="pf-u1" x1="600" y1="371" x2="600" y2="287" stroke="#888780" stroke-width="1.5"/>
+<g id="pf-fbp" class="c-gray"><rect x="552" y="256" width="96" height="30" rx="6" stroke-width="0.5"/><text class="th" x="600" y="271" text-anchor="middle" dominant-baseline="central">F-1,6-pase</text></g>
+<line id="pf-u2" x1="600" y1="256" x2="600" y2="83" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow-pf)"/>
+<g class="c-gray"><rect x="460" y="372" width="180" height="44" rx="6" stroke-width="0.5"/><text class="th" x="550" y="394" text-anchor="middle" dominant-baseline="central">Fructose-1,6-BP</text></g>
+<text class="t" x="40" y="318" dominant-baseline="central">Glycolyse</text>
+<rect x="170" y="312" width="230" height="12" rx="6" style="fill:none;stroke:var(--bs)" stroke-width="0.5"/>
+<rect id="pf-bg" class="lvl" x="170" y="312" width="230" height="12" rx="6" fill="#1D9E75" style="transform:scaleX(.5)"/>
+<text class="t" x="40" y="356" dominant-baseline="central">Néoglucogenèse</text>
+<rect x="170" y="350" width="230" height="12" rx="6" style="fill:none;stroke:var(--bs)" stroke-width="0.5"/>
+<rect id="pf-bn" class="lvl" x="170" y="350" width="230" height="12" rx="6" fill="#D85A30" style="transform:scaleX(.5)"/>
+</svg>
+<div class="ps-leg" style="margin:4px 0 0"><span>+ active</span><span>− inhibe</span><span>P = phosphorylée</span><span>F-2,6-pase = fructose-2,6-bisphosphatase</span><span>F-1,6-pase = fructose-1,6-bisphosphatase</span></div>
+<div class="ctl"><button class="icon" id="pf-prev" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon" id="pf-play" aria-label="Pause"></button><button class="icon" id="pf-next" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><div class="dots" id="pf-dots"></div><span class="cnt" id="pf-cnt"></span></div>
+</div>
+<div class="side">
+<div class="cap"><div class="ttl" id="pf-ttl"></div><div class="txt" id="pf-txt"></div><div class="note" id="pf-note"></div></div>
 </div>
 </div>
 </section>
@@ -1151,6 +1211,56 @@ $('play').onclick=()=>{if(playing){playing=false;cancel();render(scene(showArr(k
 $('rev').onclick=()=>{revealed=true;ui()};
 $('rm').onchange=()=>{revealed=false;ui()};
 render(scene(showArr(0)));ui();
+})();
+</script>
+<script>
+(function(){
+const $=id=>document.getElementById('pf-'+id),RMO=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ICO={pause:'<svg viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>',play:'<svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>'};
+const T='#1D9E75',C='#D85A30',G='#888780';
+function g(id,cls,op){const e=$(id);e.setAttribute('class',cls);e.style.opacity=op;}
+function l(id,col,op,run){const e=$(id);e.setAttribute('stroke',col);e.style.opacity=op;e.classList.toggle('pf-fl',!!run&&!RMO);}
+const N={f6p:0,casc:0,link:0,pfk2:'n',pase2:'n',phos:0,pool:.5,pa:null,plus:'n',minus:'n',pfk1:'n',fbp:'n',flow:null,gly:.5,neo:.5};
+const H2={...N,f6p:1,link:1,pfk2:'a',pase2:'i',pool:.92,pa:'fill'};
+const B2={...N,casc:1,phos:1,pfk2:'i',pase2:'a',pool:.08,pa:'drain'};
+const ST=[
+{...N,f6p:1,t:"Glycémie haute : le fructose-6-P s'accumule",d:"Après un repas, le glucose abonde : le fructose-6-P s'accumule dans la cellule.",n:""},
+{...H2,t:"PFK-2 activée",d:"Le fructose-6-P active PFK-2, le côté kinase de l'enzyme bidirectionnelle : le fructose-2,6-BP s'accumule.",n:"PFK-2 est une enzyme bidirectionnelle dont l'activité est contrôlée par le fructose-6-P."},
+{...H2,plus:'a',minus:'a',pfk1:'a',fbp:'i',flow:'down',gly:.92,neo:.1,t:"PFK-1 activée : glycolyse",d:"Le fructose-2,6-BP, activateur allostérique puissant de PFK-1, l'active : PFK-1 produit le fructose-1,6-BP et la glycolyse est activée.",n:"Le fructose-2,6-BP inhibe aussi la fructose-1,6-bisphosphatase : la néoglucogenèse est freinée."},
+{...N,casc:1,t:"Jeûne : le glucagon",d:"Le glucagon fait monter l'AMPc, qui active la protéine kinase dépendante de l'AMPc.",n:"Le texte de la diapositive écrit « AMPK », la figure montre la protéine kinase dépendante de l'AMPc."},
+{...B2,t:"PFK-2 phosphorylée",d:"La kinase phosphoryle l'enzyme bidirectionnelle : PFK-2 est inactivée et la fructose-2,6-bisphosphatase est activée. Le fructose-2,6-BP diminue.",n:""},
+{...B2,plus:'i',minus:'i',pfk1:'i',fbp:'a',flow:'up',gly:.1,neo:.92,t:"Néoglucogenèse favorisée",d:"Moins de fructose-2,6-BP : PFK-1 perd son activateur et la fructose-1,6-bisphosphatase n'est plus inhibée. La glycolyse diminue au profit de la néoglucogenèse.",n:""}];
+function apply(s){
+g('f6p',s.f6p?'c-teal':'c-gray',1);$('f6pT').textContent=s.f6p?'Fructose-6-P ↑':'Fructose-6-P';
+['glu','ampc','kin'].forEach(id=>g(id,s.casc?'c-coral':'c-gray',s.casc?1:.5));
+['a1','a2','a3'].forEach(id=>l(id,s.casc?C:G,s.casc?1:.4,s.casc));
+l('f6pl',s.link?T:G,s.link?1:.3,false);g('f6ps',s.link?'c-teal':'c-gray',s.link?1:.35);
+g('pfk2',s.pfk2==='a'?'c-teal':'c-gray',s.pfk2==='i'?.35:1);
+g('pase2',s.pase2==='a'?'c-coral':'c-gray',s.pase2==='i'?.35:1);
+$('phos').style.opacity=s.phos?1:0;
+$('lvl').style.transform='scaleX('+s.pool+')';
+$('poolT').textContent=s.pool>.6?'F-2,6-BP ↑':s.pool<.4?'F-2,6-BP ↓':'F-2,6-BP';
+l('fill',s.pa==='fill'?T:G,s.pa==='fill'?1:.3,s.pa==='fill');
+l('drain',s.pa==='drain'?C:G,s.pa==='drain'?1:.3,s.pa==='drain');
+const po=s.plus==='a'?1:s.plus==='i'?.25:.6,mo=s.minus==='a'?1:s.minus==='i'?.25:.6;
+l('plus',s.plus==='a'?T:G,po,false);g('plusS',s.plus==='a'?'c-teal':'c-gray',po);
+l('minus',s.minus==='a'?T:G,mo,false);l('minusBar',s.minus==='a'?T:G,mo,false);g('minusS',s.minus==='a'?'c-teal':'c-gray',mo);
+g('pfk1',s.pfk1==='a'?'c-teal':'c-gray',s.pfk1==='i'?.35:1);
+g('fbp',s.fbp==='a'?'c-coral':'c-gray',s.fbp==='i'?.35:1);
+['d1','d2'].forEach(id=>l(id,s.flow==='down'?T:G,s.flow==='up'?.3:1,s.flow==='down'));
+['u1','u2'].forEach(id=>l(id,s.flow==='up'?C:G,s.flow==='down'?.3:1,s.flow==='up'));
+$('bg').style.transform='scaleX('+s.gly+')';$('bn').style.transform='scaleX('+s.neo+')';}
+const o={play:!RMO,i:0,t:0};
+function go(i){i=(i+ST.length)%ST.length;o.i=i;o.t=0;const S=ST[i],b=i<3?0:3,k=i-b;apply(S);
+$('H').classList.toggle('on',b===0);$('B').classList.toggle('on',b===3);
+$('ttl').textContent=S.t;$('txt').textContent=S.d;$('note').textContent=S.n;$('cnt').textContent='Étape '+(k+1)+' / 3';
+const D=$('dots');D.innerHTML='';[0,1,2].forEach(j=>{const d=document.createElement('span');d.className='dot'+(j===k?' on':'');d.onclick=()=>go(b+j);D.appendChild(d)});}
+$('H').onclick=()=>go(0);$('B').onclick=()=>go(3);
+$('prev').onclick=()=>go(o.i-1);$('next').onclick=()=>go(o.i+1);
+const pb=$('play');const setP=p=>{o.play=p;pb.innerHTML=p?ICO.pause:ICO.play;pb.setAttribute('aria-label',p?'Pause':'Lecture')};pb.onclick=()=>setP(!o.play);setP(o.play);
+const v={v:true};if('IntersectionObserver' in window)new IntersectionObserver(e=>{v.v=e[0].isIntersecting}).observe(document.getElementById('pfk'));
+let last=performance.now();(function loop(n){const dt=Math.min(.05,(n-last)/1000);last=n;if(o.play&&v.v){o.t+=dt;if(o.t>=7)go(o.i+1);}requestAnimationFrame(loop)})(last);
+go(0);
 })();
 </script>
 </body>
