@@ -90,6 +90,19 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 .bar a.on{background:var(--acc-bg);color:var(--acc-tx);border-color:var(--acc-bd)}
 .bar .icon{flex:none;width:36px;height:32px}
 .tr-hl{transition:opacity .4s}
+#glycolyse{--blue-f:#0C447C;--blue-s:#85B7EB;--blue-t:#B5D4F4}
+:root[data-theme="light"] #glycolyse{--blue-f:#E6F1FB;--blue-s:#185FA5;--blue-t:#0C447C}
+.gy-nav{gap:4px}.gy-nav .md{padding:4px 9px;min-width:34px;font-size:13px}
+.gy-sw{display:inline-block;width:14px;height:12px;border-radius:3px}
+.gy-rm{display:flex;align-items:center;gap:6px;margin-left:auto;font-size:13px;color:var(--s);cursor:pointer}
+.gy-ms{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.gy-m{background:var(--hover);border-radius:8px;padding:6px 12px;font-size:13px;color:var(--s)}
+.gy-m b{font-weight:500;color:var(--text);font-size:16px;margin-left:6px}
+.gy-tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:8px;margin:0 6px 4px 0}
+.gy-revb{font-size:12px;padding:3px 10px}
+.gy-pat{display:flex;gap:4px;margin-top:8px}
+.gy-pat div{flex:1;text-align:center;font-size:12px;line-height:1.4;padding:4px 0;border-radius:6px;background:var(--hover);border:.5px solid var(--b);cursor:pointer}
+.gy-pat div.irr{border:1.5px solid var(--red-s);color:var(--red-t)}
 </style>
 </head>
 <body>
@@ -106,6 +119,7 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <span class="grp">Structure</span><a href="#polysaccharides">Polysaccharides</a>
 <span class="grp">Cours 5.1</span><a href="#transport">Absorption</a><a href="#glut">GLUT et insuline</a><a href="#voies">Voies des glucides</a><a href="#cycles">Cycles</a>
 <span class="grp">Cours 5.2</span><a href="#fructose">Fructose</a><a href="#galactose">Galactose</a><a href="#uridyl">Uridyltransférase</a><a href="#mannose">Mannose</a>
+<span class="grp">Synchrone 5</span><a href="#glycolyse">Glycolyse</a>
 </div>
 <button class="icon" id="haut" aria-label="Haut de page"><svg viewBox="0 0 24 24"><path d="M6 15l6-6l6 6"/></svg></button>
 </nav>
@@ -523,6 +537,36 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 </div>
 </section>
 
+<p class="catg" id="cat-glycolyse">Glucides : glycolyse (cours synchrone 5)</p>
+
+<section id="glycolyse">
+<h2>Glycolyse : les 10 enzymes</h2>
+<p class="src">Cours synchrone 5, diapositives 4, 5, 11 et 13</p>
+<div class="card">
+<div class="modes gy-nav" id="gy-nav"></div>
+<svg width="100%" viewBox="0 0 680 325" role="img">
+<title>Glycolyse : structures et enzymes</title>
+<desc>Chaque étape montre la vraie structure du substrat (cycles de Haworth pour les hexoses, projections de Fischer pour les trioses), le groupe que l'enzyme modifie surligné, puis le produit.</desc>
+<text id="gy-ph" class="ts" x="20" y="22"></text>
+<rect class="c-purple" x="20" y="36" width="12" height="12" rx="3" stroke-width="0.5"/>
+<text id="gy-en" class="th" x="40" y="42" dominant-baseline="central"></text>
+<g id="gy-Le"></g><g id="gy-Lh"></g><g id="gy-Ll"></g><g id="gy-Lt"></g><g id="gy-Lx"></g><g id="gy-Lp"></g><g id="gy-Lq"></g>
+</svg>
+<div class="ps-leg" style="margin:4px 0 0"><span><i class="gy-sw" style="background:var(--amber-f);border:.5px solid var(--amber-s)"></i>groupe modifié par l'enzyme</span><span><i class="gy-sw" style="background:#B4B2A9;border-radius:50%;width:12px"></i>phosphate transféré</span><span><i class="gy-sw" style="background:var(--purple-f);border:.5px solid var(--purple-s)"></i>enzyme</span></div>
+<div class="ctl" style="flex-wrap:wrap"><button class="icon" id="gy-prev" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon" id="gy-play" aria-label="Lecture"></button><button class="icon" id="gy-next" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><button id="gy-again">Rejouer</button><label class="gy-rm"><input type="checkbox" id="gy-rm"> Mode révision : cacher l'enzyme</label></div>
+<div class="gy-ms"><div class="gy-m">ATP investis<b id="gy-mi">0</b></div><div class="gy-m">ATP produits (substrat)<b id="gy-mp">0</b></div><div class="gy-m">NADH<b id="gy-mn">0</b></div></div>
+<div class="cap">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="ttl" id="gy-t"></div><button class="gy-revb" id="gy-rev" style="display:none">Révéler l'enzyme</button></div>
+<div class="note" id="gy-rx" style="margin-top:2px"></div>
+<div class="txt" id="gy-what"></div>
+<div id="gy-tags" style="margin-top:8px"></div>
+<div class="note" id="gy-note"></div>
+<div class="note" id="gy-tip" style="color:var(--s)"></div>
+<div id="gy-patw" style="display:none"><div class="gy-pat" id="gy-pat"></div><div class="note">K kinase · I isomérase · A aldolase · D déshydrogénase · M mutase · E énolase</div></div>
+</div>
+</div>
+</section>
+
 <footer>Contenu tiré du plan de cours et des diapositives du cours. Outil de révision personnel.</footer>
 </main>
 <script>
@@ -898,6 +942,158 @@ $('prev').onclick=()=>go(o.step-1,true);$('next').onclick=()=>go(o.step+1,false)
 const v={v:true};if('IntersectionObserver' in window)new IntersectionObserver(e=>{v.v=e[0].isIntersecting}).observe(document.getElementById('uridyl'));
 let last=performance.now();(function loop(n){const dt=Math.min(.05,(n-last)/1000);last=n;if(o.play&&v.v){o.t+=dt;if(o.t>=7)go(o.step+1,false);}requestAnimationFrame(loop)})(last);
 draw();go(0,true);
+})();
+</script>
+<script>
+(function(){
+const $=id=>document.getElementById('gy-'+id),XN='http://www.w3.org/2000/svg',RMO=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ICO={pause:'<svg viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>',play:'<svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>'};
+const el=(tg,a,p)=>{const e=document.createElementNS(XN,tg);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e};
+const set=(e,a)=>{for(const k in a)e.setAttribute(k,a[k])};
+const T=(k,x,y,s,a='middle',cls='t')=>({k,ty:'t',x,y,s,a,cls,o:1});
+const L=(k,x1,y1,x2,y2,sw=1.5)=>({k,ty:'l',x1,y1,x2,y2,sw,o:1});
+const est=s=>[...s].reduce((w,c)=>w+('₂₃²⁻⁺'.includes(c)?5.5:/[A-Z]/.test(c)?9.5:7.5),0);
+const NM=(s,x=260,y=310,k='nm1')=>T(k,x,y,s,'middle','th');
+const enz=(x,y,w,h)=>({k:'enz',ty:'e',x,y,w,h,o:1});
+const pill=(k,x,y,s,c,o=1)=>({k,ty:'q',x,y,s,c,o});
+const tok=(x,y,from)=>({k:'tk',ty:'p',x,y,o:1,from});
+const fnd=(A,k,s)=>A.find(e=>e.k===k&&(s===undefined||e.s===s));
+function hl(hk,e){if(!e)return null;const w=est(e.s)+8,x0=e.a==='start'?e.x-4:e.a==='end'?e.x-w+4:e.x-w/2;return{k:hk,ty:'h',x:x0,y:e.y-12,w,h:24,o:1}}
+const H=(A,hk,k,s)=>hl(hk,fnd(A,k,s));
+function ring(P,V,cx,cy,edges,subs){const E=[],p=n=>[cx+V[n][0],cy+V[n][1]];
+edges.forEach(([a,b,sw,sa,sb],i)=>{const[x1,y1]=p(a),[x2,y2]=p(b),dx=x2-x1,dy=y2-y1,l=Math.hypot(dx,dy);E.push(L(P+'e'+i,x1+dx/l*sa,y1+dy/l*sa,x2-dx/l*sb,y2-dy/l*sb,sw))});
+E.push(T(P+'O',...p('O'),'O'));
+subs.forEach(([k,n,d,len,s,a,lx])=>{const[x,y]=p(n);E.push(L(P+'l'+k,x,y,x,y+d*len));E.push(T(P+'t'+k,lx!==undefined?cx+lx:x,y+d*(len+10),s,a||'middle'))});return E}
+function pyr(cx,cy,c6){const ph=c6!=='CH₂OH';return ring('R',{C5:[-55,-18],O:[25,-18],C1:[70,12],C2:[34,42],C3:[-34,42],C4:[-78,12]},cx,cy,
+[['C5','O',1.5,0,9],['O','C1',1.5,9,0],['C1','C2',3,0,0],['C2','C3',5,0,0],['C3','C4',3,0,0],['C4','C5',1.5,0,0]],
+[['5u','C5',-1,24,c6,ph?'end':'middle',ph?-36:undefined],['5d','C5',1,14,'H'],['4u','C4',-1,16,'H'],['4d','C4',1,20,'HO'],['3u','C3',-1,18,'OH'],['3d','C3',1,18,'H'],['2u','C2',-1,18,'H'],['2d','C2',1,18,'OH'],['1u','C1',-1,16,'H'],['1d','C1',1,20,'OH']])}
+function fur(cx,cy,c1){const ph=c1!=='CH₂OH';return ring('U',{O:[0,-28],C2:[58,0],C3:[34,36],C4:[-34,36],C5:[-58,0]},cx,cy,
+[['C5','O',1.5,0,9],['O','C2',1.5,9,0],['C2','C3',3,0,0],['C3','C4',5,0,0],['C4','C5',3,0,0]],
+[['5u','C5',-1,26,'²⁻O₃POCH₂','end',-42],['5d','C5',1,14,'H'],['4u','C4',-1,18,'H'],['4d','C4',1,18,'OH'],['3u','C3',-1,18,'OH','end',40],['3d','C3',1,18,'H'],['2u','C2',-1,24,c1,ph?'start':'middle',ph?52:undefined],['2d','C2',1,18,'OH','start',52]])}
+function bond(k,x1,y1,x2,y2,d){if(!d)return[L(k+'s',x1,y1,x2,y2)];const h=y1===y2,ox=h?0:2.5,oy=h?2.5:0;return[L(k+'d',x1-ox,y1-oy,x2-ox,y2-oy),L(k+'e',x1+ox,y1+oy,x2+ox,y2+oy)]}
+function fis(cx,ys,rows,rk,bk){const E=[];rows.forEach((r,i)=>{const y=ys[i],k=rk[i];
+if(r.g)E.push(T(k+'g',cx-5,y,r.g,'start'));
+else{E.push(T(k+'C',cx,y,'C'));
+if(r.L!==undefined){if(r.L)E.push(T(k+'L',cx-26,y,r.L,'end'));E.push(...bond(k+'l',cx-22,y,cx-9,y,r.ld))}
+if(r.R!==undefined){E.push(T(k+'R',cx+26,y,r.R,'start'));E.push(...bond(k+'r',cx+9,y,cx+22,y,r.rd))}}
+if(i<rows.length-1&&bk[i]){const y2=ys[i+1],a=Math.min(y,y2),b=Math.max(y,y2);E.push(...bond(bk[i],cx,a+11,cx,b-11,r.vd))}});return E}
+const P3='CH₂OPO₃²⁻',HCOH={L:'H',R:'OH'},HOCH={L:'HO',R:'H'};
+const G6PO=[{L:'H',R:'O',rd:1},HCOH,HOCH,HCOH,HCOH,{g:P3}],F6PO=[{g:'CH₂OH'},{R:'O',rd:1},HOCH,HCOH,HCOH,{g:P3}],F16O=[{g:P3},{R:'O',rd:1},HOCH,HCOH,HCOH,{g:P3}];
+const DHAP=[{g:P3},{R:'O',rd:1},{g:'CH₂OH'}],G3P=[{L:'H',R:'O',rd:1},HCOH,{g:P3}],BPG=[{L:'²⁻O₃PO',R:'O',rd:1},HCOH,{g:P3}],PG3=[{L:'⁻O',R:'O',rd:1},HCOH,{g:P3}],PG2=[{L:'⁻O',R:'O',rd:1},{L:'H',R:'OPO₃²⁻'},{g:'CH₂OH'}],PEP=[{L:'⁻O',R:'O',rd:1},{R:'OPO₃²⁻',vd:1},{g:'CH₂'}],ENOL=[{L:'⁻O',R:'O',rd:1},{R:'OH',vd:1},{g:'CH₂'}],PYR=[{L:'⁻O',R:'O',rd:1},{R:'O',rd:1},{g:'CH₃'}];
+const OC=255,OYS=[95,131,167,203,239,275],RK=['A1','A2','A3','B1','B2','B3'],BK=['Av0','Av1','Xcut','Bv0','Bv1'],YS=[150,190,230],BR=['B1','B2','B3'],BB=['Bv0','Bv1'],AR=['A1','A2','A3'],AB=['Av0','Av1'];
+const M={glc:()=>[...pyr(260,190,'CH₂OH'),NM('Glucose')],g6p:()=>[...pyr(260,190,'²⁻O₃POCH₂'),NM('Glucose-6-phosphate')],
+g6pO:()=>[...fis(OC,OYS,G6PO,RK,BK),NM('Glucose-6-phosphate, forme ouverte',OC)],f6pO:()=>[...fis(OC,OYS,F6PO,RK,BK),NM('Fructose-6-phosphate, forme ouverte',OC)],
+f6p:()=>[...fur(260,195,'CH₂OH'),NM('Fructose-6-phosphate')],f16:()=>[...fur(260,195,P3),NM('Fructose-1,6-bisphosphate')],
+f16O:cut=>fis(OC,OYS,F16O,RK,BK).filter(e=>!(cut&&e.k.startsWith('Xcut'))).concat([NM('Fructose-1,6-bisphosphate, forme ouverte',OC)]),
+halves:()=>[...fis(140,YS,F16O.slice(0,3),AR,AB),...fis(400,YS,F16O.slice(3),BR,BB)],
+split:()=>[...fis(140,YS,DHAP,AR,AB),...fis(400,YS,G3P,BR,BB),NM('Dihydroxyacétone phosphate',150,272,'nm1'),NM('Glycéraldéhyde-3-phosphate',420,272,'nm2')],
+tri:(rows,n)=>[...fis(270,YS,rows,BR,BB),NM(n,270,272,'nm2'),T('x2',150,190,'2×','middle','th')]};
+const strip=A=>A.filter(e=>!['h','q','p','x'].includes(e.ty)).map(e=>e.ty==='e'?{...e,o:0}:e);
+const OUT=(k,s,c)=>pill(k,600,280,s,c,.6);
+function frames(k){const F0=strip(showArr(k-1)),f=[];const add=(A,d)=>f.push([A.filter(Boolean),d]);add(F0,300);
+if(k===1||k===3){const S=k===1?M.glc():M.f6p(),P=k===1?M.g6p():M.f16(),e=k===1?enz(132,114,110,72):enz(280,140,122,70),lk=k===1?'Rt5u':'Ut2u',tg=k===1?[172,138]:[352,161];
+add([...S,e,H(S,'h1',lk,'CH₂OH'),pill('pa',600,110,'ATP','teal'),tok(560,110)],500);
+add([...S,e,H(S,'h1',lk,'CH₂OH'),pill('pa',600,110,'ADP','teal'),tok(...tg)],1000);
+add([...P,e,H(P,'h1',lk),pill('pa',600,110,'ADP','teal')],600);add([...P,e,H(P,'h1',lk),OUT('pa','ADP','teal')],500)}
+if(k===2){const A=M.g6p(),B=M.g6pO(),C=M.f6pO(),D=M.f6p(),eo=enz(205,76,110,74);
+add([...A,enz(262,150,90,80),H(A,'h1','RO')],500);add([...B,eo,H(B,'h1','A1R')],900);add([...C,eo,H(C,'h1','A2R')],1200);add([...D,enz(270,150,100,80),H(D,'h1','Ut2u')],900)}
+if(k===4){const A=M.f16(),ec=enz(200,150,110,70),eg={...enz(232,135,110,110),o:0},S=M.split();
+add([...A,enz(208,209,104,44)],500);add([...M.f16O(false),ec],900);add([...M.f16O(true),ec,{k:'cut',ty:'x',x:OC,y:185,o:1}],700);add([...M.halves(),eg],1000);add([...S,eg,H(S,'h1','A3g'),H(S,'h2','B1R')],800)}
+if(k===5){const S=M.split(),ed=enz(95,128,135,124),em=enz(200,128,170,124),nG='Glycéraldéhyde-3-phosphate';
+const Bh=fis(400,YS,G3P,BR,BB),n2=NM(nG,420,272,'nm2');
+const fl=[...fis(140,[230,190,150],DHAP,AR,AB),...Bh,NM('Dihydroxyacétone phosphate',150,272,'nm1'),n2];fl.forEach(e=>{if(e.k==='A1g')e.arcX=-100;if(e.k==='A3g')e.arcX=70});
+const cv=[...fis(140,YS,G3P,['A3','A2','A1'],['Av1','Av0']),...Bh,NM(nG,150,272,'nm1'),n2];
+add([...S,ed,H(S,'h1','A2R')],500);add([...fl,ed,H(fl,'h1','A2R')],1100);add([...cv,ed,H(cv,'h1','A3R')],900);
+add([...fis(270,YS,G3P,['A3','A2','A1'],['Av1','Av0']),...fis(270,YS,G3P,BR,BB),NM(nG,270,272,'nm1'),NM(nG,270,272,'nm2'),em],1000);add([...M.tri(G3P,nG),em],400)}
+if(k===6){const A=M.tri(G3P,'Glycéraldéhyde-3-phosphate'),e=enz(172,130,150,40);fnd(A,'B1L','H').to=[560,135];
+const Bm=M.tri([{L:'',R:'O',rd:1},HCOH,{g:P3}],'Glycéraldéhyde-3-phosphate'),C=M.tri(BPG,'1,3-bisphosphoglycérate'),hA=H(A,'h1','B1L');
+add([...A,e,hA,pill('pa',615,90,'2 Pi','gray'),tok(572,90),pill('pb',600,135,'2 NAD⁺','blue')],500);
+add([...Bm,e,hA,pill('pa',615,90,'2 Pi','gray'),tok(215,150),pill('pb',600,135,'2 NADH + 2 H⁺','blue')],1100);
+add([...C,e,H(C,'h1','B1L'),pill('pb',600,135,'2 NADH + 2 H⁺','blue')],600);add([...C,e,H(C,'h1','B1L'),OUT('pb','2 NADH + 2 H⁺','blue')],600)}
+if(k===7||k===10){const tw=k===7,A=tw?M.tri(BPG,'1,3-bisphosphoglycérate'):M.tri(PEP,'Phosphoénolpyruvate'),B=tw?M.tri(PG3,'3-phosphoglycérate'):M.tri(ENOL,'Énolpyruvate'),e=tw?enz(172,130,150,40):enz(215,170,170,80),lk=tw?'B1L':'B2R',src=tw?[215,150]:[330,190];
+add([...A,e,H(A,'h1',lk),pill('pa',600,110,'2 ADP','teal')],500);add([...B,e,H(B,'h1',lk),pill('pa',600,110,'2 ADP','teal'),tok(550,110,src)],1100);
+add([...B,e,H(B,'h1',lk),pill('pa',600,110,'2 ATP','teal')],500);
+if(tw)add([...B,e,H(B,'h1',lk),OUT('pa','2 ATP','teal')],600);
+else{const C=M.tri(PYR,'Pyruvate');add([...C,e,H(C,'h1','B2R'),H(C,'h2','B3g'),pill('pa',600,110,'2 ATP','teal')],1100);add([...C,e,H(C,'h1','B2R'),H(C,'h2','B3g'),OUT('pa','2 ATP','teal')],600)}}
+if(k===8){const A=M.tri(PG3,'3-phosphoglycérate'),Bm=M.tri([PG3[0],HCOH,{g:'CH₂OH'}],'3-phosphoglycérate'),C=M.tri(PG2,'2-phosphoglycérate'),e=enz(250,170,130,80);
+add([...A,e,H(A,'h1','B3g'),H(A,'h2','B2R')],500);add([...Bm,e,H(Bm,'h1','B3g'),H(Bm,'h2','B2R'),tok(330,190,[318,230])],1000);add([...C,e,H(C,'h2','B2R')],600)}
+if(k===9){const A=M.tri(PG2,'2-phosphoglycérate'),C=M.tri(PEP,'Phosphoénolpyruvate'),e=enz(215,170,170,80);fnd(A,'B2L','H').to=[430,232];
+add([...A,e,H(A,'h1','B2L'),H(A,'h2','B3g')],500);const w=pill('pa',450,232,'2 H₂O','gray');w.from=[330,232];
+add([...C,e,H(C,'h2','B3g'),w],1100);add([...C,e,H(C,'h2','B3g'),OUT('pa','2 H₂O','gray')],700)}
+return f}
+const MEMO={};
+function showArr(n){if(n===0)return M.glc();if(n===11)return strip(showArr(10)).filter(e=>e.ty!=='e');if(!MEMO[n]){const f=frames(n);MEMO[n]=f[f.length-1][0]}return MEMO[n]}
+const scene=A=>{const m={};A.forEach(e=>{if(e)m[e.k+'|'+(e.s||'')]=e});return m};
+const NUM=['x','y','x1','y1','x2','y2','w','h','o'];
+const mv=(e,p)=>{if(!p)return{};if(e.ty==='l'){const dx=p[0]-e.x1,dy=p[1]-e.y1;return{x1:e.x1+dx,y1:e.y1+dy,x2:e.x2+dx,y2:e.y2+dy}}return{x:p[0],y:p[1]}};
+function lerpE(a,b,e){const r={...b},s=Math.sin(Math.PI*e);NUM.forEach(n=>{if(typeof b[n]==='number'){const v=typeof a[n]==='number'?a[n]:b[n];r[n]=v+(b[n]-v)*e}});
+if(b.arcX)['x','x1','x2'].forEach(n=>{if(typeof r[n]==='number')r[n]+=b.arcX*s});return r}
+function mix(A,B,t){const e=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2,S={};
+for(const k in B){const b=B[k],a=A[k]||{...b,o:0,...mv(b,b.from)};S[k]=lerpE(a,b,e)}
+for(const k in A)if(!B[k]){const a=A[k];S[k]=lerpE(a,{...a,o:0,...mv(a,a.to),arcX:0},e)}return S}
+const LY={t:$('Lt'),l:$('Ll'),h:$('Lh'),e:$('Le'),p:$('Lp'),q:$('Lq'),x:$('Lx')},ND={};
+function make(e){const p=LY[e.ty];
+if(e.ty==='t'){const t=el('text',{class:e.cls,'text-anchor':e.a,'dominant-baseline':'central'},p);t.textContent=e.s;return t}
+if(e.ty==='l')return el('line',{stroke:'var(--text)','stroke-linecap':'round'},p);
+if(e.ty==='h')return el('rect',{fill:'var(--amber-f)',stroke:'var(--amber-s)',rx:6,'stroke-width':0.5},p);
+if(e.ty==='e')return el('rect',{class:'c-purple',rx:18,'stroke-width':0.5},p);
+const g=el('g',{},p);
+if(e.ty==='p'){el('circle',{r:11,fill:'#B4B2A9'},g);const t=el('text',{class:'ts','text-anchor':'middle','dominant-baseline':'central',style:'fill:#2C2C2A;font-size:11px'},g);t.textContent='P'}
+if(e.ty==='q'){const w=est(e.s)+22;el('rect',{x:-w/2,y:-12,width:w,height:24,rx:12,fill:'var(--'+e.c+'-f)',stroke:'var(--'+e.c+'-s)','stroke-width':0.5},g);const t=el('text',{class:'ts','text-anchor':'middle','dominant-baseline':'central',style:'fill:var(--'+e.c+'-t)'},g);t.textContent=e.s}
+if(e.ty==='x'){el('line',{x1:-9,y1:-9,x2:9,y2:9,stroke:'#E24B4A','stroke-width':2.5,'stroke-linecap':'round'},g);el('line',{x1:9,y1:-9,x2:-9,y2:9,stroke:'#E24B4A','stroke-width':2.5,'stroke-linecap':'round'},g)}
+return g}
+let cur={};
+function render(S){cur=S;for(const k in S){const e=S[k];const n=ND[k]||(ND[k]=make(e));
+if(e.ty==='t')set(n,{x:e.x,y:e.y,opacity:e.o});
+else if(e.ty==='l')set(n,{x1:e.x1,y1:e.y1,x2:e.x2,y2:e.y2,'stroke-width':e.sw,opacity:e.o});
+else if(e.ty==='h'||e.ty==='e')set(n,{x:e.x,y:e.y,width:e.w,height:e.h,opacity:e.o*(e.ty==='e'?.8:1)});
+else set(n,{transform:'translate('+e.x+','+e.y+')',opacity:e.o})}
+for(const k in ND)if(!S[k]){ND[k].remove();delete ND[k]}}
+const C=[
+{rx:'Glucose dans le cytosol (α-D-glucopyranose)',what:'Le glucose entre dans la cellule par un transporteur GLUT. La glycolyse se déroule dans le cytosol : 10 réactions enzymatiques transforment 1 glucose en 2 pyruvates.',tags:[['Cytosol','info'],['10 réactions','info']],note:'Le GLUT est un mécanisme de contrôle : il y a plus de glucose à l\'extérieur qu\'à l\'intérieur des cellules, sauf au foie et au pancréas où le glucose entre librement.',tip:'Suis le groupe surligné en jaune : c\'est lui que l\'enzyme modifie.'},
+{e:'Hexokinase (ou glucokinase)',rx:'Glucose → glucose-6-phosphate',what:'Prend le phosphate terminal de l\'ATP et le fixe sur le C6 : le CH₂OH devient CH₂OPO₃²⁻.',tags:[['Rx irréversible','irr'],['Investissement 1 ATP','inv']],note:'Le glucose phosphorylé ne peut plus sortir de la cellule. Hexokinase : ubiquitaire, phosphoryle les sucres C6. Glucokinase : foie et cellules β du pancréas, spécifique au glucose.',tip:'Kinase = transfère un phosphate entre l\'ATP et une molécule.'},
+{e:'Phosphoglucose isomérase',rx:'Glucose-6-phosphate → fructose-6-phosphate',what:'Le cycle s\'ouvre, le C=O passe du C1 au C2, puis le sucre se referme en cycle à 5 : le glucose (aldose) devient du fructose (cétose). Rien n\'entre, rien ne sort.',tags:[['Rx réversible','rev'],['Point d\'entrée du fructose','info']],note:'Complément hors diapo : la forme ouverte est dessinée pour suivre le C=O, la diapositive ne montre que les deux cycles.',tip:'Isomérase = réarrange la molécule sans rien ajouter ni retirer.'},
+{e:'Phosphofructokinase 1 (PFK1)',rx:'Fructose-6-phosphate → fructose-1,6-bisphosphate',what:'Prend un 2e phosphate à l\'ATP et le fixe sur le C1, le CH₂OH hors du cycle : un phosphate à chaque bout.',tags:[['Rx irréversible','irr'],['Investissement 1 ATP','inv']],note:'Site principal de contrôle de la glycolyse. Les étapes irréversibles (1, 3 et 10) sont les points de contrôle.',tip:'« Bis » : deux phosphates, sur deux carbones différents.'},
+{e:'Aldolase',rx:'Fructose-1,6-bisphosphate → dihydroxyacétone phosphate + glycéraldéhyde-3-phosphate',what:'Sur la forme ouverte, coupe la liaison entre le C3 et le C4 : le haut devient la DHAP (C=O au milieu, CH₂OH en bas), le bas devient le G3P (l\'ancien C4 devient un aldéhyde).',tags:[['Rx réversible','rev']],note:'Fin des 4 réactions en C6. Complément hors diapo : la forme ouverte et le détail de la coupure, la diapositive montre directement les deux trioses.',tip:'Les deux phosphates investis aux étapes 1 et 3 se retrouvent un sur chaque moitié.'},
+{e:'Triose phosphate isomérase',rx:'Dihydroxyacétone phosphate → glycéraldéhyde-3-phosphate',what:'La DHAP se retourne et son C=O passe du C2 au C1 : elle devient un G3P. On a maintenant 2 G3P identiques.',tags:[['Rx réversible','rev']],note:'Tautomères : couple d\'isomères interconvertibles. À partir d\'ici, chaque réaction se fait deux fois (2x).',tip:'Deuxième isomérase : encore un réarrangement, rien n\'entre ni ne sort.'},
+{e:'Glycéraldéhyde-3-phosphate déshydrogénase',rx:'Glycéraldéhyde-3-phosphate → 1,3-bisphosphoglycérate',what:'Retire l\'H de l\'aldéhyde (C1) et le cède au NAD⁺, qui devient NADH, puis fixe à sa place un phosphate inorganique (Pi), pas un phosphate d\'ATP.',tags:[['Rx réversible','rev'],['Production de NADH = 2,5 ATP (x2)','prod']],note:'Consommation de 1 NAD⁺ (x2) : un cosubstrat essentiel à la réaction.',tip:'Déshydrogénase = enlève des hydrogènes. Seule étape avec le NAD⁺ et le Pi.'},
+{e:'Phosphoglycérate kinase',rx:'1,3-bisphosphoglycérate → 3-phosphoglycérate',what:'Transfère le phosphate du C1 sur l\'ADP : il reste un carboxylate (C=O et O⁻). 1 ATP par molécule, donc 2 ATP.',tags:[['Rx réversible','rev'],['Production de 1 ATP (x2)','prod']],note:'Phosphorylation au niveau du substrat : l\'ADP devient ATP grâce à l\'énergie de l\'hydrolyse du 1,3-bisphosphoglycérate, une réaction exergonique.',tip:'Cette kinase va dans l\'autre sens que celles des étapes 1 et 3 : le phosphate va vers l\'ADP. Les 2 ATP investis sont remboursés.'},
+{e:'Phosphoglycérate mutase',rx:'3-phosphoglycérate → 2-phosphoglycérate',what:'Déplace le phosphate du C3 au C2 : le C3 redevient CH₂OH, le C2 porte OPO₃²⁻.',tags:[['Rx réversible','rev']],note:'',tip:'Mutase = déplace un groupe d\'un carbone à l\'autre de la même molécule.'},
+{e:'Énolase',rx:'2-phosphoglycérate → phosphoénolpyruvate (PEP)',what:'Retire l\'H du C2 et l\'OH du C3, soit une molécule d\'eau : une double liaison se forme entre le C2 et le C3.',tags:[['Rx réversible','rev']],note:'Le phosphoénolpyruvate est le substrat de la 2e phosphorylation au niveau du substrat.',tip:'Énolase fabrique un énol : d\'où le nom phospho-ÉNOL-pyruvate.'},
+{e:'Pyruvate kinase',rx:'Phosphoénolpyruvate → pyruvate',what:'Transfère le phosphate du C2 sur l\'ADP (1 ATP par molécule, donc 2 ATP). Il reste l\'énolpyruvate, qui se réarrange tout seul en pyruvate : C=O sur le C2, CH₃ sur le C3.',tags:[['Rx irréversible','irr'],['Production de 1 ATP (x2)','prod']],note:'2e phosphorylation au niveau du substrat. Irréversible car le produit (énolpyruvate) est spontanément isomérisé en pyruvate : il n\'est plus disponible pour la réaction inverse.',tip:'3e et dernière étape irréversible, comme la 1 et la 3.'},
+{rx:'1 glucose → 2 pyruvates',what:'ATP produits : 2 (phosphoglycérate kinase) + 2 (pyruvate kinase) + 5 (2 NADH × 2,5) = 9. ATP consommés : 2 (hexokinase et PFK1). 9 − 2 = 7 ATP par glucose en aérobiose.',tags:[['7 ATP en aérobiose','prod'],['2 ATP en anaérobiose','info'],['Irréversibles : 1, 3, 10','irr']],note:'En anaérobiose, on ne comptabilise pas les 2 NADH : ils servent à convertir le pyruvate en lactate ou en éthanol. En aérobiose, ils passent par la navette malate-aspartate et la chaîne respiratoire.',tip:'Le motif des 10 enzymes, clique une case pour rejouer l\'étape. En rouge : les 3 étapes irréversibles.'}];
+const TS={irr:'background:var(--red-f);color:var(--red-t)',rev:'background:var(--hover);color:var(--s)',inv:'background:var(--amber-f);color:var(--amber-t)',prod:'background:var(--teal-f);color:var(--teal-t)',info:'background:var(--acc-bg);color:var(--acc-tx)'};
+let k=0,raf=null,pt=null,playing=false,revealed=false;
+function cancel(){if(raf)cancelAnimationFrame(raf);raf=null;clearTimeout(pt)}
+function chain(list,done){let i=0,from=cur;const go=()=>{if(i>=list.length){raf=null;done&&done();return}
+const to=list[i][0],D=RMO?1:list[i][1],t0=performance.now(),fr=from;
+const tick=now=>{const t=Math.min(1,(now-t0)/D);render(mix(fr,to,t));if(t<1)raf=requestAnimationFrame(tick);else{from=to;i++;go()}};raf=requestAnimationFrame(tick)};go()}
+function show(n){cancel();playing=false;k=n;revealed=false;render(scene(showArr(n)));ui()}
+function animateTo(n,done){if(raf){cancel();render(scene(showArr(k)))}k=n;revealed=false;ui();const f=n===11?[[showArr(11),600]]:frames(n);chain(f.map(([A,d])=>[scene(A),d]),done)}
+function play1(n){cancel();playing=false;k=n-1;render(scene(showArr(n-1)));animateTo(n)}
+function loop(){if(!playing)return;if(k>=11){playing=false;ui();return}animateTo(k+1,()=>{pt=setTimeout(loop,1300)})}
+const PH=n=>n===0?'Départ':n===11?'Bilan':n<=4?'Phase 1 : 4 réactions en C6, on investit 2 ATP':'Phase 2 : 6 réactions en C3, chaque réaction se fait 2 fois';
+const nav=$('nav');for(let n=0;n<=11;n++){const b=document.createElement('button');b.className='md';b.textContent=n===0?'Départ':n===11?'Bilan':n;b.onclick=()=>(n===0?show(0):play1(n));nav.appendChild(b)}
+const pat=$('pat');['K','I','K','A','I','D','K','M','E','K'].forEach((t,i)=>{const d=document.createElement('div');d.innerHTML=(i+1)+'<br>'+t;if([0,2,9].includes(i))d.className='irr';d.onclick=()=>play1(i+1);pat.appendChild(d)});
+function ui(){const c=C[k],hide=$('rm').checked&&!revealed&&!!c.e;
+[...nav.children].forEach((b,i)=>b.classList.toggle('on',i===k));
+$('ph').textContent=PH(k);
+$('en').textContent=k===0?'Glucose, avant la 1re enzyme':k===11?'1 glucose → 2 pyruvates':k+'. '+(hide?'Enzyme ?':c.e);
+$('t').textContent=k===0?'Départ':k===11?'Bilan':'Étape '+k+' : '+(hide?'?':c.e);
+$('rev').style.display=hide?'inline-block':'none';
+$('rx').textContent=c.rx;$('what').textContent=c.what;
+$('tags').innerHTML=c.tags.map(([t,y])=>'<span class="gy-tag" style="'+TS[y]+'">'+t+'</span>').join('');
+$('note').textContent=hide?'':c.note;$('tip').textContent=hide?'':(c.tip?'Pour retenir : '+c.tip:'');
+$('patw').style.display=k===11?'block':'none';
+$('mi').textContent=(k>=1)+(k>=3);$('mp').textContent=(k>=7?2:0)+(k>=10?2:0);$('mn').textContent=k>=6?2:0;
+const pb=$('play');pb.innerHTML=playing?ICO.pause:ICO.play;pb.setAttribute('aria-label',playing?'Pause':'Lecture')}
+$('next').onclick=()=>{playing=false;if(k<11)animateTo(k+1)};
+$('prev').onclick=()=>show(Math.max(0,k-1));
+$('again').onclick=()=>{if(k>=1)play1(k)};
+$('play').onclick=()=>{if(playing){playing=false;cancel();render(scene(showArr(k)));ui();return}if(k>=11)show(0);playing=true;ui();loop()};
+$('rev').onclick=()=>{revealed=true;ui()};
+$('rm').onchange=()=>{revealed=false;ui()};
+render(scene(showArr(0)));ui();
 })();
 </script>
 </body>
