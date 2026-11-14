@@ -103,6 +103,23 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 .gy-pat{display:flex;gap:4px;margin-top:8px}
 .gy-pat div{flex:1;text-align:center;font-size:12px;line-height:1.4;padding:4px 0;border-radius:6px;background:var(--hover);border:.5px solid var(--b);cursor:pointer}
 .gy-pat div.irr{border:1.5px solid var(--red-s);color:var(--red-t)}
+/* Grand écran : animation et commandes à gauche, texte à droite, la case tient dans la fenêtre */
+@media (min-width:980px){
+main{max-width:1180px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) var(--side,340px);column-gap:28px;align-items:start}
+.split>.fig{display:flex;flex-direction:column;max-height:calc(100vh - 183px);max-height:calc(100svh - 183px)}
+.split>.fig>*{flex-shrink:0}
+.split>.fig>svg{flex-shrink:1;min-height:0}
+.split>.side>.cap{margin-top:0}
+.split>.side>.gy-ms{margin:0 0 16px}
+.split>.side>.ps-panel{border-top:0;margin-top:0;padding-top:0}
+.split #ps-poly{max-height:150px}
+.split .ps-leg{margin:4px 0 10px}
+.split .ps-cells{grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:6px;margin-bottom:10px}
+.split .ps-cell{font-size:13px;padding:8px 10px}
+.split .ps-pts{font-size:14px;line-height:1.55}
+.split #ps-src{margin-top:6px!important}
+}
 </style>
 </head>
 <body>
@@ -129,7 +146,8 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <section id="polysaccharides">
 <h2>Hiérarchie des polysaccharides</h2>
 <p class="src">Cours synchrone 4, diapositives 26 à 29 et 34 à 36</p>
-<div class="card">
+<div class="card split" style="--side:46%">
+<div class="fig">
 <svg width="100%" viewBox="0 0 680 452" role="img">
 <title>Arbre de classification des polysaccharides</title>
 <desc>Les polysaccharides se divisent en réserve d'énergie (amidon, formé d'amylose et d'amylopectine, et glycogène), en polysaccharides de structure (cellulose et chitine) et en glycosaminoglycanes (chondroïtine sulfate et peptidoglycane).</desc>
@@ -160,6 +178,8 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <g class="c-coral ps-nd ps-clk" id="ps-n-pepti" data-k="pepti"><rect x="480" y="392" width="180" height="48" rx="8"/><text class="th" x="570" y="407" text-anchor="middle" dominant-baseline="central">Peptidoglycane</text><text class="ts" x="570" y="425" text-anchor="middle" dominant-baseline="central">paroi bactérienne</text></g>
 </svg>
 <div class="note" style="text-align:right;margin:4px 0 0">Clique sur un polysaccharide pour voir sa structure</div>
+</div>
+<div class="side">
 <div class="ps-panel">
 <div class="ps-ttl" id="ps-ttl"></div>
 <div class="ps-chem" id="ps-chem"></div>
@@ -170,6 +190,7 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <div class="note" id="ps-src" style="margin-top:12px"></div>
 </div>
 </div>
+</div>
 </section>
 
 <p class="catg" id="cat-generalites">Métabolisme : généralités (cours 5.1)</p>
@@ -177,7 +198,8 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <section id="transport">
 <h2>Absorption intestinale du glucose</h2>
 <p class="src">Cours 5.1, diapositive 6</p>
-<div class="card">
+<div class="card split">
+<div class="fig">
 <svg width="100%" viewBox="0 0 680 470" role="img">
 <title>Transport du glucose, du galactose et du fructose par l'entérocyte</title>
 <desc>Le glucose et le galactose entrent par SGLT1 (transport actif), le fructose par GLUT5 (diffusion facilitée), puis les trois sortent vers le sang par GLUT2. Au rein, SGLT1 réabsorbe le glucose.</desc>
@@ -222,14 +244,18 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <g id="tr-mR"><circle r="13" fill="#EF9F27"/><text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#412402">Glc</text></g>
 </svg>
 <div class="ctl"><button class="icon" id="tr-prev" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon" id="tr-play" aria-label="Pause"></button><button class="icon" id="tr-next" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><div class="dots" id="tr-dots"></div><span class="cnt" id="tr-cnt"></span></div>
+</div>
+<div class="side">
 <div class="cap" style="min-height:90px"><div class="ttl" id="tr-ttl"></div><div class="txt" id="tr-txt"></div></div>
+</div>
 </div>
 </section>
 
 <section id="glut">
 <h2>Les GLUT selon les tissus</h2>
 <p class="src">Cours 5.1, diapositive 6</p>
-<div class="card">
+<div class="card split">
+<div class="fig">
 <div class="modes"><button class="md" id="gt-off">Sans insuline</button><button class="md" id="gt-on">Avec insuline</button><button class="icon" id="gt-play" style="margin-left:auto" aria-label="Pause"></button></div>
 <svg width="100%" viewBox="0 0 680 390" role="img">
 <title>Distribution tissulaire des transporteurs GLUT</title>
@@ -254,14 +280,18 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <circle cx="314" cy="370" r="5" fill="#D4537E"/><text class="ts" x="324" y="374">Glucose-6-phosphate</text>
 <g id="gt-pts"></g>
 </svg>
+</div>
+<div class="side">
 <div class="cap" style="min-height:70px"><div class="txt" id="gt-txt"></div></div>
+</div>
 </div>
 </section>
 
 <section id="voies">
 <h2>Catabolisme et anabolisme des glucides</h2>
 <p class="src">Cours 5.1, diapositive 4</p>
-<div class="card">
+<div class="card split">
+<div class="fig">
 <div class="modes" id="vo-tabs"></div>
 <div class="modes" id="vo-cond" style="min-height:38px"></div>
 <svg width="100%" viewBox="0 0 680 370" role="img">
@@ -287,14 +317,18 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <g id="vo-clS"></g><g id="vo-clP"></g>
 <circle id="vo-tok" r="7" cx="300" cy="70"/>
 </svg>
+</div>
+<div class="side">
 <div class="cap" style="min-height:110px"><div class="ttl"><span id="vo-ttl"></span> <span id="vo-cat" style="font-size:12px;font-weight:400;padding:3px 10px;border-radius:8px;margin-left:6px;vertical-align:2px"></span></div><div class="txt" id="vo-txt"></div></div>
+</div>
 </div>
 </section>
 
 <section id="cycles">
 <h2>Cycle du citrate, des pentoses et du glyoxylate</h2>
 <p class="src">Cours 5.1, diapositive 5</p>
-<div class="card">
+<div class="card split">
+<div class="fig">
 <div class="modes" id="cy-tabs"></div>
 <div class="modes" id="cy-sub" style="min-height:38px"></div>
 <svg width="100%" viewBox="0 0 680 320" role="img">
@@ -304,7 +338,10 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <g id="cy-scene"></g>
 <g id="cy-toks"></g>
 </svg>
+</div>
+<div class="side">
 <div class="cap" style="min-height:90px"><div class="ttl" id="cy-ttl"></div><div class="txt" id="cy-txt"></div></div>
+</div>
 </div>
 </section>
 
@@ -313,7 +350,8 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <section id="fructose">
 <h2>Métabolisme du fructose</h2>
 <p class="src">Cours 5.2, diapositive 3</p>
-<div class="card">
+<div class="card split">
+<div class="fig">
 <div class="modes">
 <button class="md" data-mode="normal">Normal</button>
 <button class="md" data-mode="exc">Grande quantité</button>
@@ -376,14 +414,18 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <g class="tok"></g>
 </svg>
 <div class="ctl"><button class="icon prev" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon play" aria-label="Pause"></button><button class="icon next" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><div class="dots"></div><span class="cnt"></span></div>
+</div>
+<div class="side">
 <div class="cap"><div class="ttl"></div><div class="txt"></div><div class="note"></div></div>
+</div>
 </div>
 </section>
 
 <section id="galactose">
 <h2>Métabolisme du galactose</h2>
 <p class="src">Cours 5.2, diapositives 4 et 5</p>
-<div class="card">
+<div class="card split">
+<div class="fig">
 <div class="modes">
 <button class="md" data-mode="normal">Normal</button>
 <button class="md" data-mode="gal">Galactosémie</button>
@@ -439,14 +481,18 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <g class="tok"></g>
 </svg>
 <div class="ctl"><button class="icon prev" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon play" aria-label="Pause"></button><button class="icon next" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><div class="dots"></div><span class="cnt"></span></div>
+</div>
+<div class="side">
 <div class="cap"><div class="ttl"></div><div class="txt"></div><div class="note"></div></div>
+</div>
 </div>
 </section>
 
 <section id="uridyl">
 <h2>Zoom : de galactose-1-P à glucose-1-P</h2>
 <p class="src">Cours 5.2, diapositives 4 et 5</p>
-<div class="card">
+<div class="card split">
+<div class="fig">
 <svg width="100%" viewBox="40 70 600 255" role="img">
 <title>Mécanisme de la galactose-1-P uridyltransférase</title>
 <desc>Le galactose-1-P et l'UDP-glucose entrent dans l'enzyme. Le bloc uridine passe du glucose au galactose : il sort de l'UDP-galactose et du glucose-1-P, qui rejoint la glycolyse par la phosphoglucomutase.</desc>
@@ -471,14 +517,18 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 </svg>
 <div class="ps-leg" style="margin:4px 0 0"><span>Gal = galactose</span><span>Glc = glucose</span><span>P = phosphate</span><span>U = uridine</span><span>UDP = U + P + P</span></div>
 <div class="ctl"><button class="icon" id="uq-prev" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon" id="uq-play" aria-label="Pause"></button><button class="icon" id="uq-next" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><div class="dots" id="uq-dots"></div><span class="cnt" id="uq-cnt"></span></div>
+</div>
+<div class="side">
 <div class="cap"><div class="ttl" id="uq-ttl"></div><div class="txt" id="uq-txt"></div><div class="note" id="uq-note"></div></div>
+</div>
 </div>
 </section>
 
 <section id="mannose">
 <h2>Métabolisme du mannose</h2>
 <p class="src">Cours 5.2, diapositives 6 et 7</p>
-<div class="card">
+<div class="card split">
+<div class="fig">
 <svg width="100%" viewBox="0 0 680 490" role="img">
 <title>Voie hépatique du mannose</title>
 <desc>Le mannose, épimère en C2 du glucose, est absorbé avec le sodium, phosphorylé par l'hexokinase en mannose-6-P, puis isomérisé en fructose-6-P qui rejoint la glycolyse.</desc>
@@ -533,7 +583,10 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <g class="tok"></g>
 </svg>
 <div class="ctl"><button class="icon prev" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon play" aria-label="Pause"></button><button class="icon next" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><div class="dots"></div><span class="cnt"></span></div>
+</div>
+<div class="side">
 <div class="cap"><div class="ttl"></div><div class="txt"></div><div class="note"></div></div>
+</div>
 </div>
 </section>
 
@@ -542,7 +595,8 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <section id="glycolyse">
 <h2>Glycolyse : les 10 enzymes</h2>
 <p class="src">Cours synchrone 5, diapositives 4, 5, 11 et 13</p>
-<div class="card">
+<div class="card split" style="--side:380px">
+<div class="fig">
 <div class="modes gy-nav" id="gy-nav"></div>
 <svg width="100%" viewBox="0 0 680 325" role="img">
 <title>Glycolyse : structures et enzymes</title>
@@ -554,6 +608,8 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 </svg>
 <div class="ps-leg" style="margin:4px 0 0"><span><i class="gy-sw" style="background:var(--amber-f);border:.5px solid var(--amber-s)"></i>groupe modifié par l'enzyme</span><span><i class="gy-sw" style="background:#B4B2A9;border-radius:50%;width:12px"></i>phosphate transféré</span><span><i class="gy-sw" style="background:var(--purple-f);border:.5px solid var(--purple-s)"></i>enzyme</span></div>
 <div class="ctl" style="flex-wrap:wrap"><button class="icon" id="gy-prev" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon" id="gy-play" aria-label="Lecture"></button><button class="icon" id="gy-next" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><button id="gy-again">Rejouer</button><label class="gy-rm"><input type="checkbox" id="gy-rm"> Mode révision : cacher l'enzyme</label></div>
+</div>
+<div class="side">
 <div class="gy-ms"><div class="gy-m">ATP investis<b id="gy-mi">0</b></div><div class="gy-m">ATP produits (substrat)<b id="gy-mp">0</b></div><div class="gy-m">NADH<b id="gy-mn">0</b></div></div>
 <div class="cap">
 <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div class="ttl" id="gy-t"></div><button class="gy-revb" id="gy-rev" style="display:none">Révéler l'enzyme</button></div>
@@ -563,6 +619,7 @@ footer{margin-top:48px;font-size:13px;color:var(--muted)}
 <div class="note" id="gy-note"></div>
 <div class="note" id="gy-tip" style="color:var(--s)"></div>
 <div id="gy-patw" style="display:none"><div class="gy-pat" id="gy-pat"></div><div class="note">K kinase · I isomérase · A aldolase · D déshydrogénase · M mutase · E énolase</div></div>
+</div>
 </div>
 </div>
 </section>
