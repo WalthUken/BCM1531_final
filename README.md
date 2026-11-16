@@ -11,4 +11,8 @@ Animations pour réviser l'examen final de BCM 1531 (Introduction à la biochimi
 - **Glucides : métabolisme (cours 5.2)** : fructose, galactose, zoom sur la galactose-1-P uridyltransférase, mannose
 - **Glucides : glycolyse et cycle du citrate (cours synchrone 5)** : les 10 enzymes de la glycolyse sur les vraies structures, avec un mode révision, régulation par PFK-1, PFK-2 et le fructose-2,6-BP selon la glycémie, régulation de la pyruvate déshydrogénase par sa kinase et sa phosphatase
 
+## Navigation
+
+Menu façon boutique : un onglet par catégorie ouvre un panneau avec une carte par animation (survol sur ordinateur, toucher sur tablette), une loupe cherche dans toutes les animations (raccourci `/`), et sur téléphone un tiroir latéral regroupe les catégories en accordéon.
+
 Contenu tiré du plan de cours et des diapositives du cours. Outil de révision personnel.
