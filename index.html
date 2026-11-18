@@ -762,7 +762,7 @@ main{max-width:1180px}
 <rect id="pf-bn" class="lvl" x="170" y="350" width="230" height="12" rx="6" fill="#D85A30" style="transform:scaleX(.5)"/>
 </svg>
 <div class="ps-leg" style="margin:4px 0 0"><span>+ active</span><span>− inhibe</span><span>P = phosphorylée</span><span>F-2,6-pase = fructose-2,6-bisphosphatase</span><span>F-1,6-pase = fructose-1,6-bisphosphatase</span></div>
-<div class="ctl"><button class="icon" id="pf-prev" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon" id="pf-play" aria-label="Pause"></button><button class="icon" id="pf-next" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><div class="dots" id="pf-dots"></div><span class="cnt" id="pf-cnt"></span></div>
+<div class="ctl"><button class="icon" id="pf-prev" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon" id="pf-play" aria-label="Lecture"></button><button class="icon" id="pf-next" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><div class="dots" id="pf-dots"></div><span class="cnt" id="pf-cnt"></span></div>
 </div>
 <div class="side">
 <div class="cap"><div class="ttl" id="pf-ttl"></div><div class="txt" id="pf-txt"></div><div class="note" id="pf-note"></div></div>
@@ -843,7 +843,7 @@ function Anim(id,cfg){
 const root=document.getElementById(id),q=s=>root.querySelector(s),qa=s=>root.querySelectorAll(s);
 const L={};for(const k in cfg.S){let l=0;const p=cfg.S[k];for(let i=1;i<p.length;i++)l+=Math.hypot(p[i][0]-p[i-1][0],p[i][1]-p[i-1][1]);L[k]=l}
 function at(k,d){const p=cfg.S[k];for(let i=1;i<p.length;i++){const dx=p[i][0]-p[i-1][0],dy=p[i][1]-p[i-1][1],l=Math.hypot(dx,dy);if(d<=l){const f=d/l;return[p[i-1][0]+dx*f,p[i-1][1]+dy*f]}d-=l}return p[p.length-1]}
-const A={q,qa,mode:Object.keys(cfg.M)[0],step:0,toks:[],acc:0,spT:.9,stT:0,vis:true,play:!reduce,k:0,ft:0,ep:false};
+const A={q,qa,mode:Object.keys(cfg.M)[0],step:0,toks:[],acc:0,spT:.9,stT:0,vis:true,play:false,k:0,ft:0,ep:false};
 A.add=(s,col,w,r)=>{const c=document.createElementNS(NS,'circle');c.setAttribute('r',r||4);c.setAttribute('fill',col);c.style.opacity=0;q('.tok').appendChild(c);const t={c,s,d:0,w:w||0,col};A.toks.push(t);return t};
 A.pile=col=>{const P=cfg.pile;if(!P||A.acc>=P.max)return;const i=A.acc++,c=document.createElementNS(NS,'circle');c.setAttribute('cx',P.x+(i%P.cols)*P.dx);c.setAttribute('cy',P.y+Math.floor(i/P.cols)*P.dy);c.setAttribute('r','3');c.setAttribute('fill',col);q('.acc').appendChild(c);if(cfg.onPile)cfg.onPile(A)};
 A.tick=dt=>{const M=cfg.M[A.mode];A.spT+=dt;if(A.spT>=M.sp){A.spT=0;cfg.spawn(A)}A.stT+=dt;if(A.stT>=6.5)A.go(A.step+1);if(cfg.frame)cfg.frame(A,dt);for(const t of A.toks){if(t.w>0){t.w-=dt;t.c.style.opacity=0;continue}t.d+=SPD*dt;if(t.d>=L[t.s]){t.nw=0;const n=cfg.route(t,A);if(!n){t.dead=1;t.c.remove();continue}t.s=n;t.d=0;t.w=t.nw||.22;t.c.style.opacity=0;continue}const p=at(t.s,t.d);t.c.setAttribute('cx',p[0]);t.c.setAttribute('cy',p[1]);t.c.style.opacity=1}A.toks=A.toks.filter(t=>!t.dead)};
@@ -1049,7 +1049,7 @@ const S=[["Trois sucres dans la lumière","Le glucose, le fructose et le galacto
 ["GLUT2 : vers le sang","Les trois sucres quittent l'entérocyte par GLUT2, du côté du sang."],
 ["GLUT2 ailleurs","GLUT2 se trouve aussi dans le foie, les cellules B et le rein."],
 ["SGLT1 au rein","SGLT1 est aussi présent au rein : il réabsorbe le glucose et évite son excrétion dans l'urine."]];
-const st={G:0,F:0,L:0,R:0},o={play:!RMO,step:0,run:0,t:0},v=watch('transport');
+const st={G:0,F:0,L:0,R:0},o={play:false,step:0,run:0,t:0},v=watch('transport');
 const el=k=>$('tr-m'+k);const put=(k,p)=>el(k).setAttribute('transform','translate('+p[0]+','+p[1]+')');
 function anim(k,to,id){const from=st[k];if(to<=from||RMO){st[k]=to;put(k,W[k][to]);return;}
 let i=from,t0=null;function f(ts){if(id!==o.run)return;if(t0===null)t0=ts;const u=Math.min(1,(ts-t0)/650),e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2,a=W[k][i],b=W[k][i+1];put(k,[a[0]+(b[0]-a[0])*e,a[1]+(b[1]-a[1])*e]);
@@ -1066,7 +1066,7 @@ go(0);
 
 /* GLUT selon les tissus */
 (function(){
-const g=$('gt-pts'),P=[],o={play:!RMO,ins:false},v=watch('glut');
+const g=$('gt-pts'),P=[],o={play:false,ins:false},v=watch('glut');
 function setIns(x){o.ins=x;$('gt-on').classList.toggle('on',x);$('gt-off').classList.toggle('on',!x);
 const g4=$('gt-g4');g4.setAttribute('class',x?'c-teal':'c-gray');g4.style.opacity=x?1:.55;
 $('gt-txt').textContent=x?"Avec insuline, GLUT4 fait entrer le glucose dans le muscle squelettique, le muscle cardiaque et le tissu adipeux. GLUT1 et GLUT3 continuent comme avant.":"Sans insuline, GLUT1 et GLUT3 assurent le transport basal du glucose. GLUT4 est insulino-dépendant : il ne fait pas entrer de glucose.";}
@@ -1101,7 +1101,7 @@ const K={aer:{n:'Aérobiose',cond:'Avec O₂',out:'CO₂ + H₂O',c:LG,cap:"Avec
 hyp:{n:'Hypoxie ou ischémie',cond:'Sans O₂',out:'Lactate',c:PK,cap:"Sans O₂, le pyruvate donne du lactate : les tissus s'adaptent ainsi à l'hypoxie ou à l'ischémie. Le cœur, lui, est adapté au travail en aérobiose et résiste peu à l'ischémie, qui se traduit par la mort tissulaire."},
 lev:{n:'Levures, microorganismes',cond:'Sans O₂',out:'Éthanol',c:BL,cap:"Sans O₂, les levures et les microorganismes produisent de l'éthanol."},
 gr:{n:'Globule rouge',cond:'Avec O₂, sans mitochondries',out:'Lactate',c:PK,cap:"Le globule rouge produit du lactate même en aérobiose : il n'a pas de mitochondries, qui contiennent les enzymes de l'oxydation aérobie du pyruvate."}};
-let cur='gly',cnd='aer',t=0;const tok=$('vo-tok'),v=watch('voies'),o={play:!RMO};
+let cur='gly',cnd='aer',t=0;const tok=$('vo-tok'),v=watch('voies'),o={play:false};
 function cluster(id,cx,cy,show){const g=$(id);g.innerHTML='';if(!show)return;const pts=[[0,0],[-14,-6],[14,-6],[-26,-2],[26,-2],[-8,8],[8,8],[-20,8],[20,8]];
 g.innerHTML='<line x1="'+(cx-26)+'" y1="'+(cy-2)+'" x2="'+(cx+26)+'" y2="'+(cy-2)+'" stroke="'+AM+'" stroke-width="1.5"/>'+pts.map(p=>'<circle cx="'+(cx+p[0])+'" cy="'+(cy+p[1])+'" r="5" fill="'+AM+'"/>').join('');}
 function draw(){const w=V[cur],G=cur==='gly';t=0;
@@ -1124,7 +1124,7 @@ draw();
 
 /* Krebs, pentoses, glyoxylate */
 (function(){
-const AM='#EF9F27',PU='#7F77DD',LG='#B4B2A9',TE='#1D9E75';let cur='krebs',loc='euc',t=0;const v=watch('cycles'),o={play:!RMO};
+const AM='#EF9F27',PU='#7F77DD',LG='#B4B2A9',TE='#1D9E75';let cur='krebs',loc='euc',t=0;const v=watch('cycles'),o={play:false};
 const box=(cls,x,y,w,h,t1,t2)=>'<g class="'+cls+'"><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="8" stroke-width="0.5"/>'+(t2?'<text class="th" x="'+(x+w/2)+'" y="'+(y+h/2-9)+'" text-anchor="middle" dominant-baseline="central">'+t1+'</text><text class="ts" x="'+(x+w/2)+'" y="'+(y+h/2+10)+'" text-anchor="middle" dominant-baseline="central">'+t2+'</text>':'<text class="th" x="'+(x+w/2)+'" y="'+(y+h/2)+'" text-anchor="middle" dominant-baseline="central">'+t1+'</text>')+'</g>';
 const ar=(x1,y1,x2,y2)=>'<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" class="arr" marker-end="url(#arrow-c)"/>';
 const tx=(x,y,s,a,c)=>'<text class="'+(c||'ts')+'" x="'+x+'" y="'+y+'" text-anchor="'+(a||'middle')+'">'+s+'</text>';
@@ -1173,7 +1173,7 @@ t:"Deux produits",d:"Il se forme l'UDP-galactose, un intermédiaire très import
 t:"Vers la glycolyse",d:"La phosphoglucomutase convertit le glucose-1-P en glucose-6-P, ce qui permet de rejoindre la glycolyse.",n:""},
 {gal:[520,140],glc:[90,190],ump:[578,140],vGlc:1,bGal:1,bGlc:0,epiC:1,lGal:['UDP-glucose',561,114],lGlc:['Glucose-1-P',102,160],enz:.3,gly:1,cross:0,y1:212,sub:0,epi:1,
 t:"Boucler le cycle",d:"Une épimérase reconvertit l'UDP-galactose en UDP-glucose, en inversant un seul OH (celui du carbone 4). Ce nouvel UDP-glucose peut reprendre un galactose-1-P dans l'enzyme : au bilan, chaque galactose-1-P finit en glucose-1-P.",n:"Complément hors diapo : ni la diapositive ni la capsule ne nomment cette épimérase."}];
-const cur={gal:ST[0].gal.slice(),glc:ST[0].glc.slice(),ump:ST[0].ump.slice()},o={play:!RMO,step:0,t:0,run:0};
+const cur={gal:ST[0].gal.slice(),glc:ST[0].glc.slice(),ump:ST[0].ump.slice()},o={play:false,step:0,t:0,run:0};
 const put=(k,p)=>$(k).setAttribute('transform','translate('+p[0]+','+p[1]+')');
 function bonds(){const g=$('bGal'),c=$('bGlc');g.setAttribute('x1',cur.gal[0]+43);g.setAttribute('y1',cur.gal[1]);g.setAttribute('x2',cur.ump[0]-11);g.setAttribute('y2',cur.ump[1]);
 c.setAttribute('x1',cur.glc[0]+43);c.setAttribute('y1',cur.glc[1]);c.setAttribute('x2',cur.ump[0]-11);c.setAttribute('y2',cur.ump[1]);}
@@ -1391,7 +1391,7 @@ g('fbp',s.fbp==='a'?'c-coral':'c-gray',s.fbp==='i'?.35:1);
 ['d1','d2'].forEach(id=>l(id,s.flow==='down'?T:G,s.flow==='up'?.3:1,s.flow==='down'));
 ['u1','u2'].forEach(id=>l(id,s.flow==='up'?C:G,s.flow==='down'?.3:1,s.flow==='up'));
 $('bg').style.transform='scaleX('+s.gly+')';$('bn').style.transform='scaleX('+s.neo+')';}
-const o={play:!RMO,i:0,t:0};
+const o={play:false,i:0,t:0};
 function go(i){i=(i+ST.length)%ST.length;o.i=i;o.t=0;const S=ST[i],b=i<3?0:3,k=i-b;apply(S);
 $('H').classList.toggle('on',b===0);$('B').classList.toggle('on',b===3);
 $('ttl').textContent=S.t;$('txt').textContent=S.d;$('note').textContent=S.n;$('cnt').textContent='Étape '+(k+1)+' / 3';
