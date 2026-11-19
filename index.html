@@ -163,6 +163,7 @@ html.mg-lock{overflow:hidden}
 .mg-burger,.mg-crumb{display:flex}
 .mg-panels{display:none}
 }
+@media (min-width:720px) and (max-width:860px){.mg-tab{padding:0 8px}.mg-brand{margin-right:6px}}
 @media (prefers-reduced-motion:reduce){.mg-panel{animation:none}.mg-drawer,.mg-drawer.open,.mg-veil{transition:none}}
 .tr-hl{transition:opacity .4s}
 #glycolyse{--blue-f:#0C447C;--blue-s:#85B7EB;--blue-t:#B5D4F4}
@@ -187,6 +188,8 @@ html.mg-lock{overflow:hidden}
 .ph-fl{stroke-dasharray:6 6}
 @media (prefers-reduced-motion:no-preference){.ph-fl{animation:ph-fl .8s linear infinite}}
 @keyframes ph-fl{to{stroke-dashoffset:-12}}
+.sq-n{transition:transform .8s ease,opacity .5s ease}
+@media (prefers-reduced-motion:reduce){.sq-n{transition:none}}
 /* Grand écran : animation et commandes à gauche, texte à droite, la case tient dans la fenêtre */
 @media (min-width:980px){
 main{max-width:1180px}
@@ -834,6 +837,49 @@ main{max-width:1180px}
 </div>
 </section>
 
+<p class="catg" id="cat-glycogene">Glycogène : synthèse et dégradation (cours synchrone 6)</p>
+
+<section id="glycogenese">
+<h2>Glycogénogenèse : du glucose au glycogène</h2>
+<p class="src">Cours synchrone 6, diapositives 7 et 8</p>
+<div class="card split">
+<div class="fig">
+<div class="modes gy-nav" id="gg-modes"></div>
+<svg id="gg-svg" width="100%" viewBox="0 0 680 345" role="img">
+<title>Glycogénogenèse</title>
+<desc>Le glucose est phosphorylé en glucose 6-phosphate puis en glucose 1-phosphate, activé en UDP-glucose, fixé sur la tyrosine de la glycogénine, allongé en alpha 1-4 par la glycogène synthase, puis ramifié en alpha 1-6 par l'enzyme branchante. L'insuline et le glucagon règlent la synthase par l'AMPc.</desc>
+<defs><marker id="arrow-gg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+</svg>
+<div class="ps-leg" style="margin:4px 0 0"><span><i class="gy-sw" style="background:var(--teal-f);border:.5px solid var(--teal-s);border-radius:50%;width:12px"></i>glucose</span><span><i class="gy-sw" style="background:var(--amber-f);border:.5px solid var(--amber-s);border-radius:50%;width:12px"></i>phosphates, ATP</span><span><i class="gy-sw" style="background:var(--purple-f);border:.5px solid var(--purple-s)"></i>nucléotides d'uridine</span><span><i class="gy-sw" style="background:var(--coral-f);border:.5px solid var(--coral-s)"></i>glycogénine, hormones</span><span><i class="gy-sw" style="background:var(--gray-f);border:.5px solid var(--gray-s)"></i>enzymes</span></div>
+<div class="ctl"><button class="icon" id="gg-prev" aria-label="Image précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon" id="gg-play" aria-label="Lecture"></button><button class="icon" id="gg-next" aria-label="Image suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><div class="dots" id="gg-dots"></div><span class="cnt" id="gg-cnt" style="white-space:nowrap"></span></div>
+</div>
+<div class="side">
+<div class="cap"><div class="ttl" id="gg-ttl"></div><div class="txt" id="gg-txt"></div><div class="note" id="gg-note"></div></div>
+<label class="gy-rm" style="margin:16px 0 0;justify-content:flex-start"><input type="checkbox" id="gg-hide"> Mode révision : cacher les enzymes</label>
+</div>
+</div>
+</section>
+
+<section id="glycogenolyse">
+<h2>Glycogénolyse : phosphorylase et débranchement</h2>
+<p class="src">Cours synchrone 6, diapositive 9</p>
+<div class="card split">
+<div class="fig">
+<div class="modes gy-nav" id="gl-modes"></div>
+<svg id="gl-svg" width="100%" viewBox="0 0 680 370" role="img">
+<title>Glycogénolyse</title>
+<desc>La glycogène phosphorylase libère des glucose 1-phosphate à partir des extrémités non réductrices et s'arrête à 4 résidus d'un embranchement (dextrine limite). La glucanne transférase déplace 3 sucres de la branche, puis le site glycosidase de l'enzyme débranchante hydrolyse la liaison alpha 1-6 et libère un glucose. La phosphorylase reprend ensuite.</desc>
+</svg>
+<div class="ps-leg" style="margin:4px 0 0"><span><i class="gy-sw" style="background:var(--teal-f);border:.5px solid var(--teal-s);border-radius:50%;width:12px"></i>chaîne A</span><span><i class="gy-sw" style="background:var(--coral-f);border:.5px solid var(--coral-s);border-radius:50%;width:12px"></i>branche B</span><span><i class="gy-sw" style="background:var(--amber-f);border:.5px solid var(--amber-s);border-radius:50%;width:12px"></i>phosphate, résidus visés</span><span><i class="gy-sw" style="background:var(--gray-f);border:.5px solid var(--gray-s)"></i>enzymes</span></div>
+<div class="ctl"><button class="icon" id="gl-prev" aria-label="Image précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon" id="gl-play" aria-label="Lecture"></button><button class="icon" id="gl-next" aria-label="Image suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><div class="dots" id="gl-dots"></div><span class="cnt" id="gl-cnt" style="white-space:nowrap"></span></div>
+</div>
+<div class="side">
+<div class="cap"><div class="ttl" id="gl-ttl"></div><div class="txt" id="gl-txt"></div><div class="note" id="gl-note"></div></div>
+<label class="gy-rm" style="margin:16px 0 0;justify-content:flex-start"><input type="checkbox" id="gl-hide"> Mode révision : cacher les enzymes</label>
+</div>
+</div>
+</section>
+
 <footer>Contenu tiré du plan de cours et des diapositives du cours. Outil de révision personnel.</footer>
 </main>
 <script>
@@ -1439,6 +1485,163 @@ render();
 })();
 </script>
 <script>
+/* Glycogène (cours synchrone 6) : glycogénogenèse (gg-) et glycogénolyse (gl-).
+   Chaque image est une liste de noeuds à clé ; un noeud qui garde sa clé glisse vers sa nouvelle place. */
+(function(){
+const NS='http://www.w3.org/2000/svg';
+const ICO={pause:'<svg viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>',play:'<svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>'};
+const c=(k,h)=>`<g class="c-${k}">${h}</g>`;
+const R=r=>`<rect x="${-r}" y="${-r}" width="${2*r}" height="${2*r}" rx="${r}" stroke-width="0.5"/>`;
+const tx=(s,x,y,st)=>`<text class="ts" x="${x||0}" y="${y||0}" text-anchor="middle" dominant-baseline="central"${st?' style="font-size:11px"':''}>${s}</text>`;
+function inner(n,pre,hide){
+ switch(n.t){
+ case 'glc':return c(n.c==='hl'?'amber':'teal',R(n.big?16:11)+tx(n.big?'Glc':'G',0,0,1));
+ case 'p':return c('amber',R(8)+tx('P',0,0,1));
+ case 'pill':{const l=(n.e&&hide)?'?':n.l,w=Math.round(l.length*6.6+20);return c(n.c.slice(2),`<rect x="${-w/2}" y="-11" width="${w}" height="22" rx="4" stroke-width="0.5"/>`+tx(l));}
+ case 'gn':return c('coral',`<rect x="-70" y="-22" width="140" height="44" rx="22" stroke-width="0.5"/>`+tx('Glycogénine',-12,7)+tx('Tyr',35,-10,1));
+ case 'txt':return `<text class="ts" text-anchor="${n.a||'start'}" dominant-baseline="central">${n.l}</text>`;
+ case 'ln':return `<line x1="0" y1="0" x2="${n.dx}" y2="${n.dy}" style="stroke:var(--s);fill:none" stroke-width="1"${n.ar?` stroke-dasharray="4 3" marker-end="url(#arrow-${pre})"`:''}/>`;
+ case 'res':return (n.bl?'<line x1="-16" y1="0" x2="-10" y2="0" style="stroke:var(--s)" stroke-width="1"/>':'')+c(n.c,R(10));
+ case 'g1p':return c(n.c,R(9))+c('amber',`<rect x="2" y="-16" width="14" height="14" rx="7" stroke-width="0.5"/>`+tx('P',9,-9,1));
+ }}
+function seq(pre,S){
+ const $=id=>document.getElementById(pre+'-'+id),svg=$('svg'),hide=$('hide'),live={},kill={};
+ function clearAll(){for(const id in live){clearTimeout(kill[id]);live[id].remove();delete live[id];delete kill[id];}}
+ function render(nodes){
+  const seen=new Set();
+  nodes.forEach(n=>{
+   seen.add(n.id);if(kill[n.id]){clearTimeout(kill[n.id]);delete kill[n.id];}
+   const html=inner(n,pre,hide.checked),tf=`translate(${n.x}px,${n.y}px)`;let el=live[n.id];
+   if(!el){el=document.createElementNS(NS,'g');el.setAttribute('class','sq-n');el.style.transition='none';el.style.opacity=0;el.style.transform=tf;svg.appendChild(el);live[n.id]=el;el.getBoundingClientRect();el.style.transition='';}
+   if(el._h!==html){el.innerHTML=html;el._h=html;}
+   el.style.transform=tf;el.style.opacity=n.o??1;});
+  for(const id in live)if(!seen.has(id)&&!kill[id]){const el=live[id];el.style.opacity=0;kill[id]=setTimeout(()=>{el.remove();delete live[id];delete kill[id];},550);}
+ }
+ const o={play:false,si:0,fi:0,t:0},M=$('modes');
+ S.forEach((s,k)=>{const b=document.createElement('button');b.className='md';b.textContent=s.b;b.onclick=()=>go(k,0,true);M.appendChild(b);});
+ function go(si,fi,clear){
+  o.si=si;o.fi=fi;o.t=0;if(clear)clearAll();
+  const st=S[si],f=st.f[fi];render(f.n);
+  $('ttl').textContent=st.t;$('txt').textContent=f.d;$('note').textContent=f.no||'';
+  [...M.children].forEach((b,k)=>b.classList.toggle('on',k===si));
+  const D=$('dots');D.innerHTML='';st.f.forEach((_,j)=>{const d=document.createElement('span');d.className='dot'+(j===fi?' on':'');d.onclick=()=>go(si,j,false);D.appendChild(d);});
+  $('cnt').textContent='Image '+(fi+1)+' / '+st.f.length;}
+ function step(d){let si=o.si,fi=o.fi+d,clear=false;
+  if(fi>=S[si].f.length){si=(si+1)%S.length;fi=0;clear=si===0;}
+  if(fi<0){si=(si-1+S.length)%S.length;fi=S[si].f.length-1;clear=true;}
+  go(si,fi,clear);}
+ $('prev').onclick=()=>step(-1);$('next').onclick=()=>step(1);
+ hide.onchange=()=>render(S[o.si].f[o.fi].n);
+ const pb=$('play');const setP=p=>{o.play=p;if(o.w)o.w();pb.innerHTML=p?ICO.pause:ICO.play;pb.setAttribute('aria-label',p?'Pause':'Lecture')};pb.onclick=()=>setP(!o.play);setP(o.play);
+ const v={v:true};if('IntersectionObserver' in window)new IntersectionObserver(e=>{v.v=e[0].isIntersecting;if(o.w)o.w()}).observe(svg.closest('section'));
+ o.w=v.w=Gate(()=>o.play&&v.v,dt=>{o.t+=dt;const f=S[o.si].f[o.fi];if(o.t>=(f.ms||2.2+f.d.length*.022))step(1);});o.w();
+ go(0,0,true);
+}
+const P=(id,x,y,l,c,e)=>({id,t:'pill',x,y,l,c,e});
+const T=(id,x,y,l,a)=>({id,t:'txt',x,y,l,a});
+const L=(id,x,y,dx,dy,ar,o)=>({id,t:'ln',x,y,dx,dy,ar,o});
+
+/* Glycogénogenèse, diapositives 7 et 8 */
+(function(){
+const X=i=>405+23*i,Y=262,BY=222;
+const G=(id,x,y,big,c)=>({id,t:'glc',x,y,big,c});
+const ph=(id,x,y)=>({id,t:'p',x,y});
+const GN=[{id:'gn',t:'gn',x:370,y:300},L('tyb',405,281,0,-7)];
+const rid=i=>i?'r'+i:'g';
+const chain=(n,cf)=>Array.from({length:n},(_,i)=>G(rid(i),X(i),Y,0,cf&&cf(i)));
+const ENZ=l=>P('enz',190,50,l,'c-gray',1);
+const A14=T('a14',497,294,'liaisons α(1→4)','middle');
+const K1='Glucokinase (foie) · hexokinase (muscle)';
+const br=cl=>[5,6,7,8,9,10].map(i=>G('r'+i,X(2)+23*(i-5),BY,0,cl));
+const A16=[L('a16b',X(2),250,0,-16),T('a16',X(2)-14,242,'α(1→6)','end')];
+const glyco=full=>[...GN,...chain(5),G('m5',X(5),Y),...(full?[G('m6',X(6),Y)]:[]),...br(),G('b6',X(2)+138,BY),...(full?[G('b7',X(2)+161,BY)]:[]),...A16];
+const reg=s=>[P('ins',80,80,'Insuline',s?'c-coral':'c-gray'),P('glu',240,80,'Glucagon · adrénaline',s?'c-gray':'c-coral'),P('ampc',160,160,s?'AMPc bas':'AMPc élevé',s?'c-gray':'c-amber'),P('gs',100,250,'Glycogène synthase',s?'c-teal':'c-gray',1),P('gp',270,250,'Glycogène phosphorylase',s?'c-gray':'c-amber',1),L('l1',85,92,58,55,1,s?1:.35),T('s1',100,128,'−','middle'),L('l2',235,92,-58,55,1,s?.35:1),T('s2',222,128,'+','middle'),L('l3',150,172,-38,64,1),T('s3',112,208,'−','middle'),L('l4',172,172,80,64,1),T('s4',236,206,'+','middle')];
+const UDPG=(gid,pid,uid)=>[G(gid,150,170,1),ph(pid,133,153),P(uid,95,128,'UMP','c-purple')];
+const NUMP="Complément hors diapo : l'UTP perd 2 phosphates (le PPi), il reste l'UMP. Le phosphate du glucose 1-phosphate reste en place et forme, avec l'UMP, l'UDP de l'UDPGlc.";
+seq('gg',[
+{b:'1. Phosphorylation',t:'1. Phosphorylation du glucose',f:[
+{n:[...GN,ENZ(K1),G('g',150,170,1),P('atp',55,110,'ATP','c-amber'),ph('p',92,110),T('lab',150,226,'Glucose','middle')],d:"Le glucose entre dans la cellule (foie ou muscle). Il doit d'abord être phosphorylé."},
+{n:[...GN,ENZ(K1),G('g',150,170,1),P('atp',55,110,'ADP','c-amber'),ph('p',167,187),T('cpos',182,201,'C6'),T('lab',150,226,'Glucose 6-phosphate','middle')],d:"La glucokinase (foie) ou l'hexokinase (muscle), avec Mg²⁺, transfère un phosphate de l'ATP sur le C6 : glucose 6-phosphate."},
+{n:[...GN,ENZ('Phosphoglucomutase'),G('g',150,170,1),ph('p',133,153),T('cpos',118,146,'C1','end'),T('lab',150,226,'Glucose 1-phosphate','middle')],d:"La phosphoglucomutase (Mg²⁺) déplace le phosphate du C6 vers le C1 : glucose 1-phosphate. Le glucose 6-phosphate peut aussi partir vers la glycolyse ou la voie des pentoses phosphates."}]},
+{b:'2. Activation',t:'2. Activation',f:[
+{n:[...GN,ENZ('UDPGlc pyrophosphorylase'),G('g',150,170,1),ph('p',133,153),T('lab',150,226,'Glucose 1-phosphate','middle'),P('utp',70,270,'UTP','c-purple')],d:"Le glucose 1-phosphate va réagir avec l'UTP (uridine triphosphate)."},
+{n:[...GN,ENZ('UDPGlc pyrophosphorylase'),G('g',150,170,1),ph('p',133,153),T('lab',150,226,'Glucose 1-phosphate','middle'),P('utp',95,128,'UTP','c-purple')],d:"L'UDPGlc pyrophosphorylase rapproche l'UTP du phosphate en C1."},
+{n:[...GN,ENZ('UDPGlc pyrophosphorylase'),G('g',150,170,1),ph('p',133,153),P('utp',95,128,'UMP','c-purple'),P('ppi',55,92,'PPi','c-amber'),T('lab',150,226,'UDP-glucose (UDPGlc)','middle')],d:"Il se forme l'UDP-glucose (UDPGlc), un nucléotide activé, et un pyrophosphate (PPi) est libéré.",no:NUMP},
+{n:[...GN,ENZ('UDPGlc pyrophosphorylase'),G('g',150,170,1),ph('p',133,153),P('utp',95,128,'UMP','c-purple'),P('ppi',70,278,'PPi','c-amber'),P('enz2',190,320,'Pyrophosphatase inorganique','c-gray',1),T('lab',150,226,'UDP-glucose (UDPGlc)','middle')],d:"La pyrophosphatase inorganique prend en charge le PPi, qui porte 2 phosphates."},
+{n:[...GN,ENZ('UDPGlc pyrophosphorylase'),G('g',150,170,1),ph('p',133,153),P('utp',95,128,'UMP','c-purple'),P('pi1',50,280,'Pi','c-amber'),P('pi2',100,280,'Pi','c-amber'),P('enz2',190,320,'Pyrophosphatase inorganique','c-gray',1),T('lab',150,226,'UDP-glucose (UDPGlc)','middle')],d:"Elle l'hydrolyse en 2 Pi. L'UDPGlc est prêt à donner son glucose."}]},
+{b:'3. Amorce',t:'3. Amorce sur la glycogénine',f:[
+{n:[...GN,ENZ('Glycogénine'),...UDPG('g','p','utp'),T('lab',150,226,'UDPGlc','middle')],d:"L'UDPGlc apporte le premier glucose à la glycogénine, une protéine."},
+{n:[...GN,ENZ('Glycogénine'),G('g',X(0),Y),P('utp',230,205,'UMP','c-purple'),ph('p',262,205)],d:"L'UDPGlc glucosyle la glycogénine sur un résidu tyrosine spécifique. L'UDP (UMP et son phosphate) est libéré."},
+{n:[...GN,ENZ('Glycogénine'),...chain(3),A14],d:"La glycogénine transfère ensuite des résidus de glucose de l'UDPGlc, attachés en α(1→4).",ms:1.6},
+{n:[...GN,ENZ('Glycogénine'),...chain(6),A14],d:"La glycogénine transfère ensuite des résidus de glucose de l'UDPGlc, attachés en α(1→4).",ms:1.6},
+{n:[...GN,ENZ('Glycogénine'),...chain(8),A14],d:"7 résidus transférés : c'est l'amorce du glycogène, qui servira de substrat à la glycogène synthase. Une molécule de glycogène ne possède qu'une glycogénine.",no:"Les notes disent que la glycogénine transfère « 7 résidus » : le dessin montre le glucose fixé sur la tyrosine, plus 7 résidus transférés."}]},
+{b:'4. Élongation',t:'4. Élongation',f:[
+{n:[...GN,ENZ('Glycogène synthase'),...chain(8),A14,...UDPG('r8','p2','u2'),T('lab',150,226,'UDPGlc','middle'),T('cnt',640,322,'8 résidus','end'),T('tip',X(7)+11,236,'Extrémité non réductrice','end')],d:"La glycogène synthase prend un nouvel UDPGlc."},
+{n:[...GN,ENZ('Glycogène synthase'),...chain(9),A14,P('u2',230,215,'UMP','c-purple'),ph('p2',262,215),T('cnt',640,322,'9 résidus','end'),T('tip',X(8)+11,236,'C1 du glucose → C4 du dernier résidu','end')],d:"Elle lie le C1 du glucose au C4 du dernier résidu de l'amorce (extrémité non réductrice) : nouvelle liaison α(1→4). L'UDP est libéré."},
+{n:[...GN,ENZ('Glycogène synthase'),...chain(9),A14,P('u2',115,280,'UDP','c-purple'),P('atp2',55,280,'ATP','c-amber'),P('enz2',150,320,'Nucléoside diphosphokinase','c-gray',1),T('cnt',640,322,'9 résidus','end'),T('tip',X(8)+11,236,'Extrémité non réductrice','end')],d:"La nucléoside diphosphokinase recharge l'UDP avec un phosphate de l'ATP."},
+{n:[...GN,ENZ('Glycogène synthase'),...chain(9),A14,P('u2',115,280,'UTP','c-purple'),P('atp2',55,280,'ADP','c-amber'),P('enz2',150,320,'Nucléoside diphosphokinase','c-gray',1),T('cnt',640,322,'9 résidus','end'),T('tip',X(8)+11,236,'Extrémité non réductrice','end')],d:"UDP + ATP → UTP + ADP. L'UTP resservira à l'activation (étape 2)."},
+{n:[...GN,ENZ('Glycogène synthase'),...chain(10),A14,T('cnt',640,322,'10 résidus','end'),T('tip',X(9)+11,236,'Extrémité non réductrice','end')],d:"La chaîne s'allonge d'un glucose à la fois.",ms:1.8},
+{n:[...GN,ENZ('Glycogène synthase'),...chain(11),A14,T('cnt',640,322,'11 résidus','end'),T('tip',X(10)+11,236,'Extrémité non réductrice','end')],d:"11 résidus : la chaîne est assez longue pour être ramifiée."}]},
+{b:'5. Branchement',t:'5. Branchement',f:[
+{n:[...GN,ENZ('Enzyme branchante'),...chain(11),A14,T('cnt',640,322,'11 résidus','end')],d:"Lorsque la chaîne atteint 11 résidus, l'enzyme branchante entre en jeu."},
+{n:[...GN,ENZ('Enzyme branchante'),...chain(11,i=>i>=5?'hl':0),A14,T('cnt',640,322,'11 résidus','end'),T('seg',X(7.5),236,'au moins 6 résidus','middle')],d:"Elle détache une partie de la chaîne α(1→4), au moins 6 résidus, du côté de l'extrémité non réductrice."},
+{n:[...GN,ENZ('Enzyme branchante'),...chain(5),...br('hl'),...A16,A14],d:"Elle la transfère sur une chaîne voisine en formant une liaison α(1→6), à au moins 4 résidus du point de branchement le plus proche.",no:"La diapositive dit « à une chaîne voisine » : le dessin n'a qu'une chaîne, le segment s'y rattache donc plus en amont."},
+{n:[ENZ('Glycogène synthase'),...glyco(1),A14,T('tip',640,192,'2 extrémités non réductrices','end')],d:"La glycogène synthase allonge maintenant deux extrémités non réductrices. La ramification accroît aussi la solubilité du glycogène."}]},
+{b:'Régulation',t:'Régulation hormonale',f:[
+{n:[...glyco(1),...reg(1)],d:"Insuline : elle diminue l'AMPc. La glycogène synthase n'est plus inhibée, le glycogène se forme."},
+{n:[...glyco(0),...reg(0)],d:"Glucagon ou adrénaline : l'AMPc augmente. Il inhibe la glycogène synthase et active la glycogène phosphorylase, qui raccourcit le glycogène par ses extrémités non réductrices."}]}]);
+})();
+
+/* Glycogénolyse, diapositive 9 */
+(function(){
+const X=i=>70+26*i,YA=250,YB=190;
+const ENZ=l=>P('enz',340,60,l,'c-gray',1);
+let A=[...Array(13)].map((_,i)=>'a'+i),B=[...Array(8)].map((_,j)=>'b'+j),tray=[],free=null,a16=true,hl=new Set(),tips=true;
+const base=id=>id[0]==='a'?'teal':'coral',col=id=>hl.has(id)?'amber':base(id);
+function snap(extra){
+ const n=[];
+ A.forEach((id,i)=>n.push({id,t:'res',x:X(i),y:YA,c:col(id),bl:1}));
+ B.forEach((id,j)=>n.push({id,t:'res',x:X(4+j),y:YB,c:col(id),bl:j>0}));
+ if(a16){n.push(L('a16l',X(4),239,0,-38));n.push(T('a16t',184,220,'α(1→6)'));}
+ tray.forEach((id,k)=>n.push({id,t:'g1p',x:462+(k%8)*23,y:320+Math.floor(k/8)*28,c:base(id)}));
+ if(tray.length)n.push(T('trl',452,292,'Glucose 1-phosphate : '+tray.length));
+ if(free){n.push({id:free,t:'res',x:380,y:322,c:base(free)});n.push(T('frl',380,348,'Glucose libre','middle'));}
+ if(tips&&A.length)n.push(T('tA',X(A.length-1)+18,YA,'extrémité non réductrice'));
+ if(tips&&B.length)n.push(T('tB',X(3+B.length)+18,YB,'extrémité non réductrice'));
+ n.push(T('red',58,296,"← vers l'extrémité réductrice"));
+ return n.concat(extra||[]);
+}
+const S=[];let cur;
+const stp=(b,t)=>{cur={b,t,f:[]};S.push(cur);};
+const fr=(d,extra,ms,no)=>cur.f.push({n:snap(extra),d,ms,no});
+const takeA=()=>tray.push(A.pop()),takeB=()=>tray.push(B.pop());
+const PH='Glycogène phosphorylase',GT='Glucanne transférase',DB='Enzyme débranchante (glycosidase)';
+stp('1. Phosphorylase','1. Glycogène phosphorylase');
+fr("Le glycogène présente des extrémités non réductrices. La glycogène phosphorylase les attaque.",[ENZ(PH)]);
+fr("Elle ajoute un groupement phosphate (Pi) à l'extrémité 1-4 non réduite de la chaîne 1-4.",[ENZ(PH),P('pi',X(12)+30,222,'Pi','c-amber')]);
+takeA();fr("Ceci génère un glucose 1-phosphate et raccourcit le glycogène d'un résidu de sucre.",[ENZ(PH)]);
+const RR="Elle recommence, un résidu à la fois, sur chaque extrémité non réductrice.";
+for(let k=0;k<3;k++){takeB();takeA();fr(RR,[ENZ(PH)],1.5);}
+takeB();fr("L'enzyme s'arrête à 4 résidus d'un embranchement : c'est la dextrine limite.",[ENZ(PH),T('n4a',X(6.5),272,'4 résidus','middle'),T('n4b',X(5.5),166,'4 résidus','middle')]);
+stp('2. Glucanne transférase','2. Glucanne transférase');tips=false;hl=new Set(['b1','b2','b3']);
+fr("Lorsque la chaîne contient 4 résidus de chaque côté d'une ramification 1-6, la glucanne transférase prend 3 des 4 sucres de la branche.",[ENZ(GT)]);
+A.push(...B.splice(1,3));
+fr("Elle transfère cette chaîne de 3 sucres à une autre ramification : ils s'ajoutent au bout de l'autre chaîne, en α(1→4).",[ENZ(GT)],0,"La diapositive dit « à une autre ramification 1-6 » : sur la figure, les 3 sucres vont au bout de l'autre chaîne du même embranchement.");
+hl=new Set(['b0']);
+fr("Ceci expose le point de ramification 1-6 : il ne reste qu'un glucose sur la branche, lié en α(1→6).",[ENZ(GT)]);
+stp('3. Débranchement','3. Enzyme débranchante');
+fr("L'enzyme de débranchement a 2 sites catalytiques : la glucanne transférase (étape 2) et une glycosidase.",[ENZ(DB),P('h2o',128,220,'H₂O','c-purple')]);
+B=[];free='b0';a16=false;hl=new Set();
+fr("La glycosidase hydrolyse la liaison glycosidique 1-6 et libère le glucose : un glucose libre, pas un glucose 1-phosphate. On vient d'enlever une ramification au glycogène.",[ENZ(DB)]);
+stp('4. Reprise','4. La phosphorylase reprend');tips=true;
+fr("La phosphorylase peut maintenant s'acharner sur cette chaîne, qui n'a plus de ramification.",[ENZ(PH)]);
+for(let k=0;k<4;k++){takeA();fr("Chaque résidu enlevé donne un glucose 1-phosphate.",[ENZ(PH)],1.5);}
+fr("Bilan : 12 glucose 1-phosphate (liaisons α(1→4), par la phosphorylase) et 1 glucose libre (liaison α(1→6), par l'enzyme débranchante).",[ENZ(PH)],0,"Le compte vaut pour le fragment dessiné, ce n'est pas une proportion donnée par le cours.");
+seq('gl',S);
+})();
+})();
+</script>
+<script>
 /* Menu façon boutique : un onglet par catégorie, panneau déroulant au survol, recherche, tiroir sur mobile.
    Une nouvelle section = une entrée dans MENU (son id, un titre court, une phrase). */
 (function(){
@@ -1459,7 +1662,12 @@ const MENU=[
  {id:'glycolyse',t:'Glycolyse',d:'Les 10 enzymes sur les vraies structures, avec un mode révision',
   k:'hexokinase glucokinase phosphoglucose isomérase phosphofructokinase PFK1 aldolase triose phosphate isomérase glycéraldéhyde-3-phosphate déshydrogénase phosphoglycérate kinase phosphoglycérate mutase énolase pyruvate kinase'},
  {id:'pfk',t:'PFK-1 et PFK-2',d:'Le fructose-2,6-BP en glycémie haute et en jeûne'},
- {id:'pdh',t:'PDH',d:'Pyruvate déshydrogénase : sa kinase, sa phosphatase et leurs régulateurs'}]}];
+ {id:'pdh',t:'PDH',d:'Pyruvate déshydrogénase : sa kinase, sa phosphatase et leurs régulateurs'}]},
+{id:'glycogene',tab:'Synchrone 6',titre:'Glycogène : synthèse et dégradation',src:'Cours synchrone 6',cat:'cat-glycogene',k:'red',items:[
+ {id:'glycogenese',t:'Glycogénogenèse',d:'Du glucose au glycogène : activation, amorce, élongation, branchement',
+  k:'glucokinase hexokinase phosphoglucomutase UDPGlc UDP-glucose pyrophosphorylase pyrophosphatase UTP glycogénine tyrosine glycogène synthase enzyme branchante nucléoside diphosphokinase insuline glucagon adrénaline AMPc'},
+ {id:'glycogenolyse',t:'Glycogénolyse',d:'Phosphorylase, dextrine limite, glucanne transférase et débranchement',
+  k:'glycogène phosphorylase glucose 1-phosphate dextrine limite glucanne transférase enzyme débranchante glycosidase glucose libre'}]}];
 
 const $=id=>document.getElementById('mg-'+id),RMO=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const HOVER=matchMedia('(hover:hover) and (pointer:fine)'),MOB=matchMedia('(max-width:719px)');
