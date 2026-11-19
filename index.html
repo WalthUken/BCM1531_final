@@ -837,7 +837,7 @@ main{max-width:1180px}
 </div>
 </section>
 
-<p class="catg" id="cat-glycogene">Glycogène : synthèse et dégradation (cours synchrone 6)</p>
+<p class="catg" id="cat-glycogene">Glycogène : synthèse, dégradation et régulation (cours synchrone 6)</p>
 
 <section id="glycogenese">
 <h2>Glycogénogenèse : du glucose au glycogène</h2>
@@ -876,6 +876,31 @@ main{max-width:1180px}
 <div class="side">
 <div class="cap"><div class="ttl" id="gl-ttl"></div><div class="txt" id="gl-txt"></div><div class="note" id="gl-note"></div></div>
 <label class="gy-rm" style="margin:16px 0 0;justify-content:flex-start"><input type="checkbox" id="gl-hide"> Mode révision : cacher les enzymes</label>
+</div>
+</div>
+</section>
+
+<section id="rcpg">
+<h2>Récepteurs couplés aux protéines G</h2>
+<p class="src">Cours synchrone 6, diapositive 16</p>
+<div class="card split">
+<div class="fig">
+<div class="modes gy-nav" id="rc-modes"></div>
+<svg id="rc-svg" width="100%" viewBox="0 0 680 390" role="img">
+<title>Récepteur couplé aux protéines G</title>
+<desc>Une hormone se lie à un récepteur à 7 passages membranaires. La protéine G liée au récepteur échange son GDP contre du GTP, ses sous-unités se dissocient, et la sous-unité alpha-GTP active l'adénylate cyclase, qui forme l'AMPc. L'hydrolyse du GTP arrête l'effet.</desc>
+<rect x="30" y="150" width="620" height="60" style="fill:var(--hover)"/>
+<line x1="30" y1="150" x2="650" y2="150" style="stroke:var(--bs)" stroke-width="0.5"/>
+<line x1="30" y1="210" x2="650" y2="210" style="stroke:var(--bs)" stroke-width="0.5"/>
+<text class="ts" x="40" y="40">Milieu extracellulaire</text>
+<text class="ts" x="640" y="182" text-anchor="end" dominant-baseline="central">Membrane</text>
+<text class="ts" x="40" y="376">Cytoplasme</text>
+</svg>
+<div class="ps-leg" style="margin:4px 0 0"><span><i class="gy-sw" style="background:var(--amber-f);border:.5px solid var(--amber-s)"></i>récepteur (7 hélices)</span><span><i class="gy-sw" style="background:var(--red-f);border:.5px solid var(--red-s)"></i>hormone</span><span><i class="gy-sw" style="background:var(--purple-f);border:.5px solid var(--purple-s);border-radius:50%;width:12px"></i>β, γ</span><span><i class="gy-sw" style="background:var(--gray-f);border:.5px solid var(--gray-s)"></i>inactif</span><span><i class="gy-sw" style="background:var(--teal-f);border:.5px solid var(--teal-s)"></i>actif</span><span><i class="gy-sw" style="background:var(--coral-f);border:.5px solid var(--coral-s)"></i>GDP</span></div>
+<div class="ctl"><button class="icon" id="rc-prev" aria-label="Image précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon" id="rc-play" aria-label="Lecture"></button><button class="icon" id="rc-next" aria-label="Image suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><div class="dots" id="rc-dots"></div><span class="cnt" id="rc-cnt" style="white-space:nowrap"></span></div>
+</div>
+<div class="side">
+<div class="cap"><div class="ttl" id="rc-ttl"></div><div class="txt" id="rc-txt"></div><div class="note" id="rc-note"></div></div>
 </div>
 </div>
 </section>
@@ -1485,7 +1510,7 @@ render();
 })();
 </script>
 <script>
-/* Glycogène (cours synchrone 6) : glycogénogenèse (gg-) et glycogénolyse (gl-).
+/* Glycogène (cours synchrone 6) : glycogénogenèse (gg-), glycogénolyse (gl-) et RCPG (rc-).
    Chaque image est une liste de noeuds à clé ; un noeud qui garde sa clé glisse vers sa nouvelle place. */
 (function(){
 const NS='http://www.w3.org/2000/svg';
@@ -1502,10 +1527,15 @@ function inner(n,pre,hide){
  case 'txt':return `<text class="ts" text-anchor="${n.a||'start'}" dominant-baseline="central">${n.l}</text>`;
  case 'ln':return `<line x1="0" y1="0" x2="${n.dx}" y2="${n.dy}" style="stroke:var(--s);fill:none" stroke-width="1"${n.ar?` stroke-dasharray="4 3" marker-end="url(#arrow-${pre})"`:''}/>`;
  case 'res':return (n.bl?'<line x1="-16" y1="0" x2="-10" y2="0" style="stroke:var(--s)" stroke-width="1"/>':'')+c(n.c,R(10));
+ case 'raw':return n.h;
+ case 'sub':return c(n.c,R(n.r)+`<text class="th" text-anchor="middle" dominant-baseline="central">${n.l}</text>`);
+ case 'gam':return '<path d="M0 -12 Q-4 -16 0 -18 Q4 -20 0 -22" style="fill:none;stroke:var(--purple-s)" stroke-width="1.2"/>'+c('purple',R(12)+'<text class="th" text-anchor="middle" dominant-baseline="central">γ</text>');
+ case 'h':return c('red','<rect x="-11" y="-11" width="22" height="22" rx="3" stroke-width="0.5" transform="rotate(45)"/><text class="th" text-anchor="middle" dominant-baseline="central">H</text>');
+ case 'ac':return c(n.c,'<rect x="-18" y="-60" width="36" height="120" rx="14" stroke-width="0.5"/><text class="th" text-anchor="middle" dominant-baseline="central">AC</text>');
  case 'g1p':return c(n.c,R(9))+c('amber',`<rect x="2" y="-16" width="14" height="14" rx="7" stroke-width="0.5"/>`+tx('P',9,-9,1));
  }}
 function seq(pre,S){
- const $=id=>document.getElementById(pre+'-'+id),svg=$('svg'),hide=$('hide'),live={},kill={};
+ const $=id=>document.getElementById(pre+'-'+id),svg=$('svg'),hide=$('hide')||{checked:false},live={},kill={};
  function clearAll(){for(const id in live){clearTimeout(kill[id]);live[id].remove();delete live[id];delete kill[id];}}
  function render(nodes){
   const seen=new Set();
@@ -1531,7 +1561,7 @@ function seq(pre,S){
   if(fi<0){si=(si-1+S.length)%S.length;fi=S[si].f.length-1;clear=true;}
   go(si,fi,clear);}
  $('prev').onclick=()=>step(-1);$('next').onclick=()=>step(1);
- hide.onchange=()=>render(S[o.si].f[o.fi].n);
+ if(hide.addEventListener)hide.onchange=()=>render(S[o.si].f[o.fi].n);
  const pb=$('play');const setP=p=>{o.play=p;if(o.w)o.w();pb.innerHTML=p?ICO.pause:ICO.play;pb.setAttribute('aria-label',p?'Pause':'Lecture')};pb.onclick=()=>setP(!o.play);setP(o.play);
  const v={v:true};if('IntersectionObserver' in window)new IntersectionObserver(e=>{v.v=e[0].isIntersecting;if(o.w)o.w()}).observe(svg.closest('section'));
  o.w=v.w=Gate(()=>o.play&&v.v,dt=>{o.t+=dt;const f=S[o.si].f[o.fi];if(o.t>=(f.ms||2.2+f.d.length*.022))step(1);});o.w();
@@ -1639,6 +1669,50 @@ for(let k=0;k<4;k++){takeA();fr("Chaque résidu enlevé donne un glucose 1-phosp
 fr("Bilan : 12 glucose 1-phosphate (liaisons α(1→4), par la phosphorylase) et 1 glucose libre (liaison α(1→6), par l'enzyme débranchante).",[ENZ(PH)],0,"Le compte vaut pour le fragment dessiné, ce n'est pas une proportion donnée par le cours.");
 seq('gl',S);
 })();
+
+/* Récepteurs couplés aux protéines G, diapositive 16 */
+(function(){
+const XS=[110,135,160,185,210,235,260];
+function rec(t){
+ const p=XS.map((x,i)=>{const a=t[i]*Math.PI/180;return{top:[x+40*Math.sin(a),180-40*Math.cos(a)],bot:[x-40*Math.sin(a),180+40*Math.cos(a)]}});
+ const st='style="fill:none;stroke:var(--s)" stroke-width="1.2"';
+ const lp=(a,b,up,d)=>{const my=up?Math.min(a[1],b[1])-d:Math.max(a[1],b[1])+d;return `<path d="M${a[0]} ${a[1]} Q${(a[0]+b[0])/2} ${my} ${b[0]} ${b[1]}" ${st}/>`;};
+ let h=`<path d="M${p[0].top[0]} ${p[0].top[1]} Q${p[0].top[0]-4} 112 92 104" ${st}/><text class="ts" x="84" y="100" text-anchor="middle" dominant-baseline="central">N</text>`;
+ for(let i=0;i<6;i++)h+=i%2===0?lp(p[i].bot,p[i+1].bot,0,i===4&&t[5]?40:26):lp(p[i].top,p[i+1].top,1,26);
+ h+=`<path d="M${p[6].bot[0]} ${p[6].bot[1]} Q268 232 276 236" ${st}/><text class="ts" x="285" y="237" text-anchor="middle" dominant-baseline="central">C</text>`;
+ h+='<g class="c-amber">'+XS.map((x,i)=>`<rect x="-7" y="-40" width="14" height="80" rx="7" stroke-width="0.5" transform="translate(${x} 180) rotate(${t[i]})"/>`).join('')+'</g>';
+ return h;}
+const REC0={id:'r0',t:'raw',x:0,y:0,h:rec([0,0,0,0,0,0,0])},REC1={id:'r1',t:'raw',x:0,y:0,h:rec([0,0,0,0,6,-14,0])};
+const Al=(x,y,act)=>({id:'al',t:'sub',x,y,r:22,l:'αs',c:act?'teal':'gray'});
+const Be=(x,y)=>({id:'be',t:'sub',x,y,r:15,l:'β',c:'purple'});
+const Ga=x=>({id:'ga',t:'gam',x,y:232});
+const AC=act=>({id:'ac',t:'ac',x:530,y:195,c:act?'teal':'gray'});
+const H=(x,y)=>({id:'h',t:'h',x,y});
+const LAC=T('lac',530,118,'Adénylate cyclase (effecteur)','middle'),LREC=T('lrec',170,345,'Récepteur à 7 passages','middle');
+const base=[AC(0),LAC,LREC];
+const GIN=()=>[Al(390,280,0),Be(420,255),Ga(440),P('gdp',365,312,'GDP','c-coral')];
+const DOCK=act=>[Al(240,290,act),Be(282,266),Ga(310)];
+const HB=H(210,122),BG=[Be(330,258),Ga(352)];
+seq('rc',[
+{b:'1. Récepteur',t:'1. Le récepteur',f:[
+{n:[REC0,...base,...GIN(),T('lg',420,320,'Protéine G')],d:"Les récepteurs couplés aux protéines G (RCPG) sont la plus grande famille de récepteurs de surface : 7 passages membranaires, l'extrémité N du côté extracellulaire, l'extrémité C du côté du cytoplasme."},
+{n:[REC0,...base,...GIN(),T('lg',420,320,'Protéine G : transducteur')],d:"La protéine G transmet l'information à un effecteur, l'adénylate cyclase (AC). Elle sert de transducteur entre la protéine membranaire (le récepteur) et la protéine intracellulaire (l'AC)."}]},
+{b:'2. Protéine G',t:'2. La protéine G',f:[
+{n:[REC0,...base,...GIN(),T('lg',420,320,'3 sous-unités : α, β et γ')],d:"Les protéines G sont faites de 3 sous-unités : α, β et γ. Il existe des protéines Gs et Gi, qui comprennent toutes les deux ces 3 sous-unités."},
+{n:[REC0,...base,...GIN(),T('lg',420,320,'α porte le GDP : inactive')],d:"La sous-unité α porte le GDP, qui garde la protéine G inactive. Pas d'hormone : l'effecteur est inactif."}]},
+{b:'3. Activation',t:"3. L'hormone active le récepteur",f:[
+{n:[REC0,...base,...GIN(),H(250,70),T('hl',272,70,'Hormone (ex. glucagon, adrénaline)')],d:"Une hormone (ex. glucagon, adrénaline) arrive du milieu extracellulaire."},
+{n:[REC0,...base,...GIN(),HB],d:"Elle se lie à son récepteur.",ms:1.8},
+{n:[{...REC0,o:0},REC1,...base,...GIN(),HB,T('cc',300,110,'Changement conformationnel')],d:"Il se produit un changement conformationnel qui permet au récepteur de lier la sous-unité α chargée de GDP."},
+{n:[REC1,...base,...DOCK(0),P('gdp',205,318,'GDP','c-coral'),HB],d:"La protéine G (α-GDP avec β et γ) se lie au récepteur."},
+{n:[REC1,...base,...DOCK(1),P('gdp',140,330,'GDP','c-coral'),P('gtp',205,318,'GTP','c-teal'),HB],d:"La liaison au récepteur fait perdre le GDP, remplacé par le GTP."},
+{n:[REC1,...base,Al(400,292,1),P('gtp',372,322,'GTP','c-teal'),...BG,HB],d:"Les sous-unités β et γ se dissocient, et la sous-unité α-GTP se dissocie du récepteur."}]},
+{b:'4. Effecteur',t:"4. L'effecteur",f:[
+{n:[REC1,AC(1),LAC,LREC,Al(530,282,1),P('gtp',500,314,'GTP','c-teal'),...BG,HB],d:"La sous-unité αs-GTP active l'effecteur, l'adénylate cyclase. Une protéine Gi, elle, l'inhiberait.",no:"La note 4 écrit « via phosphorylation » : la sous-unité α-GTP se lie en fait directement à l'adénylate cyclase. La phosphorylation vient ensuite, par la PKA activée par l'AMPc (diapositive 17)."},
+{n:[REC1,AC(1),LAC,LREC,Al(530,282,1),P('gtp',500,314,'GTP','c-teal'),...BG,HB,P('atp',612,290,'ATP','c-amber'),P('m1',600,334,'AMPc','c-amber'),P('m2',630,362,'AMPc','c-amber')],d:"L'activation de l'adénylate cyclase conduit à la formation d'AMPc."},
+{n:[REC1,AC(1),LAC,LREC,Al(530,282,1),P('gtp',500,314,'GDP','c-coral'),P('pi',455,345,'Pi','c-amber'),...BG,HB,P('m1',600,334,'AMPc','c-amber'),P('m2',630,362,'AMPc','c-amber'),P('m3',575,362,'AMPc','c-amber')],d:"Le GTP est hydrolysé par l'activité GTPase intrinsèque de la sous-unité α."},
+{n:[REC1,AC(0),LAC,LREC,Al(370,292,0),P('gtp',345,324,'GDP','c-coral'),...BG,HB],d:"La sous-unité α redevient inactive et se dissocie de l'adénylate cyclase : l'effet s'arrête.",no:"Complément hors diapo : l'α-GDP se réassocie ensuite à β et γ, prête pour un nouveau cycle."}]}]);
+})();
 })();
 </script>
 <script>
@@ -1663,11 +1737,13 @@ const MENU=[
   k:'hexokinase glucokinase phosphoglucose isomérase phosphofructokinase PFK1 aldolase triose phosphate isomérase glycéraldéhyde-3-phosphate déshydrogénase phosphoglycérate kinase phosphoglycérate mutase énolase pyruvate kinase'},
  {id:'pfk',t:'PFK-1 et PFK-2',d:'Le fructose-2,6-BP en glycémie haute et en jeûne'},
  {id:'pdh',t:'PDH',d:'Pyruvate déshydrogénase : sa kinase, sa phosphatase et leurs régulateurs'}]},
-{id:'glycogene',tab:'Synchrone 6',titre:'Glycogène : synthèse et dégradation',src:'Cours synchrone 6',cat:'cat-glycogene',k:'red',items:[
+{id:'glycogene',tab:'Synchrone 6',titre:'Glycogène : synthèse, dégradation et régulation',src:'Cours synchrone 6',cat:'cat-glycogene',k:'red',items:[
  {id:'glycogenese',t:'Glycogénogenèse',d:'Du glucose au glycogène : activation, amorce, élongation, branchement',
   k:'glucokinase hexokinase phosphoglucomutase UDPGlc UDP-glucose pyrophosphorylase pyrophosphatase UTP glycogénine tyrosine glycogène synthase enzyme branchante nucléoside diphosphokinase insuline glucagon adrénaline AMPc'},
  {id:'glycogenolyse',t:'Glycogénolyse',d:'Phosphorylase, dextrine limite, glucanne transférase et débranchement',
-  k:'glycogène phosphorylase glucose 1-phosphate dextrine limite glucanne transférase enzyme débranchante glycosidase glucose libre'}]}];
+  k:'glycogène phosphorylase glucose 1-phosphate dextrine limite glucanne transférase enzyme débranchante glycosidase glucose libre'},
+ {id:'rcpg',t:'Récepteurs couplés aux protéines G',d:"De l'hormone à l'AMPc : protéine G, GDP et GTP, adénylate cyclase",
+  k:'RCPG récepteur 7 passages transmembranaires protéine G Gs Gi alpha bêta gamma GDP GTP GTPase adénylate cyclase AMPc glucagon adrénaline effecteur'}]}];
 
 const $=id=>document.getElementById('mg-'+id),RMO=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const HOVER=matchMedia('(hover:hover) and (pointer:fine)'),MOB=matchMedia('(max-width:719px)');
