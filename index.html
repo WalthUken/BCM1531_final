@@ -14,14 +14,16 @@ function Gate(c,s){let on=false,last=0;function f(n){if(!c()){on=false;return}co
 --gray-f:#444441;--gray-s:#B4B2A9;--gray-t:#D3D1C7;--gray-u:#B4B2A9;
 --amber-f:#633806;--amber-s:#EF9F27;--amber-t:#FAC775;--amber-u:#EF9F27;
 --teal-f:#085041;--teal-s:#5DCAA5;--teal-t:#9FE1CB;--teal-u:#5DCAA5;
---red-f:#791F1F;--red-s:#F09595;--red-t:#F7C1C1;--red-u:#F09595}
+--red-f:#791F1F;--red-s:#F09595;--red-t:#F7C1C1;--red-u:#F09595;
+--blue-f:#0C447C;--blue-s:#85B7EB;--blue-t:#B5D4F4;--blue-u:#85B7EB}
 :root[data-theme="light"]{--page:#f5f4ef;--card:#ffffff;--hover:#f1efe8;--text:#1f1e1c;--s:#5f5e5a;--muted:#888780;--b:rgba(0,0,0,.12);--bs:rgba(0,0,0,.24);--acc-bg:#E6F1FB;--acc-tx:#0C447C;--acc-bd:#378ADD;--danger:#A32D2D;
 --coral-f:#FAECE7;--coral-s:#993C1D;--coral-t:#712B13;--coral-u:#993C1D;
 --purple-f:#EEEDFE;--purple-s:#534AB7;--purple-t:#3C3489;--purple-u:#534AB7;
 --gray-f:#F1EFE8;--gray-s:#5F5E5A;--gray-t:#444441;--gray-u:#5F5E5A;
 --amber-f:#FAEEDA;--amber-s:#854F0B;--amber-t:#633806;--amber-u:#854F0B;
 --teal-f:#E1F5EE;--teal-s:#0F6E56;--teal-t:#085041;--teal-u:#0F6E56;
---red-f:#FCEBEB;--red-s:#A32D2D;--red-t:#791F1F;--red-u:#A32D2D}
+--red-f:#FCEBEB;--red-s:#A32D2D;--red-t:#791F1F;--red-u:#A32D2D;
+--blue-f:#E6F1FB;--blue-s:#185FA5;--blue-t:#0C447C;--blue-u:#185FA5}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 html,body{margin:0;background:var(--page);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -61,6 +63,7 @@ svg text{font-family:inherit}
 .c-amber>rect{fill:var(--amber-f);stroke:var(--amber-s)}.c-amber>.t,.c-amber>.th{fill:var(--amber-t)}.c-amber>.ts{fill:var(--amber-u)}
 .c-teal>rect{fill:var(--teal-f);stroke:var(--teal-s)}.c-teal>.t,.c-teal>.th{fill:var(--teal-t)}.c-teal>.ts{fill:var(--teal-u)}
 .c-red>rect{fill:var(--red-f);stroke:var(--red-s)}.c-red>.t,.c-red>.th{fill:var(--red-t)}.c-red>.ts{fill:var(--red-u)}
+.c-blue>rect{fill:var(--blue-f);stroke:var(--blue-s)}.c-blue>.t,.c-blue>.th{fill:var(--blue-t)}.c-blue>.ts{fill:var(--blue-u)}
 .hk{transition:opacity .4s}
 .dim{opacity:.25}
 .lvl{transform-box:fill-box;transform-origin:0 50%;transition:transform 1.4s ease}
@@ -905,6 +908,29 @@ main{max-width:1180px}
 </div>
 </section>
 
+<section id="ampc">
+<h2>L'AMPc, second messager : activation de la PKA</h2>
+<p class="src">Cours synchrone 6, diapositive 17</p>
+<div class="card split">
+<div class="fig">
+<div class="modes gy-nav" id="am-modes"></div>
+<svg id="am-svg" width="100%" viewBox="0 0 680 390" role="img">
+<title>AMPc et protéine kinase A</title>
+<desc>L'adénylate cyclase de la membrane forme l'AMPc. La PKA inactive, le complexe R2C2, est encadrée. L'AMPc se fixe aux sous-unités R et libère les sous-unités C, encadrées comme PKA active, qui phosphorylent une protéine cible. La phosphodiestérase transforme l'AMPc en 5'-AMP.</desc>
+<defs><marker id="arrow-am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="110" y="30" width="40" height="320" rx="6" style="fill:var(--hover)"/>
+<text class="ts" x="130" y="370" text-anchor="middle">Membrane cellulaire</text>
+<text class="ts" x="640" y="30" text-anchor="end">Cytoplasme</text>
+</svg>
+<div class="ps-leg" style="margin:4px 0 0"><span><i class="gy-sw" style="background:var(--blue-f);border:.5px solid var(--blue-s)"></i>ATP, AMPc</span><span><i class="gy-sw" style="background:var(--coral-f);border:.5px solid var(--coral-s)"></i>R (régulatrice)</span><span><i class="gy-sw" style="background:var(--gray-f);border:.5px solid var(--gray-s)"></i>inactif</span><span><i class="gy-sw" style="background:var(--teal-f);border:.5px solid var(--teal-s)"></i>actif</span><span><i class="gy-sw" style="background:var(--amber-f);border:.5px solid var(--amber-s)"></i>enzymes, phosphate</span><span><i class="gy-sw" style="border:1px dashed var(--s)"></i>PKA</span></div>
+<div class="ctl"><button class="icon" id="am-prev" aria-label="Image précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon" id="am-play" aria-label="Lecture"></button><button class="icon" id="am-next" aria-label="Image suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><div class="dots" id="am-dots"></div><span class="cnt" id="am-cnt" style="white-space:nowrap"></span></div>
+</div>
+<div class="side">
+<div class="cap"><div class="ttl" id="am-ttl"></div><div class="txt" id="am-txt"></div><div class="note" id="am-note"></div></div>
+</div>
+</div>
+</section>
+
 <footer>Contenu tiré du plan de cours et des diapositives du cours. Outil de révision personnel.</footer>
 </main>
 <script>
@@ -1510,7 +1536,7 @@ render();
 })();
 </script>
 <script>
-/* Glycogène (cours synchrone 6) : glycogénogenèse (gg-), glycogénolyse (gl-) et RCPG (rc-).
+/* Glycogène (cours synchrone 6) : glycogénogenèse (gg-), glycogénolyse (gl-) RCPG (rc-) et AMPc (am-).
    Chaque image est une liste de noeuds à clé ; un noeud qui garde sa clé glisse vers sa nouvelle place. */
 (function(){
 const NS='http://www.w3.org/2000/svg';
@@ -1525,13 +1551,15 @@ function inner(n,pre,hide){
  case 'pill':{const l=(n.e&&hide)?'?':n.l,w=Math.round(l.length*6.6+20);return c(n.c.slice(2),`<rect x="${-w/2}" y="-11" width="${w}" height="22" rx="4" stroke-width="0.5"/>`+tx(l));}
  case 'gn':return c('coral',`<rect x="-70" y="-22" width="140" height="44" rx="22" stroke-width="0.5"/>`+tx('Glycogénine',-12,7)+tx('Tyr',35,-10,1));
  case 'txt':return `<text class="ts" text-anchor="${n.a||'start'}" dominant-baseline="central">${n.l}</text>`;
- case 'ln':return `<line x1="0" y1="0" x2="${n.dx}" y2="${n.dy}" style="stroke:var(--s);fill:none" stroke-width="1"${n.ar?` stroke-dasharray="4 3" marker-end="url(#arrow-${pre})"`:''}/>`;
+ case 'ln':return `<line x1="0" y1="0" x2="${n.dx}" y2="${n.dy}" style="stroke:var(--s);fill:none" stroke-width="1"${n.ar?` stroke-dasharray="4 3" marker-end="url(#arrow-${pre})"`:''}${n.arr?` marker-end="url(#arrow-${pre})"`:''}/>`;
  case 'res':return (n.bl?'<line x1="-16" y1="0" x2="-10" y2="0" style="stroke:var(--s)" stroke-width="1"/>':'')+c(n.c,R(10));
  case 'raw':return n.h;
  case 'sub':return c(n.c,R(n.r)+`<text class="th" text-anchor="middle" dominant-baseline="central">${n.l}</text>`);
  case 'gam':return '<path d="M0 -12 Q-4 -16 0 -18 Q4 -20 0 -22" style="fill:none;stroke:var(--purple-s)" stroke-width="1.2"/>'+c('purple',R(12)+'<text class="th" text-anchor="middle" dominant-baseline="central">γ</text>');
  case 'h':return c('red','<rect x="-11" y="-11" width="22" height="22" rx="3" stroke-width="0.5" transform="rotate(45)"/><text class="th" text-anchor="middle" dominant-baseline="central">H</text>');
- case 'ac':return c(n.c,'<rect x="-18" y="-60" width="36" height="120" rx="14" stroke-width="0.5"/><text class="th" text-anchor="middle" dominant-baseline="central">AC</text>');
+ case 'ac':{const h=n.h||120;return c(n.c,`<rect x="-18" y="${-h/2}" width="36" height="${h}" rx="${h>100?14:8}" stroke-width="0.5"/><text class="th" text-anchor="middle" dominant-baseline="central">AC</text>`);}
+ case 'box':return c(n.c,`<rect x="-32" y="-17" width="64" height="34" rx="4" stroke-width="0.5"/><text class="th" text-anchor="middle" dominant-baseline="central">${n.l}</text>`);
+ case 'frame':{const k=n.act?'var(--teal-s)':'var(--gray-s)';return `<rect x="${-n.fw/2}" y="${-n.fh/2}" width="${n.fw}" height="${n.fh}" rx="10" style="fill:none;stroke:${k}" stroke-width="1.2" stroke-dasharray="5 4"/><text class="th" y="${n.ly}" text-anchor="middle" dominant-baseline="central" style="fill:${k}">${n.l}</text>`;}
  case 'g1p':return c(n.c,R(9))+c('amber',`<rect x="2" y="-16" width="14" height="14" rx="7" stroke-width="0.5"/>`+tx('P',9,-9,1));
  }}
 function seq(pre,S){
@@ -1709,9 +1737,42 @@ seq('rc',[
 {n:[REC1,...base,Al(400,292,1),P('gtp',372,322,'GTP','c-teal'),...BG,HB],d:"Les sous-unités β et γ se dissocient, et la sous-unité α-GTP se dissocie du récepteur."}]},
 {b:'4. Effecteur',t:"4. L'effecteur",f:[
 {n:[REC1,AC(1),LAC,LREC,Al(530,282,1),P('gtp',500,314,'GTP','c-teal'),...BG,HB],d:"La sous-unité αs-GTP active l'effecteur, l'adénylate cyclase. Une protéine Gi, elle, l'inhiberait.",no:"La note 4 écrit « via phosphorylation » : la sous-unité α-GTP se lie en fait directement à l'adénylate cyclase. La phosphorylation vient ensuite, par la PKA activée par l'AMPc (diapositive 17)."},
-{n:[REC1,AC(1),LAC,LREC,Al(530,282,1),P('gtp',500,314,'GTP','c-teal'),...BG,HB,P('atp',612,290,'ATP','c-amber'),P('m1',600,334,'AMPc','c-amber'),P('m2',630,362,'AMPc','c-amber')],d:"L'activation de l'adénylate cyclase conduit à la formation d'AMPc."},
-{n:[REC1,AC(1),LAC,LREC,Al(530,282,1),P('gtp',500,314,'GDP','c-coral'),P('pi',455,345,'Pi','c-amber'),...BG,HB,P('m1',600,334,'AMPc','c-amber'),P('m2',630,362,'AMPc','c-amber'),P('m3',575,362,'AMPc','c-amber')],d:"Le GTP est hydrolysé par l'activité GTPase intrinsèque de la sous-unité α."},
+{n:[REC1,AC(1),LAC,LREC,Al(530,282,1),P('gtp',500,314,'GTP','c-teal'),...BG,HB,P('atp',612,290,'ATP','c-blue'),P('m1',600,334,'AMPc','c-blue'),P('m2',630,362,'AMPc','c-blue')],d:"L'activation de l'adénylate cyclase conduit à la formation d'AMPc."},
+{n:[REC1,AC(1),LAC,LREC,Al(530,282,1),P('gtp',500,314,'GDP','c-coral'),P('pi',455,345,'Pi','c-amber'),...BG,HB,P('m1',600,334,'AMPc','c-blue'),P('m2',630,362,'AMPc','c-blue'),P('m3',575,362,'AMPc','c-blue')],d:"Le GTP est hydrolysé par l'activité GTPase intrinsèque de la sous-unité α."},
 {n:[REC1,AC(0),LAC,LREC,Al(370,292,0),P('gtp',345,324,'GDP','c-coral'),...BG,HB],d:"La sous-unité α redevient inactive et se dissocie de l'adénylate cyclase : l'effet s'arrête.",no:"Complément hors diapo : l'α-GDP se réassocie ensuite à β et γ, prête pour un nouveau cycle."}]}]);
+})();
+
+/* AMPc et PKA, diapositive 17 */
+(function(){
+const box=(id,x,y,l,c)=>({id,t:'box',x,y,l,c});
+const ph=(id,x,y)=>({id,t:'p',x,y});
+const F=(id,x,y,w,h,l,ly,act)=>({id,t:'frame',x,y,fw:w,fh:h,l,ly,act});
+const MEM=[P('rcpg',58,125,'RCPG','c-purple'),{id:'rca',t:'ln',x:86,y:125,dx:22,dy:0,arr:1},T('rcp',72,104,'+','middle'),{id:'ac',t:'ac',x:130,y:125,c:'teal',h:100},T('acl',160,62,'Adénylate cyclase active')];
+const FI=F('fi',455,131,166,110,'PKA inactive (R₂C₂)',-70,0);
+const R2C2=()=>[box('r1',420,120,'R','coral'),box('r2',490,120,'R','coral'),box('c1',420,158,'C','gray'),box('c2',490,158,'C','gray'),FI];
+const M=(id,x,y,l)=>P(id,x,y,l||'AMPc',l?'c-gray':'c-blue');
+const FREE=[M('m1',235,150),M('m2',265,190),M('m3',225,230),M('m4',275,265)];
+const BOUND=[M('m1',420,92),M('m2',490,92),M('m3',225,230),M('m4',275,265)];
+const OPEN=[box('r1',420,120,'R','coral'),box('r2',490,120,'R','coral'),T('rl',455,150,"R₂ liées à l'AMPc : sans activité",'middle'),box('c1',420,250,'C','teal'),box('c2',490,250,'C','teal'),F('fa',455,250,166,56,'PKA active (C₂)',46,1)];
+const PDE=P('pde',250,320,'Phosphodiestérase','c-amber');
+seq('am',[
+{b:'1. Second messager',t:"1. L'AMPc, second messager",f:[
+{n:[...MEM,...R2C2(),P('atp',240,70,'ATP · Mg²⁺','c-blue')],d:"Le RCPG active l'adénylate cyclase, dans la membrane cellulaire. Elle prend de l'ATP, avec du Mg²⁺."},
+{n:[...MEM,...R2C2(),{...P('atp',205,125,'ATP · Mg²⁺','c-blue'),o:.3},M('m1',235,150)],d:"L'adénylate cyclase active forme l'AMPc à partir de l'ATP.",ms:2.2},
+{n:[...MEM,...R2C2(),...FREE],d:"L'AMPc est un second messager cytosolique : il diffuse dans le cytoplasme."}]},
+{b:'2. PKA',t:"2. L'AMPc active la PKA",f:[
+{n:[...MEM,...R2C2(),...FREE],d:"La protéine kinase A (PKA) inactive est le complexe R₂C₂ encadré : R₂ est la protéine régulatrice (2 sous-unités), C₂ les sous-unités catalytiques (2 sous-unités). Le complexe R₂C₂ n'a pas d'activité enzymatique."},
+{n:[...MEM,...R2C2(),...BOUND],d:"L'AMPc se fixe au protomère régulateur (R) de la protéine kinase A."},
+{n:[...MEM,...OPEN,...BOUND],d:"Ceci déclenche la libération des protomères catalytiques (C₂) et active la PKA : les C₂ libérées sont la PKA active. Les R restent liées à l'AMPc."}]},
+{b:'3. Phosphorylation',t:'3. La PKA phosphoryle une cible',f:[
+{n:[...MEM,...OPEN,...BOUND,P('prot',610,250,'Protéine','c-gray'),P('atp2',610,200,'ATP · Mg²⁺','c-blue')],d:"La PKA active (C₂) étant une kinase, elle va phosphoryler une protéine cible, avec l'ATP et le Mg²⁺."},
+{n:[...MEM,...OPEN,...BOUND,P('prot',610,250,'Phosphoprotéine','c-teal'),ph('pp',662,232),P('atp2',610,200,'ADP','c-blue')],d:"La protéine cible phosphorylée est soit activée, soit inhibée."},
+{n:[...MEM,...OPEN,...BOUND,P('prot',610,250,'Phosphoprotéine','c-teal'),ph('pp',662,232),{id:'ef',t:'ln',x:610,y:263,dx:0,dy:48,arr:1},T('efl',610,330,'Effets physiologiques','middle')],d:"Elle s'inscrit dans une cascade qui conduira à un effet biologique."},
+{n:[...MEM,...OPEN,...BOUND,P('prot',610,250,'Protéine','c-gray'),ph('pp',560,345),P('pt',610,300,'Phosphatase','c-amber')],d:"Une phosphatase retire le phosphate : la phosphoprotéine redevient la protéine de départ."}]},
+{b:'4. Phosphodiestérase',t:'4. La phosphodiestérase',f:[
+{n:[...MEM,...OPEN,...BOUND,PDE],d:"La phosphodiestérase est l'enzyme qui détruit l'AMPc."},
+{n:[...MEM,...OPEN,M('m1',420,92),M('m2',490,92),M('m3',225,230,'5′-AMP'),M('m4',275,265,'5′-AMP'),PDE],d:"Elle transforme l'AMPc en 5′-AMP, qui n'active pas la PKA."},
+{n:[...MEM,...R2C2(),M('m1',320,110,'5′-AMP'),M('m2',345,150,'5′-AMP'),M('m3',225,230,'5′-AMP'),M('m4',275,265,'5′-AMP'),PDE],d:"Elle contribue ainsi à inhiber l'effet de l'AMPc et à arrêter le processus biologique.",no:"Complément hors diapo : sans AMPc, les sous-unités C se réassocient aux R et la PKA redevient le complexe R₂C₂ inactif."}]}]);
 })();
 })();
 </script>
@@ -1743,7 +1804,9 @@ const MENU=[
  {id:'glycogenolyse',t:'Glycogénolyse',d:'Phosphorylase, dextrine limite, glucanne transférase et débranchement',
   k:'glycogène phosphorylase glucose 1-phosphate dextrine limite glucanne transférase enzyme débranchante glycosidase glucose libre'},
  {id:'rcpg',t:'Récepteurs couplés aux protéines G',d:"De l'hormone à l'AMPc : protéine G, GDP et GTP, adénylate cyclase",
-  k:'RCPG récepteur 7 passages transmembranaires protéine G Gs Gi alpha bêta gamma GDP GTP GTPase adénylate cyclase AMPc glucagon adrénaline effecteur'}]}];
+  k:'RCPG récepteur 7 passages transmembranaires protéine G Gs Gi alpha bêta gamma GDP GTP GTPase adénylate cyclase AMPc glucagon adrénaline effecteur'},
+ {id:'ampc',t:'AMPc et PKA',d:"L'AMPc libère la PKA active, puis la phosphodiestérase l'arrête",
+  k:'AMPc second messager protéine kinase A PKA R2C2 sous-unités régulatrices catalytiques phosphorylation phosphoprotéine phosphatase phosphodiestérase 5-AMP'}]}];
 
 const $=id=>document.getElementById('mg-'+id),RMO=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const HOVER=matchMedia('(hover:hover) and (pointer:fine)'),MOB=matchMedia('(max-width:719px)');
