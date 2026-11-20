@@ -193,6 +193,16 @@ html.mg-lock{overflow:hidden}
 @keyframes ph-fl{to{stroke-dashoffset:-12}}
 .sq-n{transition:transform .8s ease,opacity .5s ease}
 @media (prefers-reduced-motion:reduce){.sq-n{transition:none}}
+#amphibolique .ap-el,#glyoxylate .gx-el{transition:opacity .35s}
+#amphibolique .ap-el path{transition:stroke .35s}
+#amphibolique .ap-nd{cursor:pointer;outline:none}
+#amphibolique .ap-nd>rect{transition:fill .35s,stroke .35s}
+#amphibolique .ap-nd:focus-visible>rect{stroke-width:2}
+.ap-dim,.gx-dim{opacity:.12}
+.gx-off{opacity:0;pointer-events:none}
+.ap-ln{display:inline-block;width:16px;height:3px;border-radius:2px}
+.gx-dash{background:repeating-linear-gradient(90deg,#D85A30 0 5px,transparent 5px 9px)}
+@media (prefers-reduced-motion:reduce){#amphibolique .ap-el,#glyoxylate .gx-el,#amphibolique .ap-el path,#amphibolique .ap-nd>rect{transition:none}}
 /* Grand écran : animation et commandes à gauche, texte à droite, la case tient dans la fenêtre */
 @media (min-width:980px){
 main{max-width:1180px}
@@ -687,7 +697,7 @@ main{max-width:1180px}
 </div>
 </section>
 
-<p class="catg" id="cat-glycolyse">Glucides : glycolyse et cycle du citrate (cours synchrone 5)</p>
+<p class="catg" id="cat-glycolyse">Glucides : glycolyse, cycle du citrate et glyoxylate (cours synchrone 5)</p>
 
 <section id="glycolyse">
 <h2>Glycolyse : les 10 enzymes</h2>
@@ -836,6 +846,55 @@ main{max-width:1180px}
 </div>
 <div class="side">
 <div class="cap"><div class="note" style="margin:0 0 8px">Clique sur un régulateur du schéma pour l'allumer ou l'éteindre, ou choisis un scénario.</div><div class="ttl" id="ph-ttl"></div><div class="txt" id="ph-txt"></div><div class="note" id="ph-note">Complément hors diapo : la force relative des régulateurs est choisie pour l'illustration, et la barre « acide lactique » étend à tous les cas ce que la diapositive dit du dichloroacétate.</div></div>
+</div>
+</div>
+</section>
+
+<section id="amphibolique">
+<h2>Le cycle de l'acide citrique, voie amphibolique</h2>
+<p class="src">Cours synchrone 5, diapositive 24</p>
+<div class="card split">
+<div class="fig">
+<div class="modes" id="ap-modes"><button class="md" data-m="cycle">Le cycle</button><button class="md" data-m="rouge">Amphibolique (rouge)</button><button class="md" data-m="bleu">Anaplérotiques (bleu)</button><button class="md" data-m="aa">Acides aminés</button><button class="md" data-m="tout">Tout</button></div>
+<svg width="100%" viewBox="0 0 680 550" role="img">
+<title>Le cycle de l'acide citrique, voie amphibolique</title>
+<desc>Intermédiaires du cycle de l'acide citrique, avec en rouge les voies cataboliques et anaboliques qui y puisent (néoglucogenèse, acides gras, acides aminés) et en bleu les réactions anaplérotiques qui le regarnissent (pyruvate carboxylase, transaminases, propionate).</desc>
+<defs><marker id="ap-ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<g id="ap-e"></g>
+<g id="ap-n"></g>
+</svg>
+<div class="ps-leg" style="margin:4px 0 0"><span><i class="ap-ln" style="background:#1D9E75"></i>cycle</span><span><i class="ap-ln" style="background:#E24B4A"></i>sort du cycle (amphibolique)</span><span><i class="ap-ln" style="background:#378ADD"></i>regarnit le cycle (anaplérotique)</span><span><i class="ap-ln" style="background:#BA7517"></i>acides aminés</span><span>↔ dans les deux sens</span></div>
+</div>
+<div class="side">
+<div class="cap"><div class="note" style="margin:0 0 8px">Clique sur un intermédiaire pour voir ce qui y entre et ce qui en sort, ou choisis une vue.</div><div class="ttl" id="ap-ttl"></div><div class="txt" id="ap-txt"></div></div>
+</div>
+</div>
+</section>
+
+<section id="glyoxylate">
+<h2>Le cycle du glyoxylate</h2>
+<p class="src">Cours synchrone 5, diapositives 26 et 27</p>
+<div class="card split">
+<div class="fig">
+<div class="modes gy-nav" id="gx-steps"></div>
+<svg width="100%" viewBox="0 0 680 470" role="img">
+<title>Le cycle du glyoxylate</title>
+<desc>Dans le glyoxysome, l'acétate devient de l'acétyl-CoA, l'isocitrate lyase court-circuite les décarboxylations du cycle de Krebs en donnant le glyoxylate et le succinate, la malate synthase condense le glyoxylate avec un deuxième acétyl-CoA en malate. Le malate part vers le cytosol pour la néoglucogenèse, le succinate vers la mitochondrie pour produire de l'ATP.</desc>
+<defs><marker id="gx-ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="160" y="18" width="510" height="440" rx="16" fill="none" style="stroke:var(--bs)" stroke-dasharray="6 5"/>
+<text class="th" x="176" y="40">Glyoxysome</text>
+<text class="th" x="20" y="40">Cytosol</text>
+<g id="gx-mito" class="gx-el"><rect x="10" y="335" width="140" height="117" rx="12" fill="none" style="stroke:var(--bs)" stroke-dasharray="6 5"/><text class="th" x="20" y="356">Mitochondrie</text><text class="ts" x="80" y="381" text-anchor="middle">Cycle de l'acide</text><text class="ts" x="80" y="397" text-anchor="middle">citrique</text></g>
+<text id="gx-ktxt" class="ts gx-el gx-k" x="585" y="446" text-anchor="middle" style="fill:var(--coral-s)">Étapes de Krebs sautées</text>
+<g id="gx-e"></g>
+<g id="gx-n"></g>
+</svg>
+<div class="ps-leg" style="margin:4px 0 0"><span><i class="ap-ln" style="background:#7F77DD"></i>propre au glyoxylate</span><span><i class="ap-ln" style="background:#888780"></i>commun avec le cycle de Krebs</span><span><i class="ap-ln" style="background:#1D9E75"></i>sorties du glyoxysome</span><span><i class="ap-ln gx-dash"></i>cycle de Krebs (comparaison)</span></div>
+<div class="ctl" style="flex-wrap:wrap"><button class="icon" id="gx-prev" aria-label="Étape précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon" id="gx-play" aria-label="Lecture"></button><button class="icon" id="gx-next" aria-label="Étape suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><label class="gy-rm"><input type="checkbox" id="gx-cmp"> Comparer au cycle de Krebs</label></div>
+</div>
+<div class="side">
+<div class="gy-ms"><span class="gy-m">Plantes, bactéries, levures : pas chez les animaux</span><span class="gy-m">Organite : glyoxysome</span><span class="gy-m">Intermédiaire clé : glyoxylate</span><span class="gy-m">But : du glucose à partir de l'acétyl-CoA</span></div>
+<div class="cap"><div class="ttl" id="gx-ttl"></div><div class="txt" id="gx-txt"></div><div class="note" id="gx-note"></div></div>
 </div>
 </div>
 </section>
@@ -1777,6 +1836,197 @@ seq('am',[
 })();
 </script>
 <script>
+/* Synchrone 5 : le cycle de l'acide citrique comme voie amphibolique (diapositive 24) et le cycle du glyoxylate (diapositives 26 et 27).
+   Le SVG est construit une fois, puis chaque état ne change que les classes : les estompages et les couleurs passent en fondu. */
+(function(){
+const NS='http://www.w3.org/2000/svg',f=v=>(+v).toFixed(1);
+function mk(tag,at,par,txt){const e=document.createElementNS(NS,tag);for(const k in at)e.setAttribute(k,at[k]);if(txt!=null)e.textContent=txt;if(par)par.appendChild(e);return e;}
+function borders(N,wid){return function(k,dx,dy){const[x,y]=N[k];const w=wid(k)/2+3,h=16;const t=Math.min(dx?w/Math.abs(dx):1e9,dy?h/Math.abs(dy):1e9);return[x+dx*t,y+dy*t];};}
+
+/* Voie amphibolique, ids ap- */
+(function(){
+const $=id=>document.getElementById('ap-'+id);
+const N={
+ lac:[380,34,'Lactate','n'],pyr:[380,96,'Pyruvate','n'],acoa:[495,96,'Acétyl-CoA','n'],ag:[612,96,'Acides gras','n'],
+ serg:[130,40,'Ser, Cys, Thr, Gly, Hyp','g'],trp:[70,96,'Tryptophane','g'],ala:[210,96,'Alanine','n'],
+ oaa:[380,196,'Oxaloacétate','r'],pep:[225,196,'PEP','n'],glc:[95,196,'Glucose','n'],
+ cit:[510,290,'Citrate','r'],asp:[380,300,'Aspartate','n'],akg:[472,410,'α-Cétoglutarate','r'],
+ glu:[472,490,'Glutamate','n'],scoa:[300,410,'Succinyl-CoA','r'],fum:[250,292,'Fumarate','r'],
+ tyr:[105,292,'Tyrosine, phénylalanine','g'],imv:[118,410,'Isoleucine, méthionine, valine','g'],
+ prop:[120,455,'Propionate','n'],hpga:[180,520,'Histidine, proline, glutamine, arginine','g']
+};
+const E=[
+ {id:'r1',a:'oaa',b:'cit',c:'teal',arc:1},{id:'r2',a:'cit',b:'akg',c:'teal',arc:1},{id:'r3',a:'akg',b:'scoa',c:'teal',arc:1},
+ {id:'r4',a:'scoa',b:'fum',c:'teal',arc:1},{id:'r5',a:'fum',b:'oaa',c:'teal',arc:1},
+ {id:'ac',a:'acoa',b:'cit',c:'teal',d:'M495 112 Q532 190 524 274'},
+ {id:'c1',a:'cit',b:'akg',c:'teal',d:'M517 357 L538 364',lab:[544,367,'CO₂','start']},
+ {id:'c2',a:'akg',b:'scoa',c:'teal',d:'M388 439 L388 454',lab:[388,468,'CO₂','middle']},
+ {id:'pa',a:'pyr',b:'acoa',c:'gray'},{id:'lp',a:'lac',b:'pyr',c:'gray'},
+ {id:'agx',a:'acoa',b:'ag',c:'red',dbl:1},
+ {id:'po',a:'pyr',b:'oaa',c:'blue',lab:[372,150,'Pyruvate carboxylase','end']},
+ {id:'op',a:'oaa',b:'pep',c:'red',lab:[285,174,'PEP carboxykinase','middle']},
+ {id:'pg',a:'pep',b:'glc',c:'red'},
+ {id:'oa',a:'oaa',b:'asp',c:'trans',dbl:1,lab:[388,250,'Transaminase','start']},
+ {id:'kg',a:'akg',b:'glu',c:'trans',dbl:1,lab:[480,452,'Transaminase','start']},
+ {id:'ta',a:'trp',b:'ala',c:'aa'},{id:'ap',a:'ala',b:'pyr',c:'aa',lab:[293,80,'Transaminase','middle']},
+ {id:'sp',a:'serg',b:'pyr',c:'aa',d:'M213 40 L310 40 Q342 40 352 80'},
+ {id:'tf',a:'tyr',b:'fum',c:'aa'},{id:'is',a:'imv',b:'scoa',c:'aa'},
+ {id:'ps',a:'prop',b:'scoa',c:'blue',d:'M167 455 L282 455 L282 426'},
+ {id:'hg',a:'hpga',b:'glu',c:'aa',d:'M314 520 L452 520 L452 506'}
+];
+const SETS={
+ cycle:{n:'oaa cit akg scoa fum acoa',e:'r1 r2 r3 r4 r5 ac c1 c2'},
+ rouge:{n:'oaa akg acoa ag pep glc asp glu',e:'agx op pg oa kg'},
+ bleu:{n:'pyr oaa asp glu akg prop scoa',e:'po oa kg ps'},
+ aa:{n:'serg trp ala pyr tyr fum imv scoa hpga glu akg asp oaa',e:'sp ta ap tf is hg kg oa'}
+};
+const MI={
+ cycle:['Le cycle',"Acétyl-CoA + oxaloacétate donnent le citrate, puis l'α-cétoglutarate, le succinyl-CoA, le fumarate, et le cycle revient à l'oxaloacétate. Deux CO₂ sortent par tour. La figure ne garde que les intermédiaires qui servent de carrefour."],
+ rouge:['Amphibolique : catabolique et anabolique',"Le cycle dégrade pour produire de l'énergie, mais il fournit aussi des précurseurs. L'oxaloacétate part vers le PEP puis le glucose (néoglucogenèse). L'acétyl-CoA en excès, quand la cellule n'a plus besoin d'énergie, est stocké en acides gras, et les acides gras peuvent redonner de l'acétyl-CoA. L'oxaloacétate et l'α-cétoglutarate donnent l'aspartate et le glutamate par transamination. Au cours : « un carrefour pour équilibrer les différents substrats »."],
+ bleu:['Réactions anaplérotiques',"Elles regénèrent les intermédiaires que d'autres voies prélèvent (néoglucogenèse, formation d'acides aminés), pour éviter que le cycle s'interrompe. Pyruvate → oxaloacétate (pyruvate carboxylase). Aspartate → oxaloacétate et glutamate → α-cétoglutarate (transaminases). Propionate → succinyl-CoA."],
+ aa:['Acides aminés qui entrent ou sortent',"Au cours : « on pourrait éventuellement vous questionner » sur les acides aminés qui entrent pour produire ou remplacer une composante du cycle. Tyrosine et phénylalanine ↔ fumarate. Isoleucine, méthionine, valine → succinyl-CoA. Histidine, proline, glutamine, arginine → glutamate → α-cétoglutarate. Aspartate ↔ oxaloacétate. Tryptophane → alanine → pyruvate. Sérine, cystéine, thréonine, glycine, hydroxyproline → pyruvate."],
+ tout:["Le cycle de l'acide citrique est une voie amphibolique","Rouge : les voies cataboliques et anaboliques qui puisent dans le cycle. Bleu : les réactions anaplérotiques qui le regarnissent."]
+};
+const NI={
+ oaa:"Accepte l'acétyl-CoA (citrate synthase). Il part vers le PEP puis le glucose (PEP carboxykinase) et s'échange avec l'aspartate (transaminase). La pyruvate carboxylase le regénère : c'est la principale réaction anaplérotique.",
+ cit:"Formé par la condensation de l'acétyl-CoA avec l'oxaloacétate.",
+ akg:"Formé avec la perte d'un CO₂. S'échange avec le glutamate par transamination. L'histidine, la proline, la glutamine et l'arginine rejoignent le cycle par le glutamate.",
+ scoa:"Formé avec la perte d'un CO₂. Entrée de l'isoleucine, de la méthionine et de la valine, et du propionate chez certains micro-organismes.",
+ fum:"S'échange avec la tyrosine et la phénylalanine, dans les deux sens. Au cours : en mode synthèse de protéines, le fumarate peut être prélevé pour cette synthèse.",
+ pyr:"Vient du lactate, de l'alanine (transaminase) et de la sérine, cystéine, thréonine, glycine, hydroxyproline. Devient l'acétyl-CoA, ou l'oxaloacétate par la pyruvate carboxylase (anaplérotique).",
+ acoa:"Entre dans le cycle avec l'oxaloacétate. En grosse accumulation, quand la cellule n'a plus besoin d'énergie, il est stocké sous forme d'acides gras. À l'inverse, les acides gras redonnent de l'acétyl-CoA.",
+ ag:"Réserve de l'acétyl-CoA en excès, et source d'acétyl-CoA en retour.",
+ pep:"Phosphoénolpyruvate, formé à partir de l'oxaloacétate par la PEP carboxykinase. Il mène au glucose : c'est la néoglucogenèse, vue au cours suivant.",
+ glc:"Produit par néoglucogenèse à partir de l'oxaloacétate, via le PEP.",
+ asp:"Aspartate ↔ oxaloacétate par une transaminase. Pour rentrer dans le cycle, l'aspartate redevient de l'oxaloacétate.",
+ glu:"Glutamate ↔ α-cétoglutarate par une transaminase (vu au cours sur le métabolisme des composés azotés).",
+ prop:"Propionate → succinyl-CoA, chez certains micro-organismes.",
+ lac:"Le lactate redonne du pyruvate.",
+ ala:"L'alanine donne le pyruvate par transamination. Elle vient notamment du tryptophane.",
+ trp:"Tryptophane → alanine → pyruvate.",
+ serg:"Sérine, cystéine, thréonine, glycine et hydroxyproline donnent du pyruvate.",
+ tyr:"Tyrosine et phénylalanine ↔ fumarate.",
+ imv:"Isoleucine, méthionine et valine → succinyl-CoA.",
+ hpga:"Histidine, proline, glutamine et arginine → glutamate → α-cétoglutarate."
+};
+const COL={teal:'#1D9E75',red:'#E24B4A',blue:'#378ADD',aa:'#BA7517',gray:'#888780'};
+let mode='tout',sel=null;
+const wid=k=>{const[,,l,t]=N[k];return t==='g'?l.length*6.4+16:l.length*7.4+18;},bp=borders(N,wid);
+function path(e){const[ax,ay]=N[e.a],[bx,by]=N[e.b];
+ if(e.arc){const mx=(ax+bx)/2,my=(ay+by)/2,ux=mx-380,uy=my-320,l=Math.hypot(ux,uy);const cx=mx+38*ux/l,cy=my+38*uy/l;
+  const s=bp(e.a,cx-ax,cy-ay),t=bp(e.b,cx-bx,cy-by);return`M${f(s[0])} ${f(s[1])} Q${f(cx)} ${f(cy)} ${f(t[0])} ${f(t[1])}`;}
+ const s=bp(e.a,bx-ax,by-ay),t=bp(e.b,ax-bx,ay-by);return`M${f(s[0])} ${f(s[1])} L${f(t[0])} ${f(t[1])}`;}
+function ecol(e){if(e.c==='trans')return mode==='bleu'?COL.blue:mode==='aa'?COL.aa:COL.red;if(e.c==='aa')return mode==='aa'?COL.aa:COL.gray;return COL[e.c];}
+const RED=['glc','pep','ag'],BLUE=['pyr','asp','glu','prop'];
+function ncls(k){const t=N[k][3];if(t==='r')return'c-teal';
+ if(mode==='rouge'&&(RED.includes(k)||k==='asp'||k==='glu'))return'c-red';
+ if(mode==='bleu'&&BLUE.includes(k))return'c-blue';
+ if(mode==='aa'&&(t==='g'||k==='ala'||k==='asp'||k==='glu'))return'c-amber';
+ if(mode==='tout'){if(RED.includes(k))return'c-red';if(BLUE.includes(k))return'c-blue';}
+ return'c-gray';}
+const EL={},NL={};
+E.forEach(e=>{const g=mk('g',{class:'ap-el'},$('e'));const p=mk('path',{d:e.d||path(e),fill:'none','stroke-width':e.c==='teal'?2:1.5,'marker-end':'url(#ap-ar)'},g);
+ if(e.dbl)p.setAttribute('marker-start','url(#ap-ar)');
+ if(e.lab){const[x,y,t,a]=e.lab;mk('text',{class:'ts',x,y,'text-anchor':a,'dominant-baseline':'central',style:'font-size:11px'},g,t);}
+ EL[e.id]={g,p};});
+Object.keys(N).forEach(k=>{const[x,y,l,t]=N[k],w=wid(k);
+ const g=mk('g',{'data-n':k,tabindex:0,role:'button','aria-label':l},$('n'));
+ const r=mk('rect',{x:f(x-w/2),y:y-13,width:f(w),height:26,rx:6},g);
+ mk('text',{class:t==='g'?'ts':'t',x,y,'text-anchor':'middle','dominant-baseline':'central',style:t==='g'?'font-size:12px':'font-size:13px;font-weight:500'},g,l);
+ NL[k]={g,r};});
+function render(){
+ let act=null;
+ if(sel){const es=E.filter(e=>e.a===sel||e.b===sel);act={n:new Set([sel,...es.flatMap(e=>[e.a,e.b])]),e:new Set(es.map(e=>e.id))};}
+ else if(mode!=='tout'){const s=SETS[mode];act={n:new Set(s.n.split(' ')),e:new Set(s.e.split(' '))};}
+ E.forEach(e=>{const o=EL[e.id];o.g.setAttribute('class','ap-el'+(act&&!act.e.has(e.id)?' ap-dim':''));o.p.setAttribute('stroke',ecol(e));});
+ Object.keys(N).forEach(k=>{const o=NL[k];o.g.setAttribute('class','ap-el ap-nd '+ncls(k)+(act&&!act.n.has(k)?' ap-dim':''));o.r.setAttribute('stroke-width',sel===k?2:.5);o.g.setAttribute('aria-pressed',sel===k);});
+ document.querySelectorAll('#ap-modes .md').forEach(b=>b.classList.toggle('on',!sel&&b.dataset.m===mode));
+ const[ti,tx]=sel?[N[sel][2],NI[sel]]:MI[mode];$('ttl').textContent=ti;$('txt').textContent=tx;}
+$('modes').onclick=e=>{const b=e.target.closest('.md');if(b){mode=b.dataset.m;sel=null;render();}};
+const pick=g=>{sel=sel===g.dataset.n?null:g.dataset.n;render();};
+$('n').addEventListener('click',e=>{const g=e.target.closest('.ap-nd');if(g)pick(g);});
+$('n').addEventListener('keydown',e=>{if(e.key!=='Enter'&&e.key!==' ')return;const g=e.target.closest('.ap-nd');if(g){e.preventDefault();pick(g);}});
+render();
+})();
+
+/* Cycle du glyoxylate, ids gx- */
+(function(){
+const $=id=>document.getElementById('gx-'+id);
+const ICO={pause:'<svg viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>',play:'<svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>'};
+const N={
+ ag2:[80,72,'Acides gras','gray'],acet:[240,72,'Acétate','gray'],acoa1:[430,72,'Acétyl-CoA','gray'],
+ oaa:[320,160,'Oxaloacétate','gray'],cit:[540,160,'Citrate','gray'],iso:[575,262,'Isocitrate','gray'],
+ glyox:[410,270,'Glyoxylate','purple'],succ:[430,395,'Succinate','gray'],mal:[240,270,'Malate','gray'],
+ acoa2:[318,335,'Acétyl-CoA','gray'],glc:[80,270,'Glucose','teal'],atp:[80,428,'ATP','teal'],
+ akg:[600,328,'α-Cétoglutarate','coral',1],scoa:[590,395,'Succinyl-CoA','coral',1],fumk:[230,395,'Fumarate','coral',1]
+};
+const E=[
+ {id:'e1',a:'ag2',b:'acet',c:'g'},
+ {id:'e2',a:'acet',b:'acoa1',c:'g',lab:[330,52,'Acétate thiokinase','middle']},
+ {id:'e3',a:'oaa',b:'cit',c:'g'},
+ {id:'e4',a:'acoa1',b:'cit',c:'g',d:'M430 88 Q432 152 466 157',lab:[440,180,'Citrate synthase','middle']},
+ {id:'e5',a:'cit',b:'iso',c:'g',lab:[590,207,'Aconitase','start']},
+ {id:'e6',a:'iso',b:'glyox',c:'p'},
+ {id:'e7',a:'iso',b:'succ',c:'p',lab:[483,297,'Isocitrate lyase','middle']},
+ {id:'e8',a:'glyox',b:'mal',c:'p',lab:[318,252,'Malate synthase','middle']},
+ {id:'e9',a:'acoa2',b:'mal',c:'p',d:'M318 319 Q318 278 292 272'},
+ {id:'e10',a:'mal',b:'oaa',c:'g',lab:[286,222,'Malate déshydrogénase','start']},
+ {id:'e11',a:'mal',b:'glc',c:'t',lab:[80,296,'Néoglucogenèse','middle']},
+ {id:'e12',a:'succ',b:'atp',c:'t',d:'M430 411 L430 437 L154 437'},
+ {id:'k1',a:'iso',b:'akg',c:'k'},{id:'k2',a:'akg',b:'scoa',c:'k'},{id:'k3',a:'scoa',b:'succ',c:'k'},
+ {id:'k4',a:'succ',b:'fumk',c:'k'},{id:'k5',a:'fumk',b:'mal',c:'k'},
+ {id:'kc1',a:'iso',b:'akg',c:'k',d:'M588 296 L611 296',lab:[617,296,'CO₂','start']},
+ {id:'kc2',a:'akg',b:'scoa',c:'k',d:'M597 362 L620 362',lab:[626,362,'CO₂','start']}
+];
+const S=[
+ {b:"Vue d'ensemble",t:'Le cycle du glyoxylate',x:"Variante du cycle de l'acide citrique qui existe chez les plantes, les bactéries et les levures, mais pas chez les animaux. Dans le glyoxysome, elle produit du glucose à partir de l'acétyl-CoA, ce qui est impossible chez les mammifères. Ce glucose sert à la croissance de la plante, à la synthèse de polysaccharides de structure comme la cellulose, et à nourrir l'embryon des graines oléagineuses."},
+ {b:'1',t:"1. L'acétate devient de l'acétyl-CoA",n:'ag2 acet acoa1 oaa cit iso',e:'e1 e2 e3 e4 e5',x:"L'acide gras (acétate) est transformé en acétyl-CoA par l'acétate thiokinase. L'acétyl-CoA entre dans le cycle : avec l'oxaloacétate, il forme le citrate (citrate synthase), puis l'isocitrate (aconitase). Au cours : cette partie est déjà connue, c'est la même que dans le cycle de l'acide citrique."},
+ {b:'2',t:'2. Le court-circuit : isocitrate lyase',n:'iso glyox succ',e:'e6 e7',x:"Les étapes de décarboxylation de l'isocitrate du cycle de Krebs sont court-circuitées. L'isocitrate lyase convertit directement l'isocitrate en glyoxylate et en succinate. Le glyoxylate ne se trouve que dans le glyoxysome, nulle part ailleurs."},
+ {b:'3',t:'3. Malate synthase',n:'glyox acoa2 mal oaa',e:'e8 e9 e10',x:"Le glyoxylate se condense avec un deuxième acétyl-CoA pour former le malate, grâce à la malate synthase. Sur la figure, la malate déshydrogénase redonne l'oxaloacétate, ce qui referme le cycle."},
+ {b:'4',t:'4. Le malate devient du glucose',n:'mal glc',e:'e11',x:"Le malate diffuse hors du glyoxysome et se retrouve dans le cytosol, où il forme du glucose par néoglucogenèse. Au cours : c'est dans ce sens que va le gros de l'activité du glyoxysome."},
+ {b:'5',t:'5. Le succinate va à la mitochondrie',n:'succ atp',e:'e12',x:"Le succinate diffuse hors du glyoxysome vers la mitochondrie, où il entre dans le cycle de Krebs et sert à produire de l'ATP. Au cours : une sortie secondaire, quand la cellule est en mode production d'énergie."}
+];
+const KN=['akg','scoa','fumk'],KE=['k1','k2','k3','k4','k5','kc1','kc2'];
+const COL={g:'#888780',p:'#7F77DD',t:'#1D9E75',k:'#D85A30'};
+const NOTE='<span style="color:var(--coral-s);font-weight:500">Pointillés orange :</span> ce que ferait le cycle de Krebs. L\'isocitrate y passe par l\'α-cétoglutarate et le succinyl-CoA en perdant 2 CO₂, puis le succinate redonne le malate par le fumarate.<br>Complément hors diapo : ces 2 CO₂ emportent autant de carbones que l\'acétyl-CoA en apporte, donc le cycle de Krebs ne laisse aucun carbone pour faire du glucose. En sautant les décarboxylations, le glyoxylate garde ces carbones.';
+const wid=k=>N[k][2].length*7.4+18,bp=borders(N,wid);
+function path(e){const[ax,ay]=N[e.a],[bx,by]=N[e.b];const s=bp(e.a,bx-ax,by-ay),t=bp(e.b,ax-bx,ay-by);return`M${f(s[0])} ${f(s[1])} L${f(t[0])} ${f(t[1])}`;}
+const EL={},NL={};
+E.forEach(e=>{const g=mk('g',{},$('e'));const p=mk('path',{d:e.d||path(e),fill:'none',stroke:COL[e.c],'stroke-width':e.c==='p'?2:1.5,'marker-end':'url(#gx-ar)'},g);
+ if(e.c==='k')p.setAttribute('stroke-dasharray','5 4');
+ if(e.lab){const[x,y,t,a]=e.lab;mk('text',{class:'ts',x,y,'text-anchor':a,'dominant-baseline':'central',style:'font-size:11px'+(e.c==='p'?';font-weight:500':'')},g,t);}
+ EL[e.id]=g;});
+Object.keys(N).forEach(k=>{const[x,y,l,,kr]=N[k],w=wid(k);const g=mk('g',{},$('n'));
+ const r=mk('rect',{x:f(x-w/2),y:y-13,width:f(w),height:26,rx:6,'stroke-width':.5},g);if(kr)r.setAttribute('stroke-dasharray','4 3');
+ mk('text',{class:'t',x,y,'text-anchor':'middle','dominant-baseline':'central',style:'font-size:13px;font-weight:500'},g,l);
+ NL[k]=g;});
+const o={play:false,i:0,t:0,cmp:false};
+function render(){
+ const sp=S[o.i];let act=null;
+ if(sp.n){act={n:new Set(sp.n.split(' ')),e:new Set(sp.e.split(' '))};
+  if(o.cmp&&o.i===2){KN.forEach(k=>act.n.add(k));KE.forEach(k=>act.e.add(k));act.n.add('mal');}}
+ const st=(kr,on)=>kr&&!o.cmp?' gx-off':act&&!on?' gx-dim':'';
+ E.forEach(e=>EL[e.id].setAttribute('class','gx-el'+st(e.c==='k',act&&act.e.has(e.id))));
+ Object.keys(N).forEach(k=>NL[k].setAttribute('class','gx-el c-'+N[k][3]+st(N[k][4],act&&act.n.has(k))));
+ $('mito').setAttribute('class','gx-el'+st(false,act&&act.n.has('atp')));
+ $('ktxt').setAttribute('class','ts gx-el'+st(true,o.i===2));
+ $('steps').querySelectorAll('.md').forEach((b,i)=>b.classList.toggle('on',i===o.i));
+ $('ttl').textContent=sp.t;$('txt').textContent=sp.x;$('note').innerHTML=o.cmp?NOTE:'';}
+function go(i){o.i=(i+S.length)%S.length;o.t=0;render();}
+$('steps').innerHTML=S.map((p,i)=>`<button class="md" data-i="${i}">${p.b}</button>`).join('');
+$('steps').onclick=e=>{const b=e.target.closest('.md');if(b)go(+b.dataset.i);};
+$('prev').onclick=()=>go(o.i-1);$('next').onclick=()=>go(o.i+1);
+const pb=$('play');
+const setP=p=>{o.play=p;if(o.w)o.w();pb.innerHTML=p?ICO.pause:ICO.play;pb.setAttribute('aria-label',p?'Pause':'Lecture')};
+pb.onclick=()=>{if(!o.play)go(o.i===S.length-1?0:o.i+1);setP(!o.play);};setP(false);
+$('cmp').onchange=e=>{o.cmp=e.target.checked;render();};
+const v={v:true};if('IntersectionObserver' in window)new IntersectionObserver(e=>{v.v=e[0].isIntersecting;if(o.w)o.w()}).observe(document.getElementById('glyoxylate'));
+o.w=v.w=Gate(()=>o.play&&v.v,dt=>{o.t+=dt;if(o.t>=7){if(o.i>=S.length-1)setP(false);else go(o.i+1);}});
+go(0);
+})();
+})();
+</script>
+<script>
 /* Menu façon boutique : un onglet par catégorie, panneau déroulant au survol, recherche, tiroir sur mobile.
    Une nouvelle section = une entrée dans MENU (son id, un titre court, une phrase). */
 (function(){
@@ -1793,11 +2043,15 @@ const MENU=[
  {id:'galactose',t:'Galactose',d:'Voie normale, galactosémie et hyperglycémie'},
  {id:'uridyl',t:'Galactose-1-P uridyltransférase',d:"Zoom sur le transfert de l'UDP, puis la phosphoglucomutase"},
  {id:'mannose',t:'Mannose',d:"Épimère en C2 du glucose, jusqu'au fructose-6-P"}]},
-{id:'glycolyse',tab:'Synchrone 5',titre:'Glucides : glycolyse et cycle du citrate',src:'Cours synchrone 5',cat:'cat-glycolyse',k:'coral',items:[
+{id:'glycolyse',tab:'Synchrone 5',titre:'Glucides : glycolyse, cycle du citrate et glyoxylate',src:'Cours synchrone 5',cat:'cat-glycolyse',k:'coral',items:[
  {id:'glycolyse',t:'Glycolyse',d:'Les 10 enzymes sur les vraies structures, avec un mode révision',
   k:'hexokinase glucokinase phosphoglucose isomérase phosphofructokinase PFK1 aldolase triose phosphate isomérase glycéraldéhyde-3-phosphate déshydrogénase phosphoglycérate kinase phosphoglycérate mutase énolase pyruvate kinase'},
  {id:'pfk',t:'PFK-1 et PFK-2',d:'Le fructose-2,6-BP en glycémie haute et en jeûne'},
- {id:'pdh',t:'PDH',d:'Pyruvate déshydrogénase : sa kinase, sa phosphatase et leurs régulateurs'}]},
+ {id:'pdh',t:'PDH',d:'Pyruvate déshydrogénase : sa kinase, sa phosphatase et leurs régulateurs'},
+ {id:'amphibolique',t:'Voie amphibolique',d:"Ce qui sort du cycle de l'acide citrique et ce qui le regarnit",
+  k:'amphibolique anaplérotique catabolique anabolique pyruvate carboxylase PEP carboxykinase transaminase oxaloacétate citrate α-cétoglutarate succinyl-CoA fumarate aspartate glutamate propionate acides aminés acides gras néoglucogenèse'},
+ {id:'glyoxylate',t:'Cycle du glyoxylate',d:"Le glyoxysome fait du glucose à partir de l'acétyl-CoA, en cinq étapes",
+  k:'glyoxysome glyoxylate isocitrate lyase malate synthase acétate thiokinase citrate synthase aconitase malate déshydrogénase succinate plantes levures bactéries graines oléagineuses néoglucogenèse'}]},
 {id:'glycogene',tab:'Synchrone 6',titre:'Glycogène : synthèse, dégradation et régulation',src:'Cours synchrone 6',cat:'cat-glycogene',k:'red',items:[
  {id:'glycogenese',t:'Glycogénogenèse',d:'Du glucose au glycogène : activation, amorce, élongation, branchement',
   k:'glucokinase hexokinase phosphoglucomutase UDPGlc UDP-glucose pyrophosphorylase pyrophosphatase UTP glycogénine tyrosine glycogène synthase enzyme branchante nucléoside diphosphokinase insuline glucagon adrénaline AMPc'},
