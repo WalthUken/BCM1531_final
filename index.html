@@ -166,7 +166,8 @@ html.mg-lock{overflow:hidden}
 .mg-burger,.mg-crumb{display:flex}
 .mg-panels{display:none}
 }
-@media (min-width:720px) and (max-width:860px){.mg-tab{padding:0 8px}.mg-brand{margin-right:6px}}
+@media (min-width:720px) and (max-width:1000px){.mg-tab{padding:0 7px}.mg-tab svg{display:none}.mg-tab.cur::after{left:7px;right:7px}.mg-brand{margin-right:6px}}
+@media (min-width:720px) and (max-width:820px){.mg-tab{font-size:13px;padding:0 5px}.mg-tab.cur::after{left:5px;right:5px}}
 @media (prefers-reduced-motion:reduce){.mg-panel{animation:none}.mg-drawer,.mg-drawer.open,.mg-veil{transition:none}}
 .tr-hl{transition:opacity .4s}
 #glycolyse{--blue-f:#0C447C;--blue-s:#85B7EB;--blue-t:#B5D4F4}
@@ -211,6 +212,14 @@ html.mg-lock{overflow:hidden}
 .ap-ln{display:inline-block;width:16px;height:3px;border-radius:2px}
 .gx-dash{background:repeating-linear-gradient(90deg,#D85A30 0 5px,transparent 5px 9px)}
 @media (prefers-reduced-motion:reduce){#amphibolique .ap-el,#glyoxylate .gx-el,#amphibolique .ap-el path,#amphibolique .ap-nd>rect{transition:none}}
+#elongation .el-mv{transition:transform 1s ease,opacity .6s ease}
+#elongation .el-bd{stroke:var(--s);stroke-width:2}
+#elongation .el-hs{stroke:var(--danger)}
+#elongation .el-mk{font-size:12px;font-weight:600;fill:var(--danger)}
+#elongation .el-ln{stroke:var(--muted);stroke-width:1.5;fill:none}
+#elongation .el-fx{font-size:18px;fill:var(--text)}
+#elongation .el-hl{fill:var(--danger);font-weight:600}
+@media (prefers-reduced-motion:reduce){#elongation .el-mv{transition:none}}
 /* Grand écran : animation et commandes à gauche, texte à droite, la case tient dans la fenêtre */
 @media (min-width:980px){
 main{max-width:1180px}
@@ -995,6 +1004,28 @@ main{max-width:1180px}
 </div>
 <div class="side">
 <div class="cap"><div class="ttl" id="am-ttl"></div><div class="txt" id="am-txt"></div><div class="note" id="am-note"></div></div>
+</div>
+</div>
+</section>
+
+<p class="catg" id="cat-lipides">Lipides : lipogenèse, lipolyse, β-oxydation et synthèse des acides gras (cours synchrone 7)</p>
+
+<section id="elongation">
+<h2>Synthèse des acides gras : de 4 C au palmitate</h2>
+<p class="src">Cours synchrone 7, diapositives 27 et 28</p>
+<div class="card split">
+<div class="fig">
+<div class="modes gy-nav" id="el-modes"></div>
+<svg id="el-svg" width="100%" viewBox="0 0 680 390" role="img">
+<title>Élongation d'un acide gras sur la synthase</title>
+<desc>L'acyl-ACP saturé à 4 carbones passe sur le groupe SH de la cétoacyl-ACP synthase. Un malonyl-ACP se charge sur l'ACP libéré. La condensation élimine un CO₂ et donne un cétoacyl-ACP à 6 carbones, dont la cétone en C3 est l'ancien C1. Une réduction NADPH-dépendante, une déshydratation et une seconde réduction donnent un acyl-ACP saturé à 6 carbones. Le cycle se répète jusqu'au palmityl-ACP à 16 carbones, puis une thiolase libère le palmitate.</desc>
+<g id="el-stage"></g>
+</svg>
+<div class="ps-leg" style="margin:4px 0 0"><span><i class="gy-sw" style="background:var(--coral-f);border:.5px solid var(--coral-s);border-radius:50%;width:12px"></i>acétyl-CoA de départ</span><span><i class="gy-sw" style="background:var(--blue-f);border:.5px solid var(--blue-s);border-radius:50%;width:12px"></i>malonyl, tours impairs</span><span><i class="gy-sw" style="background:var(--purple-f);border:.5px solid var(--purple-s);border-radius:50%;width:12px"></i>malonyl, tours pairs</span><span><i class="gy-sw" style="background:var(--amber-f);border:.5px solid var(--amber-s);border-radius:50%;width:12px"></i>COO⁻ qui part en CO₂</span><span style="color:var(--muted)">couleurs : complément hors diapo</span></div>
+<div class="ctl"><button class="icon" id="el-prev" aria-label="Image précédente"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></svg></button><button class="icon" id="el-play" aria-label="Lecture"></button><button class="icon" id="el-next" aria-label="Image suivante"><svg viewBox="0 0 24 24"><path d="M9 6l6 6l-6 6"/></svg></button><div class="dots" id="el-dots"></div><span class="cnt" id="el-cnt" style="white-space:nowrap"></span></div>
+</div>
+<div class="side">
+<div class="cap"><div class="ttl" id="el-ttl"></div><div class="txt" id="el-txt"></div><div class="note" id="el-note"></div></div>
 </div>
 </div>
 </section>
@@ -2108,6 +2139,131 @@ go(0);
 })();
 </script>
 <script>
+/* Synchrone 7 : élongation d'un acide gras, de l'acyl-ACP à 4 C au palmitate (diapositives 27 et 28), ids el-.
+   Chaque étape joue sa ligne de temps sur une horloge virtuelle menée par Gate : la pause fige l'horloge et les transitions CSS. */
+(function(){
+const NS='http://www.w3.org/2000/svg',root=document.getElementById('elongation');
+const $=id=>document.getElementById(id),svg=$('el-svg'),stage=$('el-stage');
+const ICP={pause:'<svg viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>',play:'<svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>'};
+let cur=0,tok=0,vt=0,Q=[],auto=false,frozen=false,vis=false,cfn=0;
+const wake=Gate(()=>vis&&!frozen&&Q.length>0,dt=>{vt+=dt*1000;const due=Q.filter(q=>q.at<=vt);Q=Q.filter(q=>q.at>vt);due.forEach(q=>{if(q.t===tok)q.f()})});
+function later(ms,f){Q.push({at:vt+ms,f,t:tok});wake()}
+function anims(){void svg.getBoundingClientRect();return svg.getAnimations?svg.getAnimations({subtree:true}):[]}
+function tr(id,x,y,o){const e=typeof id==='string'?$(id):id;if(!e)return;e.style.transform=`translate(${x}px,${y}px)`;if(o!==undefined)e.style.opacity=o}
+function op(id,o){const e=$(id);if(e)e.style.opacity=o}
+function setT(id,t){const e=$(id);if(e)e.textContent=t}
+function rm(id){const e=$(id);if(e)e.remove()}
+function add(s,par){const g=document.createElementNS(NS,'g');g.innerHTML=s;const el=g.firstElementChild;(par||$('el-lay')).appendChild(el);return el}
+function pill(id,x,y,w,h,cls,t,sub,st){const cx=x+w/2;let s=`<g id="${id}" class="${cls} el-mv" style="${st||''}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" stroke-width=".5"/>`;
+ if(sub)s+=`<text id="${id}t" class="th" x="${cx}" y="${y+h/2-8}" text-anchor="middle" dominant-baseline="central">${t}</text><text id="${id}s" class="ts" x="${cx}" y="${y+h/2+10}" text-anchor="middle" dominant-baseline="central">${sub}</text>`;
+ else s+=`<text id="${id}t" class="${h>=30?'th':'ts'}" x="${cx}" y="${y+h/2}" text-anchor="middle" dominant-baseline="central">${t}</text>`;
+ return s+'</g>'}
+const SP=32,P_ACP=[545,205],P_KS=[450,125],P_CD=[481,205];
+const SUB='₀₁₂₃₄₅₆₇₈₉',sub=n=>String(n).split('').map(d=>SUB[+d]).join('');
+const colT=t=>t%2?'c-blue':'c-purple';
+function colorsFor(n){const a=[];for(let t=(n-2)/2;t>=1;t--)a.push(colT(t),colT(t));a.push('c-coral','c-coral');return a}
+function bead(c,x){return `<g class="${c}"><rect x="${x-10}" y="-10" width="20" height="20" rx="10" stroke-width=".8"/></g>`}
+function acylSVG(n,mk,x,y){const col=colorsFor(n),c3=-2*SP,on=mk==='k'||mk==='oh';
+ let s=`<g id="el-acyl" class="el-mv" style="transform:translate(${x}px,${y}px)">`;
+ for(let i=1;i<n;i++)s+=`<line class="el-bd" x1="${-(i-1)*SP-10}" y1="0" x2="${-i*SP+10}" y2="0"/>`;
+ s+=`<line id="el-acylS" class="el-bd el-mv" x1="10" y1="0" x2="15" y2="0"/>`;
+ s+=`<line id="el-db" class="el-bd el-hs el-mv" x1="${-SP-10}" y1="-5" x2="${-2*SP+10}" y2="-5" style="opacity:${mk==='db'?1:0}"/>`;
+ for(let i=1;i<=n;i++)s+=bead(col[i-1],-(i-1)*SP);
+ s+=`<line class="el-bd" x1="-3" y1="-10" x2="-3" y2="-20"/><line class="el-bd" x1="3" y1="-10" x2="3" y2="-20"/><text class="ts" x="0" y="-25" text-anchor="middle">O</text>`;
+ s+=`<g id="el-mk" class="el-mv" style="opacity:${on?1:0}"><line class="el-bd el-hs" x1="${c3-3}" y1="-10" x2="${c3-3}" y2="-20"/><line id="el-mk2" class="el-bd el-hs el-mv" x1="${c3+3}" y1="-10" x2="${c3+3}" y2="-20" style="opacity:${mk==='k'?1:0}"/><text id="el-mkT" class="el-mk" x="${c3}" y="-25" text-anchor="middle">${mk==='oh'?'OH':'O'}</text></g>`;
+ return s+'</g>'}
+function malSVG(c,x,y,st){return `<g id="el-mal" class="el-mv" style="transform:translate(${x}px,${y}px);${st||''}"><line class="el-bd" x1="10" y1="0" x2="15" y2="0"/><line class="el-bd" x1="-10" y1="0" x2="-22" y2="0"/>${bead(c,0)}${bead(c,-32)}<line class="el-bd" x1="-3" y1="-10" x2="-3" y2="-20"/><line class="el-bd" x1="3" y1="-10" x2="3" y2="-20"/><text class="ts" x="0" y="-25" text-anchor="middle">O</text><g id="el-mc3" class="el-mv"><line class="el-bd" x1="-42" y1="0" x2="-54" y2="0"/>${bead('c-amber',-64)}<text id="el-mc3t" class="ts" x="-64" y="-18" text-anchor="middle">COO⁻</text></g></g>`}
+function formula(n,mk,site){const end=site==='KS'?'–S–enzyme':'–S–ACP';
+ if(mk==='sat'){const m=n-2;return `<tspan>CH₃–</tspan><tspan>${m>2?'(CH₂)'+sub(m):Array(m).fill('CH₂').join('–')}</tspan><tspan>–CO${end}</tspan>`}
+ const c3=mk==='k'?'CO':mk==='oh'?'CH(OH)':'CH',c2=mk==='db'?'CH':'CH₂',sep=mk==='db'?'=':'–',m=n-4;
+ const head=m>2?`CH₃–(CH₂)${sub(m)}–`:'CH₃–'+'CH₂–'.repeat(m);
+ return `<tspan>${head}</tspan><tspan class="el-hl">${c3}</tspan><tspan${mk==='db'?' class="el-hl"':''}>${sep}${c2}</tspan><tspan>–CO${end}</tspan>`}
+function nameFor(n,mk,site){if(site==='KS')return `acyle de ${n} C fixé sur le SH de l'enzyme condensant`;
+ return {sat:n===16?'palmityl-ACP (16 C)':`acyl-ACP saturé à ${n} C`,k:`cétoacyl-ACP à ${n} C : cétone sur le C3`,oh:`alcool sur le C3, ${n} C (hydroxyacyl-ACP, nom hors diapo)`,db:`énoyl-ACP à ${n} C : liaison double C3=C2`}[mk]}
+function setF(n,mk,site){$('el-fm').innerHTML=formula(n,mk,site);setT('el-fn',nameFor(n,mk,site))}
+function setMal(t){$('el-fm').innerHTML='<tspan class="el-hl">⁻OOC</tspan>–CH₂–CO–S–ACP';setT('el-fn',t)}
+const cnt=(n,m,p)=>`${n} C · malonyl-CoA utilisés : ${m} · CO₂ : ${m} · NADPH : ${p}`;
+function base(o){o=o||{};
+ stage.innerHTML=pill('el-ks',300,30,220,44,'c-purple',o.enz||'Cétoacyl-ACP synthase',o.enz?'':'enzyme condensant')
+ +`<g style="opacity:${o.enz?0:1}"><line class="el-ln" x1="465" y1="74" x2="465" y2="125"/><text id="el-ksSH" class="ts" x="472" y="104">${o.ksS?'S':'SH'}</text></g>`
+ +pill('el-acp',470,250,180,44,'c-gray','ACP','')+`<line class="el-ln" x1="560" y1="250" x2="560" y2="205"/><text id="el-acpSH" class="ts" x="567" y="234">${o.acpS===false?'SH':'S'}</text>`
+ +`<text id="el-c3l" class="el-mk el-mv" x="${P_CD[0]}" y="240" text-anchor="middle" style="opacity:0">ancien C1 → C3</text>`
+ +`<text id="el-om" class="ts el-mv" x="598" y="145" style="opacity:0">O⁻</text>`
+ +`<g id="el-lay"></g><text id="el-stx" class="ts el-mv" x="250" y="262" text-anchor="middle"></text>`
+ +`<text id="el-fm" class="el-fx" x="340" y="330" text-anchor="middle"></text><text id="el-fn" class="ts" x="340" y="352" text-anchor="middle"></text><text id="el-cn" class="ts" x="340" y="380" text-anchor="middle"></text>`}
+function cof(k){const id='el-cf'+(++cfn);
+ if(k==='N'){add(pill(id,40,226,110,30,'c-teal','NADPH'));later(300,()=>tr(id,0,34));later(700,()=>setT(id+'t','NADP⁺'));later(1600,()=>op(id,0))}
+ else{add(pill(id,40,240,90,30,'c-blue','H₂O'));later(400,()=>tr(id,-70,0,0))}}
+function phTransfer(t){later(t,()=>{tr('el-acyl',...P_KS);setT('el-acpSH','SH')});later(t+900,()=>setT('el-ksSH','S'))}
+function phMal(t,n){later(t,()=>{add(malSVG(colT(n/2),695,205,'opacity:0'));later(60,()=>tr('el-mal',...P_ACP,1))});later(t+900,()=>setT('el-acpSH','S'))}
+function phCond(t,n){later(t,()=>{tr('el-mc3',0,-45,0);setT('el-mc3t','CO₂')});later(t+500,()=>tr('el-acyl',...P_CD));
+ later(t+1500,()=>{rm('el-acyl');rm('el-mal');add(acylSVG(n+2,'k',...P_ACP));setT('el-ksSH','SH')})}
+function phRed1(t){later(t,()=>cof('N'));later(t+900,()=>{op('el-mk2',0);setT('el-mkT','OH')})}
+function phDeh(t){later(t,()=>cof('E'));later(t+600,()=>{op('el-mk',0);op('el-db',1)})}
+function phRed2(t){later(t,()=>cof('N'));later(t+900,()=>op('el-db',0))}
+const SC=[
+()=>{base();add(acylSVG(4,'sat',...P_ACP));setF(4,'sat');setT('el-cn',cnt(4,1,2));setT('el-stx','Fin du tour 1 : 4 C')},
+()=>{base();add(acylSVG(4,'sat',...P_ACP));setF(4,'sat');setT('el-cn',cnt(4,1,2));phTransfer(400);
+ later(1300,()=>{setF(4,'sat','KS');setT('el-stx',"La chaîne prend la place de l'acétyle")})},
+()=>{base({ksS:true,acpS:false});add(acylSVG(4,'sat',...P_KS));setF(4,'sat','KS');setT('el-cn',cnt(4,1,2));phMal(400,4);
+ later(1300,()=>{setMal('malonyl-ACP (3 C) : son COO⁻ va partir en CO₂');setT('el-stx','Nouveau malonyl-ACP')})},
+()=>{base({ksS:true});add(acylSVG(4,'sat',...P_KS));add(malSVG(colT(2),...P_ACP));setMal('malonyl-ACP (3 C)');setT('el-cn',cnt(4,1,2));
+ phCond(400,4);later(1000,()=>setT('el-stx','CO₂ éliminé : 4 + 3 − 1 = 6 C'));later(1900,()=>{setF(6,'k');op('el-c3l',1);setT('el-cn',cnt(6,2,2))})},
+()=>{base();add(acylSVG(6,'k',...P_ACP));op('el-c3l',1);setF(6,'k');setT('el-cn',cnt(6,2,2));phRed1(400);
+ later(1300,()=>{setF(6,'oh');setT('el-cn',cnt(6,2,3));setT('el-stx','Cétone → alcool')})},
+()=>{base();add(acylSVG(6,'oh',...P_ACP));setF(6,'oh');setT('el-cn',cnt(6,2,3));phDeh(400);
+ later(1000,()=>{setF(6,'db');setT('el-stx','Liaison double')})},
+()=>{base();add(acylSVG(6,'db',...P_ACP));setF(6,'db');setT('el-cn',cnt(6,2,3));phRed2(400);
+ later(1300,()=>{setF(6,'sat');setT('el-cn',cnt(6,2,4));setT('el-stx','Tour 2 fini : 6 C saturé')})},
+()=>{base();add(acylSVG(6,'sat',...P_ACP));setF(6,'sat');setT('el-cn',cnt(6,2,4));
+ for(let k=3;k<=7;k++){const n=2*k,b=400+(k-3)*6700;
+  later(b,()=>setT('el-stx',`Tour ${k} : ${n} C → ${n+2} C`));
+  phTransfer(b);later(b+900,()=>setF(n,'sat','KS'));phMal(b+900,n);phCond(b+1800,n);
+  later(b+3300,()=>setF(n+2,'k'));phRed1(b+3500);later(b+4400,()=>setF(n+2,'oh'));
+  phDeh(b+4600);later(b+5200,()=>setF(n+2,'db'));phRed2(b+5500);
+  later(b+6400,()=>{setF(n+2,'sat');setT('el-cn',cnt(n+2,k,2*k))})}
+ later(400+5*6700,()=>setT('el-stx','Palmityl-ACP : 16 C, allongement terminé'))},
+()=>{base({enz:'Thiolase'});add(acylSVG(16,'sat',...P_ACP));setF(16,'sat');setT('el-cn',cnt(16,7,14));setT('el-stx','Palmityl-ACP (16 C)');
+ later(700,()=>{op('el-acylS',0);setT('el-acpSH','SH');setT('el-acpt','ACP-SH');setT('el-stx','La thiolase coupe le lien avec l’ACP')});
+ later(1300,()=>tr('el-acyl',575,140));
+ later(2200,()=>{op('el-om',1);$('el-fm').innerHTML='CH₃–(CH₂)₁₄–COO⁻';setT('el-fn','palmitate (16 C), libéré');setT('el-stx','2 C d’acétyl-CoA + 14 C de 7 malonyl')})}
+];
+const DUR=[1200,2300,2300,2900,2400,1700,2400,400+5*6700+600,2900];
+const M=['4 C','a. Enzyme','b. Malonyl','c. Condensation','d. Réduction','e. Déshydratation','f. Réduction','Tours 3 à 7','Thiolase'];
+const CAP=[
+['Départ : acyl-ACP saturé à 4 C',"C'est la fin du tour 1. Pour allonger la chaîne, la synthase refait les mêmes étapes : la chaîne de 4 C prend simplement la place qu'avait l'acétyle au tour 1. Les couleurs des carbones indiquent d'où ils viennent.",'Le code couleur par origine des carbones est un complément hors diapo.'],
+["a. La chaîne passe sur l'enzyme","La chaîne de 4 C passe de l'ACP au groupe SH de la cétoacyl-ACP synthase (enzyme condensant), et l'ACP-SH est libéré, comme l'acétyle à l'étape 2 du tour 1.","La diapo dit seulement « la synthèse continue » ; que la chaîne refasse ce trajet à chaque tour vient des manuels."],
+['b. Un nouveau malonyl-ACP',"Un nouveau malonyl-CoA est chargé sur l'ACP-SH libre : malonyl-ACP, 3 C. Son COO⁻ (ambre) est celui qui partira en CO₂.",''],
+['c. Condensation',"Le CO₂ part, et la chaîne de 4 C est transférée sur le malonyle : 4 + 3 − 1 = 6 C. L'ancien C1 de la chaîne, avec son O, se retrouve en position 3 : c'est la cétone que les trois étapes suivantes vont faire disparaître. Les 2 nouveaux carbones sont du côté de l'ACP.","Formules et position des nouveaux carbones : complément hors diapo."],
+['d. Réduction',"Réduction par la cétoacyl-ACP réductase, NADPH-dépendante : la cétone du C3 devient un alcool.",''],
+['e. Déshydratation',"Déshydratation avec formation d'une liaison double.","La diapo ne nomme pas l'enzyme. L'eau qui sort et la position C3=C2 sont hors diapo."],
+['f. Réduction',"Réduction par l'énoyl-ACP réductase, NADPH-dépendante : la chaîne de 6 C est saturée. Le tour 2 est fini : +2 C, comme au tour 1.",''],
+["Tours 3 à 7 : jusqu'à 16 C","Le même cycle a à f se répète, +2 C chaque fois : 6 → 8 → 10 → 12 → 14 → 16 C, le palmityl-ACP, où la synthèse s'arrête.","Le compte (7 tours en tout, 16 = 2 + 7 × 2) et les cumuls du compteur sont hors diapo."],
+['Thiolase : palmitate libéré',"Une thiolase libère le palmitate de l'ACP-SH. Les 2 C du bout CH₃ viennent de l'acétyl-CoA de départ, les 14 autres de 7 malonyl-CoA.","Hors diapo : bilan 1 acétyl-CoA + 7 malonyl-CoA + 14 NADPH → palmitate + 7 CO₂. La diapo dit « thiolase », les manuels disent souvent thioestérase."]];
+const modes=$('el-modes'),dots=$('el-dots'),play=$('el-play');
+modes.innerHTML=M.map((m,i)=>`<button class="md" data-i="${i}">${m}</button>`).join('');
+dots.innerHTML=M.map((m,i)=>`<span class="dot" data-i="${i}" title="${m}"></span>`).join('');
+modes.querySelectorAll('.md').forEach(b=>b.onclick=()=>go(+b.dataset.i));
+dots.querySelectorAll('.dot').forEach(b=>b.onclick=()=>go(+b.dataset.i));
+function icon(){play.innerHTML=auto?ICP.pause:ICP.play;play.setAttribute('aria-label',auto?'Pause':'Lecture')}
+function go(i){tok++;Q=[];frozen=false;cur=(i+M.length)%M.length;
+ modes.querySelectorAll('.md').forEach(b=>b.classList.toggle('on',+b.dataset.i===cur));
+ dots.querySelectorAll('.dot').forEach(b=>b.classList.toggle('on',+b.dataset.i===cur));
+ $('el-cnt').textContent=`${cur+1} / ${M.length}`;
+ const c=CAP[cur];setT('el-ttl',c[0]);setT('el-txt',c[1]);setT('el-note',c[2]);
+ SC[cur]();
+ later(DUR[cur],()=>{if(!auto)return;if(cur<M.length-1)later(1800,()=>go(cur+1));else{auto=false;icon()}});
+ icon();wake()}
+$('el-prev').onclick=()=>go(cur-1);$('el-next').onclick=()=>go(cur+1);
+play.onclick=()=>{if(auto){auto=false;frozen=true;anims().forEach(a=>a.pause())}
+ else{auto=true;if(frozen){frozen=false;anims().forEach(a=>a.play())}
+  if(!Q.some(q=>q.t===tok)){go(cur<M.length-1?cur+1:0);return}}
+ icon();wake()};
+new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis)wake()}).observe(root);
+go(0);
+})();
+</script>
+<script>
 /* Menu façon boutique : un onglet par catégorie, panneau déroulant au survol, recherche, tiroir sur mobile.
    Une nouvelle section = une entrée dans MENU (son id, un titre court, une phrase). */
 (function(){
@@ -2141,7 +2297,10 @@ const MENU=[
  {id:'rcpg',t:'Récepteurs couplés aux protéines G',d:"De l'hormone à l'AMPc : protéine G, GDP et GTP, adénylate cyclase",
   k:'RCPG récepteur 7 passages transmembranaires protéine G Gs Gi alpha bêta gamma GDP GTP GTPase adénylate cyclase AMPc glucagon adrénaline effecteur'},
  {id:'ampc',t:'AMPc et PKA',d:"L'AMPc libère la PKA active, puis la phosphodiestérase l'arrête",
-  k:'AMPc second messager protéine kinase A PKA R2C2 sous-unités régulatrices catalytiques phosphorylation phosphoprotéine phosphatase phosphodiestérase 5-AMP'}]}];
+  k:'AMPc second messager protéine kinase A PKA R2C2 sous-unités régulatrices catalytiques phosphorylation phosphoprotéine phosphatase phosphodiestérase 5-AMP'}]},
+{id:'lipides',tab:'Synchrone 7',titre:'Lipides : lipogenèse, lipolyse, β-oxydation et synthèse des acides gras',src:'Cours synchrone 7',cat:'cat-lipides',k:'blue',items:[
+ {id:'elongation',t:'Élongation des acides gras',d:"De l'acyl-ACP à 4 C au palmitate, deux carbones par tour",
+  k:'synthase acide gras ACP malonyl-CoA malonyl-ACP cétoacyl-ACP synthase enzyme condensant cétoacyl-ACP réductase énoyl-ACP réductase déshydratation NADPH CO₂ butyryl palmityl-ACP palmitate thiolase thioestérase lipogenèse'}]}];
 
 const $=id=>document.getElementById('mg-'+id),RMO=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const HOVER=matchMedia('(hover:hover) and (pointer:fine)'),MOB=matchMedia('(max-width:719px)');
